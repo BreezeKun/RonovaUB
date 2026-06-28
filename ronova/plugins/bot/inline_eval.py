@@ -19,7 +19,7 @@ async def inline_eval(c: Client, q: InlineQuery):
     code = eval_helper.get("code", "No code")
 
     buttons = [
-        [InlineKeyboardButton("🗑 Delete", callback_data=f"del_{user_id}", style=ButtonStyle.DANGER)]
+        [InlineKeyboardButton("Delete", callback_data=f"del_{user_id}", style=ButtonStyle.DANGER)]
     ]
 
     if len(text) > 300:
