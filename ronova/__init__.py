@@ -1,4 +1,5 @@
 import logging
+import time
 
 from pyrogram import Client
 
@@ -21,3 +22,18 @@ bot = Client("app",
     bot_token= BOT_TOKEN,
     plugins=dict(root = "ronova.plugins.bot")
 )
+
+uptime = time.time()
+def get_uptime() -> str:
+    seconds = int(time.time() - uptime)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    days, hours = divmod(hours, 24)
+
+    parts = []
+    if days:    parts.append(f"{days}d")
+    if hours:   parts.append(f"{hours}h")
+    if minutes: parts.append(f"{minutes}m")
+    parts.append(f"{seconds}s")
+
+    return " ".join(parts)
