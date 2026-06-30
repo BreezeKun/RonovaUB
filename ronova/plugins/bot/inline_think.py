@@ -4,10 +4,10 @@ from pyrogram.types import (
     InputRichMessage, InputRichMessageContent
 )
 
-from ..utilities import eval_helper
+from ..utilities import eval_helper , ADMIN_ID
 
 
-@Client.on_inline_query(filters.regex(r"^think (.+)"))
+@Client.on_inline_query(filters.regex(r"^think (.+)") & filters.user(ADMIN_ID))
 async def inline_think(c: Client, q: InlineQuery):
     key = q.matches[0].group(1)
 
