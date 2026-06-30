@@ -4,7 +4,8 @@ from pyrogram.types import (
     InputRichMessage, InputRichMessageContent
 )
 
-from ..utilities import eval_helper , ADMIN_ID
+from ..utilities import eval_helper
+from config import ADMIN_ID
 
 
 @Client.on_inline_query(filters.regex(r"^think (.+)") & filters.user(ADMIN_ID))
