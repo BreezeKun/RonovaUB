@@ -3,6 +3,7 @@ import aiohttp
 from config import TMDB_KEY
 
 API_KEY = TMDB_KEY
+
 BASE_URL = "https://api.themoviedb.org/3"
 
 session = aiohttp.ClientSession()
