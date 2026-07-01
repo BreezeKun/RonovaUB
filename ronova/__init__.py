@@ -2,7 +2,7 @@ import logging
 import time
 
 from pyrogram import Client
-# import uvloop
+import uvloop
 
 from config import API_HASH, API_ID, SESSION_STRING, BOT_TOKEN
 
@@ -10,7 +10,7 @@ FORMAT = "[UB]:%(message)s"
 
 logging.basicConfig(level=logging.INFO,handlers=[logging.FileHandler('logs.txt'),
                                                  logging.StreamHandler()],format=FORMAT)
-# uvloop.install()
+uvloop.install()
 ub = Client("ub",
     api_id= API_ID,
     api_hash= API_HASH,
