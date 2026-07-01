@@ -21,7 +21,9 @@ async def aexec(code: str, client, msg):
         "r": msg.reply_to_message,
         "p": print,
         "here": msg.chat.id,
-        "me": msg.from_user.id
+        "me": msg.from_user.id,
+        "__name__": __name__,
+        "__package__": __package__
     }
 
     exec(

@@ -8,7 +8,7 @@ from pyrogram.types import (
 )
 from pyrogram.enums import ButtonStyle
 
-from ..utilities import paste, eval_helper, delete_paste
+from ..utilities import eval_helper,paste
 from config import ADMIN_ID
 
 @Client.on_inline_query(filters.regex("eval") & filters.user(ADMIN_ID))
@@ -23,16 +23,14 @@ async def inline_eval(c: Client, q: InlineQuery):
     ]
 
     if len(text) > 300:
-        paste_id, link = await paste(
+        link = await paste.create(
             content=text,
-            title="Eval output",
-            fmt="text"
         )
-        eval_helper["paste_id"] = paste_id
+        eval_helper["paste_id"] = link[17::]
         buttons.append(
             [InlineKeyboardButton("Full Output", url=link, style=ButtonStyle.PRIMARY)]
         )
-        text = "Output too long, click button below."
+        text = f"Output too long, click button below\nBin_id: {eval_helper["paste_id"]}"
 
     await q.answer(
         [
@@ -58,7 +56,7 @@ async def delete_eval(c: Client, q: CallbackQuery):
 
     paste_id = eval_helper.get("paste_id")
     if paste_id:
-        await delete_paste(paste_id)
+        await paste.delete(paste_id)
 
     from ronova import ub
     try:
