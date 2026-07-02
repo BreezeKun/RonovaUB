@@ -1,7 +1,7 @@
 import logging
 import time
 
-import uvloop
+# import uvloop
 
 from pyrogram import Client
 

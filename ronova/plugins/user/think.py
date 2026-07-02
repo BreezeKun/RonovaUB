@@ -20,12 +20,15 @@ async def think(c: Client, m: Message):
     is_adv = args[0].lower() == "adv"
     query = " ".join(args[1:] if is_adv else args)
 
+    await m.reply("wait...")
+
     ai = AiSearch(query)
 
     if is_adv:
         results = await ai.search()
-        context = ai.build_context(results)
-        answer = await ai.fetch_answer(context)
+        context, result = ai.build_context(results)
+        answer = await ai.fetch_answer(context, result)
+        print(result)
     else:
         answer = await ai.fetch_answer()
 
