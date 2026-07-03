@@ -6,5 +6,4 @@ python-dotenv
 openai
 google-genai
 enkacard2
-enkanetworkv2.py
 aiofiles
