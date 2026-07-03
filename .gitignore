@@ -5,3 +5,5 @@ test.py
 *.session-journal
 logs.txt
 unknown_errors.txt
+gi_downloads/
+.enka_py/

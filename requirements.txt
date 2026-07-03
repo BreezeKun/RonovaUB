@@ -5,3 +5,4 @@ aiohttp
 python-dotenv
 openai
 google-genai
+enkacard2
