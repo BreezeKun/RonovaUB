@@ -1,16 +1,20 @@
 from pyrogram import Client, filters
 from pyrogram.types import (InlineQuery, InlineQueryResultArticle, InputRichMessage,
                              InputRichMessageContent, InlineKeyboardMarkup,
-                             InlineKeyboardButton, CallbackQuery)
+                             InlineKeyboardButton, CallbackQuery, Message)
 from richparser import parse
 
 from config import ADMIN_ID
 from ..utilities import eval_helper
 
-@Client.on_inline_query(filters.regex(r"whisper (@\w+) (.+)") & filters.user(ADMIN_ID))
-async def inline_ani(c: Client, q: InlineQuery):
+@Client.on_inline_query(filters.regex("(@\w+) (.+)"))
+async def inline_whis(c: Client, q: InlineQuery):
 
-    username, text = q.matches[0].group(1), q.matches[0].group(2)
+    match = q.matches[0]
+
+    username = match.group(1)
+    text = match.group(2)
+
     target = await c.get_users(username)
 
     eval_helper[target.id] = text
