@@ -3,8 +3,7 @@ from ..utilities import session
 async def wiki_search(query: str):
     url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{query}"
 
-    async with session:
-        async with session.get(url) as resp:
+    async with session.get(url) as resp:
             if resp.status == 404:
                 return None
 

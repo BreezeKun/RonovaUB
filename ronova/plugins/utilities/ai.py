@@ -62,9 +62,7 @@ class AllAI:
                     "withoutContext": not bool(context),
                 },
             }
-
-            async with session:
-                async with session.post(
+            async with session.post(
                     "https://api.binjie.fun/api/generateStream",
                     headers={"Content-Type": "application/json"},
                     json=payload,
