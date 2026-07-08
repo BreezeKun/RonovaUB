@@ -58,6 +58,7 @@ Set the following environment variables in your `.env` file:
 | `wrdsearch` | Search for a word |
 | `bash <code>` | Compile and run shell code |
 | `start` | Check if the bot is up |
+| `stats` | stats of userbot |
 | `think <text>` / `think adv <text>` | AI-powered search |
 | `wiki <text>` | Search Wikipedia |
 
