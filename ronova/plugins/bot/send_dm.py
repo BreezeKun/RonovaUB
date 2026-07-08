@@ -9,5 +9,8 @@ async def send_dm(c: Client, m: Message):
     else:
         if m.from_user.id == ADMIN_ID[0]:
             if m.reply_to_message:
-                r = m.reply_to_message.forward_origin.sender_user
-                await c.send_message(r.id, m.text)
+                try:
+                    r = m.reply_to_message.forward_origin.sender_user
+                    await c.send_message(r.id, m.text)
+                except:
+                    pass
