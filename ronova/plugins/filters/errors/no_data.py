@@ -1,0 +1,2 @@
+class NoData(Exception):
+    pass
