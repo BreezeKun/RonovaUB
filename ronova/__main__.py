@@ -1,5 +1,5 @@
 from pyrogram import idle
-# import uvloop
+import uvloop
 
 from ronova import ub, bot
 from .server import startServer
@@ -17,7 +17,7 @@ async def main():
     await bot.stop()
     await ub.stop()
 
-# uvloop.install()
+uvloop.install()
 if __name__ == "__main__":
     import asyncio
     asyncio.run(main())
