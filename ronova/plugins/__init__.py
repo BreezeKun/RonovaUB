@@ -1,3 +1,3 @@
-from . import bot, filters, user, utilities
+from . import bot, filters, user, utilities, shared
 
-__all__: list[str] = ['bot', 'filters', 'user', 'utilities']
+__all__: list[str] = ['bot', 'filters', 'user', 'utilities', 'shared']
