@@ -61,6 +61,7 @@ Set the following environment variables in your `.env` file:
 | `stats` | stats of userbot |
 | `think <text>` / `think adv <text>` | AI-powered search |
 | `wiki <text>` | Search Wikipedia |
+| `afk <text>` | set user status to afk if replied to media it will send media |
 
 ---
 
