@@ -40,22 +40,22 @@ async def music(c: Client, m: Message):
 
     asyncio.create_task(timeout_handler(m))
 
+@Client.on_edited_message(filters.user(MUSIC_BOT))
 @Client.on_message(filters.user(MUSIC_BOT))
 async def find_music(c: Client, m: Message):
     if not MUSIC_STATE.status:
         return
 
-    if m.audio:
-        await asyncio.sleep(3)
+    if m.audio and m.audio.title != "⏳":
+        await asyncio.sleep(2)
         await c.send_audio(MUSIC_STATE.user_chat_id, m.audio.file_id, reply_parameters=ReplyParameters(message_id=MUSIC_STATE.user_message_id))
         refresh_music_data()
 
-    elif m.reply_markup:
-        if  "ㅤ" in m.text:
+    elif m.reply_markup:  
+        if "ㅤ" in m.text:      
             await asyncio.sleep(0.5)
             try:
                 await m.click(0)
-                await asyncio.sleep(1)
             except Exception as e:
                 print("Click failed:", e)
                 refresh_music_data()
