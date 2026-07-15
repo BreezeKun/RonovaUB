@@ -113,7 +113,7 @@ async def start_inline(c: Client, q: InlineQuery):
     ], cache_time=0)
 
 
-@Client.on_guest_message(starts(prefix="start"), group= 0)
+@Client.on_guest_message(starts(prefix="start"))
 async def start_guest(c: Client, m: Message):
     rich_text = rich_text_setup()
     query_id = m.guest_query_id

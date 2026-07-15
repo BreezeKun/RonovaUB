@@ -5,6 +5,9 @@ from config import PREFIXES, ADMIN_ID, BOT
 
 @Client.on_message(filters.command("start",prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
 async def start(c:Client, m:Message):
+
+    if len(m.command) > 1:
+        return
     
     results = await c.get_inline_bot_results(bot=BOT, query="start")
     await c.send_inline_bot_result(
