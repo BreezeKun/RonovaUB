@@ -78,7 +78,3 @@ async def gc_mang(c: Client, m: Message):
             revoke_reactions=True,
         )
         await m.reply_text(text)
-
-    elif cmd == "unban":
-        await c.unban_chat_member(chat_id, target_id)
-        await m.reply_text(f"Unbanned user `{target_id}`")
