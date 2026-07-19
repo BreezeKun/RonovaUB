@@ -9,7 +9,6 @@ class AfkState:
     file_id: str | None = None
     users: list[int] = field(default_factory=list)
 
-
 AFK_DATA = AfkState()
 
 @dataclass
@@ -19,3 +18,11 @@ class MusicState:
     user_message_id:int | None = None 
 
 MUSIC_STATE = MusicState()
+
+@dataclass
+class QuoteState:
+    status: bool = False
+    user_chat_id:int | None = None
+    user_message_id:int | None = None
+
+QUOTE_STATE =  QuoteState()
