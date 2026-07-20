@@ -24,13 +24,11 @@ async def kick_user(
             revoke_messages=revoke_messages,
             revoke_reactions=revoke_reactions,
         )
-        print("banned")
         await asyncio.sleep(1)
         await c.unban_chat_member(
             chat_id=chat_id,
             user_id=target_id
             )
-        print("unbanned")
         return True
 
     except Exception as e:
