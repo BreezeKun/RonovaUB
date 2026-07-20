@@ -8,8 +8,10 @@ from ronova import get_uptime
 from ..filters import starts
 
 
-def rich_text_setup():
+def rich_text_setup(data:bool = False):
     up = get_uptime()
+
+    emoji = "💬" if data else "<tg-emoji emoji-id='5850731027592386220'>🤪</tg-emoji>"
 
     return f"""
     <img src="https://i.ibb.co/RTzpvx9Z/x.jpg"/>
@@ -70,7 +72,7 @@ def rich_text_setup():
     <hr/>
 
     <blockquote><cite>
-    <p>💬 <b>Contact:</b> This bot also works as a contact medium between the user and the owner. Instead of DMing directly, you can send a message to the bot admin through the bot.</p></cite>
+    <p>{emoji} <b>Contact:</b> This bot also works as a contact medium between the user and the owner. Instead of DMing directly, you can send a message to the bot admin through the bot.</p></cite>
     </blockquote>
 
     <hr/>
@@ -98,7 +100,7 @@ async def start_message(c: Client, m: Message):
 
 @Client.on_inline_query(filters.regex("start"))
 async def start_inline(c: Client, q: InlineQuery):
-    rich_text = rich_text_setup()
+    rich_text = rich_text_setup(data=True)
 
     await q.answer([
         InlineQueryResultArticle(
