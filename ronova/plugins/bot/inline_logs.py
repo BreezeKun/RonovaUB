@@ -68,8 +68,7 @@ async def guest_logs(c: Client, m: Message):
         result=InlineQueryResultArticle(
             title="📋 Logs",
             input_message_content=InputTextMessageContent(
-                get_logs(),
-                parse_mode="html"
+                get_logs()
             ),
             reply_markup=keyboard
         )
