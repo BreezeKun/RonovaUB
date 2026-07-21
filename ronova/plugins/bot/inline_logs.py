@@ -1,10 +1,17 @@
 import os
 
 from pyrogram import Client, filters
-from pyrogram.types import (Message, ReplyParameters, InputRichMessage, 
-                            InlineKeyboardMarkup, InlineKeyboardButton, InlineQuery,
-                            InlineQueryResultArticle, InputRichMessageContent,
-                            InputTextMessageContent, CallbackQuery)
+from pyrogram.types import (
+    Message,
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    InlineQuery,
+    InlineQueryResultArticle,
+    InputTextMessageContent,
+    CallbackQuery,
+    InputRichMessage,
+    InputRichMessageContent
+)
 from pyrogram.enums import ButtonStyle
 
 from config import ADMIN_ID
@@ -16,11 +23,15 @@ def get_logs(data:bool = False) -> str:
         empty = "📭"
         board = "📋"
     else:
-        emoji = "<tg-emoji emoji-id='5325888970368762082'>👅</tg-emoji>"
-        cross, empty, board = emoji, emoji, emoji
+        cross = "<tg-emoji emoji-id='5325888970368762082'>👅</tg-emoji>" 
+        empty = "<tg-emoji emoji-id='5325888970368762082'>👅</tg-emoji>" 
+        board = "<tg-emoji emoji-id='5325888970368762082'>👅</tg-emoji>"
 
     if not os.path.exists("logs.txt"):
-        return f"{cross} Log file not found."
+        if data:
+            return f"{cross} Log file not found."
+        else:
+            return f"<h3>{cross} Log file not found.</h3>"
     else:
         with open("logs.txt", encoding="utf-8") as f:
             lines = f.readlines()
@@ -28,10 +39,15 @@ def get_logs(data:bool = False) -> str:
         tail = "".join(lines[-20:]).strip()
 
         if not tail:
-            return f"{empty} Log file is empty."
+            if data:
+                return f"{empty} Log file is empty."
+            else:
+                return f"<h3>{empty} Log file is empty.</h3>"
         else:
-            return f"<b>{board} Recent Logs</b>\n<pre>{tail[:4000]}</pre>"
-
+            if data:
+                return f"<b>{board} Recent Logs</b>\n<pre>{tail[:4000]}</pre>"
+            else:
+                return f""" <h2>{board} Recent Logs</h2> <b>View logs</b> <pre>{tail[:4000]}</pre> """
 
 @Client.on_inline_query(filters.regex("logs") & filters.user(ADMIN_ID))
 async def inline_logs(c: Client, q: InlineQuery):
@@ -40,39 +56,31 @@ async def inline_logs(c: Client, q: InlineQuery):
         [InlineKeyboardButton("🗑 Clear Logs", callback_data="clear_logs", style = ButtonStyle.DANGER)]
     ])
 
-    text = get_logs(data=True)
-
     await q.answer([
         InlineQueryResultArticle(
             title="📋 View Logs",
             input_message_content=InputTextMessageContent(
-                text
+                get_logs(data=True)
             ),
             reply_markup=keyboard
         )
     ], cache_time=0)
 
-@Client.on_guest_message(starts("logs") & filters.user(ADMIN_ID))
-async def guest_logs(c: Client, m: Message):
-    query_id = m.guest_query_id
-
-    if m.reply_to_message:
-        return
-    
-    keyboard = InlineKeyboardMarkup([
+@Client.on_guest_message(starts("logs") & filters.user(ADMIN_ID)) 
+async def guest_logs(c: Client, m: Message): 
+    if m.reply_to_message: 
+        return 
+    keyboard = InlineKeyboardMarkup([ 
         [InlineKeyboardButton("🗑 Clear Logs", callback_data="clear_logs", style=ButtonStyle.DANGER)]
-    ])
-
+          ]) 
     await c.answer_guest_query(
-        guest_query_id=query_id,
-        result=InlineQueryResultArticle(
-            title="📋 Logs",
-            input_message_content=InputTextMessageContent(
-                get_logs()
-            ),
-            reply_markup=keyboard
-        )
-    )
+         guest_query_id=m.guest_query_id, 
+         result=InlineQueryResultArticle( 
+             title="📋 Logs", input_message_content=InputRichMessageContent( 
+                 InputRichMessage(get_logs())),
+                 reply_markup=keyboard )
+                   )
+    
 @Client.on_callback_query(filters.regex("clear_logs"))
 async def clear_logs_cb(c: Client, cb:CallbackQuery):
 
