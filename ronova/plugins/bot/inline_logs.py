@@ -1,21 +1,24 @@
 import os
 
 from pyrogram import Client, filters
-from pyrogram.types import (
-    InlineQuery,CallbackQuery,
-    InlineQueryResultArticle,
-    InputTextMessageContent,
-    InlineKeyboardMarkup,
-    InlineKeyboardButton
-)
+from pyrogram.types import (Message, ReplyParameters, InputRichMessage, 
+                            InlineKeyboardMarkup, InlineKeyboardButton, InlineQuery,
+                            InlineQueryResultArticle, InputRichMessageContent,
+                            InputTextMessageContent, CallbackQuery)
 from pyrogram.enums import ButtonStyle
+
 from config import ADMIN_ID
+from ..filters import starts
 
-@Client.on_inline_query(filters.regex("logs") & filters.user(ADMIN_ID))
-async def inline_logs(c: Client, q: InlineQuery):
-
+def get_logs(data:bool = False) -> str:
+    if data:
+        cross = "❌"
+        empty = "📭"
+        board = "📋"
+    else:
+        cross, empty, board = "<tg-emoji emoji-id='5325888970368762082'>👅</tg-emoji>"
     if not os.path.exists("logs.txt"):
-        text = "❌ Log file not found."
+        return f"{cross} Log file not found."
     else:
         with open("logs.txt", encoding="utf-8") as f:
             lines = f.readlines()
@@ -23,13 +26,19 @@ async def inline_logs(c: Client, q: InlineQuery):
         tail = "".join(lines[-20:]).strip()
 
         if not tail:
-            text = "📭 Log file is empty."
+            return f"{empty} Log file is empty."
         else:
-            text = f"<b>📋 Recent Logs</b>\n<pre>{tail[:4000]}</pre>"
+            return f"<b>{board} Recent Logs</b>\n<pre>{tail[:4000]}</pre>"
+
+
+@Client.on_inline_query(filters.regex("logs") & filters.user(ADMIN_ID))
+async def inline_logs(c: Client, q: InlineQuery):
 
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🗑 Clear Logs", callback_data="clear_logs", style = ButtonStyle.DANGER)]
     ])
+
+    text = get_logs(data=True)
 
     await q.answer([
         InlineQueryResultArticle(
@@ -40,6 +49,26 @@ async def inline_logs(c: Client, q: InlineQuery):
             reply_markup=keyboard
         )
     ], cache_time=0)
+
+@Client.on_guest_message(starts("logs") & filters.user(ADMIN_ID))
+async def guest_logs(c:Client, m:Message):
+    query_id = m.guest_query_id
+
+    if m.reply_to_message:
+        return
+
+    await c.answer_guest_query(
+        guest_query_id=query_id,
+        result=InlineQueryResultArticle(
+            title="logs rich",
+            input_message_content=InputRichMessageContent(
+                InputRichMessage(get_logs())
+            ),
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("Repo", url="https://github.com/BreezeKun/RonovaUB", style=ButtonStyle.PRIMARY)]
+            ])
+        )
+    )
 
 @Client.on_callback_query(filters.regex("clear_logs"))
 async def clear_logs_cb(c: Client, cb:CallbackQuery):
