@@ -18,7 +18,7 @@ def get_logs(data:bool = False) -> str:
     else:
         emoji = "<tg-emoji emoji-id='5325888970368762082'>👅</tg-emoji>"
         cross, empty, board = emoji, emoji, emoji
-        
+
     if not os.path.exists("logs.txt"):
         return f"{cross} Log file not found."
     else:
@@ -53,25 +53,27 @@ async def inline_logs(c: Client, q: InlineQuery):
     ], cache_time=0)
 
 @Client.on_guest_message(starts("logs") & filters.user(ADMIN_ID))
-async def guest_logs(c:Client, m:Message):
+async def guest_logs(c: Client, m: Message):
     query_id = m.guest_query_id
 
     if m.reply_to_message:
         return
+    
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🗑 Clear Logs", callback_data="clear_logs", style=ButtonStyle.DANGER)]
+    ])
 
     await c.answer_guest_query(
         guest_query_id=query_id,
         result=InlineQueryResultArticle(
-            title="logs rich",
-            input_message_content=InputRichMessageContent(
-                InputRichMessage(get_logs())
+            title="📋 Logs",
+            input_message_content=InputTextMessageContent(
+                get_logs(),
+                parse_mode="html"
             ),
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("Repo", url="https://github.com/BreezeKun/RonovaUB", style=ButtonStyle.PRIMARY)]
-            ])
+            reply_markup=keyboard
         )
     )
-
 @Client.on_callback_query(filters.regex("clear_logs"))
 async def clear_logs_cb(c: Client, cb:CallbackQuery):
 
