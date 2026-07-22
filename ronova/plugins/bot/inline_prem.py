@@ -31,8 +31,13 @@ async def change_text(text: str):
     return " ".join(result)
 
 
-@Client.on_inline_query(filters.regex("prem (.+)") & filters.user(ADMIN_ID + sudo))
+@Client.on_inline_query(filters.regex("prem (.+)"))
 async def emo_in(c: Client, q: InlineQuery):
+
+    allowed_users = ADMIN_ID + sudo
+
+    if q.from_user.id not in allowed_users:
+        return
 
     raw_text = q.matches[0].group(1)
     styled = await change_text(raw_text)
