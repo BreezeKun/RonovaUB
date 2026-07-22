@@ -61,6 +61,6 @@ async def clear_logs_cb(c: Client, cb: CallbackQuery):
         inline_message_id=cb.inline_message_id,
         text= PREMIUM_STATE.text
     )
-    await cb.answer()
     PREMIUM_STATE.status = False
     PREMIUM_STATE.text = None
+    await cb.answer()
