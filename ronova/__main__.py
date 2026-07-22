@@ -1,13 +1,16 @@
 from pyrogram import idle
-import uvloop
-
 from ronova import ub, bot
 from .server import startServer
+import asyncio
+import uvloop
 
 async def close_session():
     from .plugins.utilities import session
-    await session.close()
+    if session and not session.closed:
+        await session.close()
 
+
+uvloop.install()
 async def main():
     try:
         await bot.start()
@@ -18,12 +21,25 @@ async def main():
         print("Bot and UB started!")
 
         await idle()
-    finally:
-        await ub.stop()
-        await bot.stop()
-        await close_session()
 
-uvloop.install()
+    finally:
+        try:
+            if ub.is_connected:
+                await ub.stop()
+        except Exception:
+            pass
+
+        try:
+            if bot.is_connected:
+                await bot.stop()
+        except Exception:
+            pass
+
+        try:
+            await close_session()
+        except Exception:
+            pass
+
+
 if __name__ == "__main__":
-    import asyncio
     asyncio.run(main())

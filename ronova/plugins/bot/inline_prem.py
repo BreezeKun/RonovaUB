@@ -1,4 +1,5 @@
-import os
+import asyncio
+import uuid
 
 from pyrogram import Client, filters
 from pyrogram.types import (
@@ -6,61 +7,77 @@ from pyrogram.types import (
     InlineKeyboardButton,
     InlineQuery,
     InlineQueryResultArticle,
-    CallbackQuery,
-    InputTextMessageContent
+    InputTextMessageContent,
+    ChosenInlineResult
 )
 
-from config import ADMIN_ID
-from ..shared import PREMIUM_STATE
+from config import ADMIN_ID, sudo
 from ..premium.emoji_allies import emojis
 
-def change_text(text: str):
-    words = text.split()
+CACHE = {}
 
+
+async def change_text(text: str):
+    words = text.split()
     result = []
 
     for word in words:
         key = word.lower()
-
         if key in emojis:
             result.append(emojis[key])
         else:
             result.append(word)
 
-    text = " ".join(result)
-    return text
+    return " ".join(result)
 
-@Client.on_inline_query(filters.regex("prem (.+)") & filters.user(ADMIN_ID))
+
+@Client.on_inline_query(filters.regex("prem (.+)") & filters.user(ADMIN_ID + sudo))
 async def emo_in(c: Client, q: InlineQuery):
 
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("wait", callback_data="wait")]
-    ])
+    raw_text = q.matches[0].group(1)
+    styled = await change_text(raw_text)
 
-    PREMIUM_STATE.text = change_text(q.matches[0].group(1))
-    PREMIUM_STATE.status = True
+    key = str(uuid.uuid4())
+    CACHE[key] = styled
+
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("⏳ Processing...", callback_data="noop")]
+    ])
 
     await q.answer([
         InlineQueryResultArticle(
+            id=key,
             title="Premium Text",
             input_message_content=InputTextMessageContent(
-                message_text="please wait...",
+                message_text="please wait..."
             ),
             reply_markup=keyboard
         )
-    ])
+    ], cache_time=0)
 
 
-@Client.on_callback_query(filters.regex("wait"))
-async def clear_logs_cb(c: Client, cb: CallbackQuery):
+@Client.on_chosen_inline_result()
+async def on_chosen(c: Client, r: ChosenInlineResult):
 
-    if cb.from_user.id not in ADMIN_ID:
-        return await cb.answer("Not allowed", show_alert=True)
+    if not r.inline_message_id:
+        print("No inline_message_id")
+        return
 
-    await c.edit_inline_text(
-        inline_message_id=cb.inline_message_id,
-        text= PREMIUM_STATE.text
-    )
-    PREMIUM_STATE.status = False
-    PREMIUM_STATE.text = None
-    await cb.answer()
+    await asyncio.sleep(0.5)
+
+    text = CACHE.get(r.result_id)
+
+    if not text:
+        print("Cache miss")
+        return
+
+    try:
+        await c.edit_inline_text(
+            inline_message_id=r.inline_message_id,
+            text=text,
+            reply_markup=None
+        )
+        del CACHE[r.result_id]
+
+    except Exception as e:
+        print("Edit error", e)
