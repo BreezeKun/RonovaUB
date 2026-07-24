@@ -8,6 +8,7 @@ from .search_word import word_search
 from .http_session import session
 from .afk_utils import refresh_data, format_time, extract_media, send
 from .rend_data import GetServices
+from .find_target import get_target_id
 
 
 __all__ = ["paste",
@@ -15,4 +16,4 @@ __all__ = ["paste",
            "AiSearch", "fetch_anime", "get_full_movie",
            "wiki_search","word_search", "session"
            "refresh_data", "format_time", "extract_media", "send",
-           "GetServices"]
+           "GetServices", 'get_target_id']
