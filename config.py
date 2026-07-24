@@ -16,9 +16,7 @@ TAVILY_KEY: str = os.getenv('tavily_key')
 TMDB_KEY:str = os.getenv('tmdb_key')
 GEMINI_KEY:str = os.getenv('gemini_key')
 GROQ_KEY:str = os.getenv('groq_key')
-RENDER_API = os.getenv('render_api')
-POSTGRE_KEY = os.getenv('postgre_con_str')
-sudo = [7725857477, 2010983629]
-
+RENDER_API:str = os.getenv('render_api')
+POSTGRE_KEY:str = os.getenv('postgre_con_str')
 
 PREFIXES: list[str] = [".", "@", "#", "$", "%", "^", "&", "*", "~", ""]
