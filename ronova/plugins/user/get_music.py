@@ -52,7 +52,7 @@ async def find_music(c: Client, m: Message):
         refresh_music_data()
 
     elif m.reply_markup:  
-        if "ㅤ" in m.text:      
+        if "🔍" in m.text:      
             await asyncio.sleep(0.5)
             try:
                 await m.click(0)
