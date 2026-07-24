@@ -33,6 +33,8 @@ async def aexec(code: str, client, msg):
 
     return await local_vars["__ex"]()
 
+
+
 async def get_output(parts, c, m):
     code = parts[1]
 
