@@ -11,7 +11,7 @@ from pyrogram.types import (
     ChosenInlineResult
 )
 
-from config import ADMIN_ID, sudo
+from config import ADMIN_ID
 from ..premium.emoji_allies import emojis
 from ..database import sudo_methods
 
