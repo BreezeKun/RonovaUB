@@ -13,6 +13,7 @@ from pyrogram.types import (
 
 from config import ADMIN_ID, sudo
 from ..premium.emoji_allies import emojis
+from ..database import sudo_methods
 
 CACHE = {}
 
@@ -34,9 +35,9 @@ async def change_text(text: str):
 @Client.on_inline_query(filters.regex("prem (.+)"))
 async def emo_in(c: Client, q: InlineQuery):
 
-    allowed_users = ADMIN_ID + sudo
+    user_id = q.from_user.id
 
-    if q.from_user.id not in allowed_users:
+    if user_id not in ADMIN_ID and not sudo_methods.is_sudo(user_id):
         return
 
     raw_text = q.matches[0].group(1)
