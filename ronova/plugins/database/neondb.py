@@ -9,7 +9,7 @@ class HandleDb:
         self.cur = None
 
     def connect(self):
-        if not self.conn:
+        if self.conn is None or self.conn.closed:
             self.conn = psycopg2.connect(self.POSTGRE_KEY)
             self.conn.autocommit = True
             self.cur = self.conn.cursor()
@@ -17,8 +17,10 @@ class HandleDb:
     def close(self):
         if self.cur:
             self.cur.close()
+            self.cur = None
         if self.conn:
             self.conn.close()
+            self.conn = None
 
     def execute(self, command: str, params=None, fetch=False):
         try:
@@ -28,6 +30,7 @@ class HandleDb:
                 return self.cur.fetchall()
         except Exception as e:
             print(f"Error:\n{e}")
+            raise
 
 
 db = HandleDb(POSTGRE_KEY)
