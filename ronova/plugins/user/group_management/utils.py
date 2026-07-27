@@ -58,6 +58,9 @@ class RetriveData:
             time = int(given_time[:-1])
             period = given_time[-1]
 
+            #well if anyone is reading this part lemme tell what are these numbers
+            #for banning someone the time should be > 30s or it should be less than 366 days
+            #so these part is precalculated here
             if (
                 time <= 0 or
                 (time < 30 and period == "s") or
