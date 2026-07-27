@@ -1,3 +1,5 @@
+import re
+
 from pyrogram import Client, filters
 from pyrogram.types import (InlineQuery, InlineQueryResultArticle, InputRichMessage,
                              InputRichMessageContent, InlineKeyboardMarkup,
@@ -49,4 +51,24 @@ async def reveal_whisper(c: Client, cb: CallbackQuery):
     await c.edit_inline_text(
         inline_message_id=cb.inline_message_id,
         rich_message=InputRichMessage(html=parse("_h1:Message is opened"))
+    )
+
+@Client.on_message(filters.command("whisper") & filters.ephemeral)
+async def send_whisper(c: Client, m: Message):
+    if len(m.command) < 3:
+        return await m.reply("Usage: /whisper @username message")
+
+    username = m.command[1]
+    text = " ".join(m.command[2:])
+
+    if not re.fullmatch(r"@\w{5,32}", username):
+        return await m.reply("Invalid username")
+
+    user = await c.get_users(username)
+
+    await c.send_message(
+        chat_id=m.chat.id,
+        receiver_user_id=user.id,
+        text=text,
+        reply_to_message_id=m.reply_to_message_id
     )
