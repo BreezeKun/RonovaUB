@@ -65,28 +65,39 @@ def extract_media(message:Message):
 
 
 async def send(c, m, text: str):
+    repl = None
+
     try:
         if AFK_DATA.file_id and AFK_DATA.file_type:
-
             t = AFK_DATA.file_type
 
             if t == "photo":
-                return await m.reply_photo(AFK_DATA.file_id, caption=text)
+                repl = await m.reply_photo(AFK_DATA.file_id, caption=text)
             elif t == "video":
-                return await m.reply_video(AFK_DATA.file_id, caption=text)
+                repl = await m.reply_video(AFK_DATA.file_id, caption=text)
             elif t == "animation":
-                return await m.reply_animation(AFK_DATA.file_id, caption=text)
+                repl = await m.reply_animation(AFK_DATA.file_id, caption=text)
             elif t == "audio":
-                return await m.reply_audio(AFK_DATA.file_id, caption=text)
+                repl = await m.reply_audio(AFK_DATA.file_id, caption=text)
             elif t == "voice":
-                return await m.reply_voice(AFK_DATA.file_id, caption=text)
+                repl = await m.reply_voice(AFK_DATA.file_id)
             elif t == "document":
-                return await m.reply_document(AFK_DATA.file_id, caption=text)
+                repl = await m.reply_document(AFK_DATA.file_id, caption=text)
             elif t == "sticker":
-                await m.reply_sticker(AFK_DATA.file_id)
-                return await m.reply_text(text)
+                sticker = await m.reply_sticker(AFK_DATA.file_id)
+                await asyncio.sleep(5)
+                await sticker.delete()
+                repl = await m.reply_text(text)
 
-        return await m.reply_text(text)
+        else:
+            repl = await m.reply_text(text)
+        await asyncio.sleep(5)
+        
+        if repl:
+            await repl.delete()
+
+    except Exception as e:
+        print(e)
 
     except FloodWait as e:
         await asyncio.sleep(e.value)
