@@ -35,3 +35,9 @@ class PremiumState:
     text: str | None = None
 
 PREMIUM_STATE = PremiumState()
+
+@dataclass
+class HelpStorage:
+    data:dict = field(default_factory=dict)
+
+HELP_STORAGE = HelpStorage()
