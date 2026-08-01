@@ -9,7 +9,7 @@ from richparser import parse
 from config import ADMIN_ID
 from ..utilities import eval_helper
 
-@Client.on_inline_query(filters.regex("(@\w+) (.+)") & filters.user(ADMIN_ID))
+@Client.on_inline_query(filters.regex("(@\\w+) (.+)") & filters.user(ADMIN_ID))
 async def inline_whis(c: Client, q: InlineQuery):
 
     match = q.matches[0]

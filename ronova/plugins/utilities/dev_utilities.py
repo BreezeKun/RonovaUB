@@ -2,7 +2,7 @@ import traceback
 from io import StringIO
 from contextlib import redirect_stdout, redirect_stderr
 
-eval_helper = {
+eval_helper:dict = {
     "result":None,
     "code":None,
     "chat_id":None,

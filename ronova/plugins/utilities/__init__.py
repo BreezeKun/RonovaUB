@@ -15,4 +15,4 @@ __all__ = ["paste",
            "AiSearch", "fetch_anime", "get_full_movie",
            "wiki_search","word_search", "session",
              "format_time", "extract_media", "send",
-           "GetServices", 'get_target_id']
+           "GetServices", 'get_target_id', 'refresh_data']

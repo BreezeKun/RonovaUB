@@ -7,11 +7,12 @@ from config import ADMIN_ID, PREFIXES
 from ..shared import AFK_DATA
 from ..utilities import format_time, refresh_data, send, extract_media
 from ..filters import to_me
-from ..decorators import on_expired
+from ..decorators import on_expired, get_string
 
 @Client.on_message(filters.command(["afk", "brb"], prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("test")
 async def afk(c:Client, m:Message):
-    
+    """passed"""
     AFK_DATA.status = True
     AFK_DATA.afk_time = time.time()
 
