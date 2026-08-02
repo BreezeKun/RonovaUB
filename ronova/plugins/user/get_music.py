@@ -6,6 +6,7 @@ from pyrogram.errors import YouBlockedUser
 
 from config import PREFIXES, ADMIN_ID
 from ..shared import MUSIC_STATE
+from ..decorators import get_string
 
 MUSIC_BOT:str = "MusicGotooBot"
 
@@ -21,7 +22,12 @@ async def timeout_handler(m:Message):
         refresh_music_data()
 
 @Client.on_message(filters.command('music', prefixes=PREFIXES) & filters.user(ADMIN_ID))
+@get_string("music")
 async def music(c: Client, m: Message):
+    """
+    Get music audio file
+    Usage: music <name>
+    """
     if len(m.command) < 2:
         await m.reply("Usage: <code>.music &lt;music name&gt;</code>")
         return
