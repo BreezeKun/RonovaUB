@@ -10,9 +10,12 @@ from ..filters import to_me
 from ..decorators import on_expired, get_string
 
 @Client.on_message(filters.command(["afk", "brb"], prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
-@get_string("test")
+@get_string("afk")
 async def afk(c:Client, m:Message):
-    """passed"""
+    """
+    Enable AFK mode with optional reason/media.
+    Usage: afk [reason] or brb [reason]
+    """
     AFK_DATA.status = True
     AFK_DATA.afk_time = time.time()
 
