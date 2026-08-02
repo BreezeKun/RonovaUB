@@ -72,3 +72,9 @@ async def send_whisper(c: Client, m: Message):
         text=text,
         reply_to_message_id=m.reply_to_message_id
     )
+
+    # await c.send_rich_message(
+    #     chat_id = m.chat.id,
+    #     receiver_user_id=m.from_user.id,
+    #     rich_message= InputRichMessage("""<h1>Hello world</h1>""")
+    # )
