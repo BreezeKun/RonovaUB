@@ -9,22 +9,28 @@ from pyrogram.types import (
     InlineKeyboardButton,
     CallbackQuery
 )
+from pyrogram.enums import ButtonStyle
 
 from config import ADMIN_ID
 from ..shared import HELP_STORAGE
+
 
 @dataclass
 class CreateGrid:
     grid: dict[str, list[list[InlineKeyboardButton]]] = field(default_factory=dict)
 
-    def gen_board(self, data: dict[str, str]):
+    def gen_board(self, data: dict[str, str], user_id: int):
         block = []
         row = []
         num = 1
 
         for key in data:
             row.append(
-                InlineKeyboardButton(text=key, callback_data=f"help_{key}")
+                InlineKeyboardButton(
+                    text=key,
+                    callback_data=f"help_{key}_{user_id}",
+                    style=ButtonStyle.PRIMARY
+                )
             )
 
             if len(row) == 3:
@@ -45,7 +51,7 @@ class CreateGrid:
         return self.grid
 
 
-def build_keyboard(data, page: int):
+def build_keyboard(data, page: int, user_id: int):
     keys = list(data.keys())
     total = len(keys)
 
@@ -54,10 +60,14 @@ def build_keyboard(data, page: int):
     nav = []
 
     if page > 0:
-        nav.append(InlineKeyboardButton("<", callback_data=f"help_page_{page-1}"))
+        nav.append(
+            InlineKeyboardButton("<", callback_data=f"help_page_{page-1}_{user_id}", style=ButtonStyle.DANGER)
+        )
 
     if page < total - 1:
-        nav.append(InlineKeyboardButton(">", callback_data=f"help_page_{page+1}"))
+        nav.append(
+            InlineKeyboardButton(">", callback_data=f"help_page_{page+1}_{user_id}", style=ButtonStyle.DANGER)
+        )
 
     if nav:
         current.append(nav)
@@ -69,11 +79,12 @@ def build_keyboard(data, page: int):
 async def inline_help(c: Client, q: InlineQuery):
 
     help_data = HELP_STORAGE.data
+    user_id = q.from_user.id
 
     create_data = CreateGrid()
-    grid_data = create_data.gen_board(help_data)
+    grid_data = create_data.gen_board(help_data, user_id)
 
-    keyboard = build_keyboard(grid_data, 0)
+    keyboard = build_keyboard(grid_data, 0, user_id)
 
     await q.answer([
         InlineQueryResultArticle(
@@ -88,13 +99,41 @@ async def inline_help(c: Client, q: InlineQuery):
 @Client.on_callback_query(filters.regex("^help_page_"))
 async def help_page_handler(c: Client, q: CallbackQuery):
 
-    page = int(q.data.split("_")[-1])
+    data = q.data.split("_")
+    page = int(data[2])
+    owner_id = int(data[3])
+
+    # restrict usage
+    if q.from_user.id != owner_id:
+        return await q.answer("Access denied", show_alert=True)
 
     help_data = HELP_STORAGE.data
 
     create_data = CreateGrid()
-    grid_data = create_data.gen_board(help_data)
+    grid_data = create_data.gen_board(help_data, owner_id)
 
-    keyboard = build_keyboard(grid_data, page)
+    keyboard = build_keyboard(grid_data, page, owner_id)
 
-    await q.message.edit_reply_markup(reply_markup=keyboard)
+    await c.edit_inline_reply_markup(
+        inline_message_id=q.inline_message_id,
+        reply_markup=keyboard
+    )
+
+
+@Client.on_callback_query(filters.regex("^help_"))
+async def help_page_handler(c: Client, q: CallbackQuery):
+
+    data = q.data.split("_")
+    query = data[1]
+    owner_id = int(data[2])
+
+    if q.from_user.id != owner_id:
+        return await q.answer("Access denied", show_alert=True)
+
+    help_data = HELP_STORAGE.data
+
+
+    await c.edit_inline_text(
+        inline_message_id=q.inline_message_id,
+        text= help_data[query]
+    )
