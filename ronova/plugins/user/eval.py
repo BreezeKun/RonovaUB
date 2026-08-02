@@ -3,10 +3,16 @@ from pyrogram.types import Message, ReplyParameters
 
 from config import ADMIN_ID, BOT, PREFIXES
 from ..utilities import get_output, eval_helper
+from ..decorators import get_string
 
 
 @Client.on_message(filters.command("e", prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("eval")
 async def cmd_exec_python(c:Client, m:Message):
+    """
+    Evaluvate a code
+    Usage: e <code>
+    """
 
     parts = m.text.split(None, 1)
     if len(parts) == 1:
