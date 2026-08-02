@@ -2,10 +2,16 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
 
 from config import PREFIXES, ADMIN_ID, BOT
+from ..decorators import get_string
 
 
 @Client.on_message(filters.command("anisearch", prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("anime")
 async def get_ani(c: Client, m: Message):
+    """
+    Search anime by name.
+    Usage: anisearch <query>
+    """
     if len(m.command) < 2:
         await m.reply("Usage: <code>.anisearch &lt;anime name&gt;</code>")
         return
