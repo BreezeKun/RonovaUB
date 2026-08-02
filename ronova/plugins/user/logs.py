@@ -2,9 +2,15 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
 
 from config import PREFIXES, ADMIN_ID, BOT
+from ..decorators import get_string
 
 @Client.on_message(filters.command("logs",prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("logs")
 async def logs(c:Client, m:Message):
+    """
+    To get deployment logs
+    Usage: logs
+    """
 
     if len(m.command) > 1:
         return
