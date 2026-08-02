@@ -4,11 +4,19 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import ADMIN_ID, PREFIXES
+from ..decorators import get_string
 
 command_list: list[str]= ["del","purge"]
 
 @Client.on_message(filters.command(commands=command_list,prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("delete")
 async def delete(c:Client, m:Message):
+    """
+    Delete messages.
+    Usage:
+    - del → delete replied message
+    - purge → delete messages up to replied message
+    """
 
     command = m.command[0]
     r = m.reply_to_message
