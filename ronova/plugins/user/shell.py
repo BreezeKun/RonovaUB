@@ -8,6 +8,7 @@ from pyrogram.types import Message, ReplyParameters
 
 from config import ADMIN_ID, BOT, PREFIXES
 from ..utilities import eval_helper
+from ..decorators import get_string
 
 _cwd = os.getcwd()
 
@@ -51,7 +52,12 @@ def is_dangerous(command: str) -> str | None:
 
 
 @Client.on_message(filters.command("sh", prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("shell")
 async def cmd_bash(c: Client, m: Message):
+    """
+    To execute a shell command
+    Usage: sh [shell command]
+    """
     global _cwd
 
     parts = m.text.split(None, 1)
