@@ -4,11 +4,19 @@ from pyrogram.types import Message
 from config import PREFIXES, ADMIN_ID
 from ..database import sudo_methods
 from ..utilities import get_target_id
+from ..decorators import get_string
 
 SUDO_COMMANDS: list[str] = ["addsudo", "remsudo", "listsudo"]
 
 @Client.on_message(filters.command(SUDO_COMMANDS, prefixes=PREFIXES) & filters.user(ADMIN_ID))
+@get_string("sudo")
 async def sudo_handler(c: Client, m: Message):
+    """
+    Genrally for adding, removing or getting sudo users list
+    Usage: 
+    [addsudo/remsudo]: (user name/id) or reply to user
+    listsudo: list of sudo users
+    """
     command = m.command[0]
 
     if command in ["addsudo", "remsudo"]:
