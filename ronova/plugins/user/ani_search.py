@@ -10,7 +10,7 @@ from ..decorators import get_string
 async def get_ani(c: Client, m: Message):
     """
     Search anime by name.
-    Usage: anisearch <query>
+    Usage: anisearch [anime name]
     """
     if len(m.command) < 2:
         await m.reply("Usage: <code>.anisearch &lt;anime name&gt;</code>")
