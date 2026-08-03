@@ -5,10 +5,16 @@ from pyrogram.types import Message, ReplyParameters
 
 from config import PREFIXES, ADMIN_ID, BOT
 from ..utilities import eval_helper
+from ..decorators import get_string
 
 
 @Client.on_message(filters.command("stats", prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("stats")
 async def stats_message(c: Client, m: Message):
+    """
+    Get basic stats
+    Usage: stats
+    """
     start = time.perf_counter()
     x = await m.reply("wait...")
     latency = round((time.perf_counter() - start) * 1000)
