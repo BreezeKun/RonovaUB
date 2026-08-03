@@ -26,7 +26,7 @@ async def timeout_handler(m:Message):
 async def music(c: Client, m: Message):
     """
     Get music audio file
-    Usage: music <name>
+    Usage: music [music name]
     """
     if len(m.command) < 2:
         await m.reply("Usage: <code>.music &lt;music name&gt;</code>")
