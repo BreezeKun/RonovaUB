@@ -11,7 +11,7 @@ from ..decorators import get_string
 async def cmd_exec_python(c:Client, m:Message):
     """
     Evaluvate a code
-    Usage: e <code>
+    Usage: e <executable code>
     """
 
     parts = m.text.split(None, 1)
