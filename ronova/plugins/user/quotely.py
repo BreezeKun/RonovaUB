@@ -3,6 +3,7 @@ from pyrogram.types import Message, ReplyParameters
 
 from config import PREFIXES, ADMIN_ID
 from ..shared import QUOTE_STATE
+from ..decorators import get_string
 
 QUOTLY_BOT: str = "QuotLyBot"
 
@@ -29,7 +30,12 @@ async def get_quote(c:Client, m:Message):
         
 
 @Client.on_message(filters.command(QUOTE_COMMAND, prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("quote")
 async def quote(c:Client, m:Message):
+    """
+    Get quotes of your message or replied message
+    Usage: q [message] or reply to message with q
+    """
     
     rm = m.reply_to_message
     command = m.command[0]
