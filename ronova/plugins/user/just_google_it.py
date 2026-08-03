@@ -11,7 +11,7 @@ from ..decorators import get_string
 async def googleit(c: Client, m: Message):
     """
     A fun command for searching something on google
-    Usage: googleit <query>
+    Usage: googleit [query]
     """
     parts = m.text.split(None, 1)
 
