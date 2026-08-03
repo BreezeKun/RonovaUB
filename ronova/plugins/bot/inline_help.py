@@ -61,12 +61,12 @@ def build_keyboard(data, page: int, user_id: int):
 
     if page > 0:
         nav.append(
-            InlineKeyboardButton("<", callback_data=f"help_page_{page-1}_{user_id}", style=ButtonStyle.DANGER)
+            InlineKeyboardButton("<", callback_data=f"helpnav_{page-1}_{user_id}", style=ButtonStyle.DANGER)
         )
 
     if page < total - 1:
         nav.append(
-            InlineKeyboardButton(">", callback_data=f"help_page_{page+1}_{user_id}", style=ButtonStyle.DANGER)
+            InlineKeyboardButton(">", callback_data=f"helpnav_{page+1}_{user_id}", style=ButtonStyle.DANGER)
         )
 
     if nav:
@@ -96,14 +96,13 @@ async def inline_help(c: Client, q: InlineQuery):
     ], cache_time=0)
 
 
-@Client.on_callback_query(filters.regex("^help_page_"))
+@Client.on_callback_query(filters.regex("^helpnav_"))
 async def help_page_handler(c: Client, q: CallbackQuery):
 
     data = q.data.split("_")
-    page = int(data[2])
-    owner_id = int(data[3])
+    page = int(data[1])
+    owner_id = int(data[2])
 
-    # restrict usage
     if q.from_user.id != owner_id:
         return await q.answer("Access denied", show_alert=True)
 
@@ -121,7 +120,7 @@ async def help_page_handler(c: Client, q: CallbackQuery):
 
 
 @Client.on_callback_query(filters.regex("^help_"))
-async def help_page_handler(c: Client, q: CallbackQuery):
+async def help_handler(c: Client, q: CallbackQuery):
 
     data = q.data.split("_")
     query = data[1]
