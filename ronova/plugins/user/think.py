@@ -3,12 +3,17 @@ from pyrogram.types import Message, ReplyParameters
 
 from config import ADMIN_ID, PREFIXES, BOT
 from ..utilities import eval_helper, AiSearch
+from ..decorators import get_string
 
 
 @Client.on_message(filters.command("think", prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("Ai")
 async def think(c: Client, m: Message):
+    """
+    Search anything with ai model
+    Usage: think [query]
+    """
     args = m.command[1:]
-
     if not args:
         return await m.reply(
             "<b>Usage:</b>\n"
