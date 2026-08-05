@@ -2,10 +2,15 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
 
 from config import PREFIXES, ADMIN_ID, BOT
-
+from ..decorators import get_string
 
 @Client.on_message(filters.command("wiki", prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@get_string("Wikipedia")
 async def get_wiki(c: Client, m: Message):
+    """
+    Search anything on Wikipedia
+    Usage: wiki [query]
+    """
     if len(m.command) < 2:
         await m.reply("Usage: <code>.wiki &lt;content&gt;</code>")
         return
