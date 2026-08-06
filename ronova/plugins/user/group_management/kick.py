@@ -5,6 +5,7 @@ from pyrogram.types import Message
 
 from config import PREFIXES, ADMIN_ID
 from .utils import RetriveData
+from ...decorators import get_string
 
 COMMAND_BANS: list[str] = ["kick", "dkick", "ckick", "skick"]
 
@@ -41,7 +42,18 @@ async def kick_user(
     & filters.user(ADMIN_ID)
     & filters.group
 )
+@get_string("kick")
 async def gc_mang(c: Client, m: Message):
+    """
+    Ban a specefic user
+    Usage: kick [user name/id] or reply [reason/optional]
+    
+    types:
+    kick - kicks a user
+    dkick - deletes replied message and kicks user
+    ckick - kicks user and revoke his reaction, messages
+    skick - silently kicks a user
+    """
 
     parser = RetriveData(c, m)
     data = await parser.ban_data()
