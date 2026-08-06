@@ -45,7 +45,7 @@ async def inline_xox(c:Client, q:InlineQuery):
     target = data[2]
 
     keyboard = InlineKeyboardMarkup([[
-            InlineKeyboardButton("accepy", callback_data=f"accept_{user}_{target}", style=ButtonStyle.SUCCESS),
+            InlineKeyboardButton("accept", callback_data=f"accept_{user}_{target}", style=ButtonStyle.SUCCESS),
             InlineKeyboardButton("refuse", callback_data=f"refuse_{user}_{target}", style=ButtonStyle.DANGER)
         ]])
 
