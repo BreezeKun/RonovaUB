@@ -41,3 +41,12 @@ class HelpStorage:
     data:dict = field(default_factory=dict)
 
 HELP_STORAGE = HelpStorage()
+
+@dataclass
+class XoxData:
+    data:dict = field(default_factory=dict)
+    board:list[list[str]] = field(default_factory=list)
+    status:bool = False
+
+XOX_DATA = XoxData()
+    
