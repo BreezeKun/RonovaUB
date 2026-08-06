@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
-from pyrogram.enums import ButtonStyle as bs
+from pyrogram.enums import ButtonStyle
 from pyrogram.types import (
-    InlineQuery
+    InlineQuery, InlineKeyboardMarkup, InlineKeyboardButton, InlineQueryResultArticle, InputTextMessageContent
 )
 
 from ..shared import XOX_DATA
@@ -37,4 +37,23 @@ def check_winner(board = XOX_DATA.board):
 
 @Client.on_inline_query(filters.regex("^xox_"))
 async def inline_xox(c:Client, q:InlineQuery):
-    ...
+    data = q.query.split("_")
+
+    print(data)
+
+    user = data[1]
+    target = data[2]
+
+    keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton("accepy", callback_data=f"accept_{user}_{target}", style=ButtonStyle.SUCCESS),
+            InlineKeyboardButton("refuse", callback_data=f"refuse_{user}_{target}", style=ButtonStyle.DANGER)
+        ]])
+
+    await q.answer([
+            InlineQueryResultArticle(
+                title=f"xox game",
+                input_message_content=InputTextMessageContent(
+                    message_text="test"
+                ),reply_markup=keyboard
+                )
+        ], cache_time=0)
