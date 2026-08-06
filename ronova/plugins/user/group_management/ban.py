@@ -6,6 +6,7 @@ from pyrogram.types import Message
 
 from config import PREFIXES, ADMIN_ID
 from .utils import RetriveData, format_duration
+from ...decorators import get_string
 
 COMMAND_BANS: list[str] = ["ban", "dban", "cban", "sban"]
 
@@ -39,7 +40,18 @@ async def ban_user(
     & filters.user(ADMIN_ID)
     & filters.group
 )
+@get_string("ban")
 async def gc_mang(c: Client, m: Message):
+    """
+    Ban a specefic user
+    Usage: ban [user name/id] or reply [time/optional] [reason/optional]
+
+    types:
+    ban - bans a user
+    dban - deletes replied message and bans user
+    cban - bans user and revoke his reaction, messages
+    sban - silently bans a user
+    """
 
     parser = RetriveData(c, m)
     data = await parser.ban_data()
