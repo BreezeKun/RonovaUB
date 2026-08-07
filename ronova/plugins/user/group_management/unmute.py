@@ -3,6 +3,7 @@ from pyrogram.types import Message, ChatPermissions
 
 from config import PREFIXES, ADMIN_ID
 from .utils import RetriveData
+from ...decorators import get_string
 
 COMMAND_UNBANS: list[str] = ["unmute"]
 
@@ -11,7 +12,12 @@ COMMAND_UNBANS: list[str] = ["unmute"]
     & filters.user(ADMIN_ID)
     & filters.group
 )
-async def gc_mang(c: Client, m: Message):
+@get_string("unmute")
+async def gc_mang_unmute(c: Client, m: Message):
+    """
+    To unmute a user
+    Usage: unmute [user name/id] or reply
+    """
 
     parser = RetriveData(c, m)
     data = await parser.unban_data()
