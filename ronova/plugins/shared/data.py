@@ -47,6 +47,7 @@ class XoxData:
     data:dict = field(default_factory=dict)
     board:list[list[str]] = field(default_factory=list)
     status:bool = False
+    chat_id: None | int = None
 
 XOX_DATA = XoxData()
     
