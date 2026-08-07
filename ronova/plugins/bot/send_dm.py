@@ -4,11 +4,17 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, MessageOriginHiddenUser, MessageOriginUser
 
 from config import ADMIN_ID
+from ..decorators import get_string
 
 BASE_DATA:dict = {}
 
 @Client.on_message(filters.private & ~filters.bot)
+@get_string("pvt:dms")
 async def send_dm(c: Client, m: Message):
+    """
+    others can seny you message(text/media/video...) via bot
+    and you can reply that message to send them message via bot
+    """
     await asyncio.sleep(0.2)
     if m.from_user.id != ADMIN_ID[0]:
         await c.forward_messages(ADMIN_ID[0], m.chat.id, m.id)
