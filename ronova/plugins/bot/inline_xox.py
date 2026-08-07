@@ -105,6 +105,11 @@ async def decision(c: Client, cq: CallbackQuery):
     else:
         gen_board()
         XOX_DATA.status = True
+        XOX_DATA.data = {
+            "turn" : int(random.choice([user, target])),
+            user:"x",
+            target:"o"
+        }
         keyboard = gen_keyboard(user, target)
 
         await c.edit_inline_text(
@@ -120,20 +125,24 @@ async def mechanics(c:Client, cq:CallbackQuery):
     row, column = map(int, data[1].split(":"))
     user, target = map(int, data[2].split(":"))
 
-    if choice in ["x", "o"]:
+    current_turn = XOX_DATA.data["turn"]
+
+    if choice in ["x", "o"] or cq.from_user.id != current_turn:
         return await cq.answer("Nope")
     else:
-        XOX_DATA.board[row][column] = "o"
+        XOX_DATA.board[row][column] = XOX_DATA.data[current_turn]
+        XOX_DATA.data["turn"] = user if current_turn != user else target
 
 
     winner = check_winner(XOX_DATA.board)
     if winner:
+        XOX_DATA.status = False
         return await c.edit_inline_text(
             inline_message_id=cq.inline_message_id,
-            text= "you won"
+            text= f"winner: {winner}"
         )
 
-    keyboard = gen_keyboard(user, target, c, cq)
+    keyboard = gen_keyboard(user, target)
     
     await c.edit_inline_text(
         inline_message_id=cq.inline_message_id,
