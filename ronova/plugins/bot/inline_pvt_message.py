@@ -8,9 +8,15 @@ from richparser import parse
 
 from config import ADMIN_ID
 from ..utilities import eval_helper
+from ..decorators import get_string
 
 @Client.on_inline_query(filters.regex("(@\\w+) (.+)") & filters.user(ADMIN_ID))
+@get_string("whisper")
 async def inline_whis(c: Client, q: InlineQuery):
+    """
+    used to send a whisper message
+    Usage: @botname @targetUsername [your message]
+    """
 
     match = q.matches[0]
 
@@ -35,7 +41,12 @@ async def inline_whis(c: Client, q: InlineQuery):
 
 
 @Client.on_callback_query(filters.regex(r"^whisper_(\d+)$"))
+@get_string("whisper")
 async def reveal_whisper(c: Client, cb: CallbackQuery):
+    """
+    another way (bot must be admin in group)
+    /whisper @targetUsername [message] -> u need to reply to that user with this
+    """
     target_id = int(cb.matches[0].group(1))
 
     if cb.from_user.id != target_id:
