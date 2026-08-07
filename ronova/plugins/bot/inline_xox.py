@@ -185,7 +185,7 @@ async def mechanics(c: Client, cq: CallbackQuery):
     keyboard = gen_keyboard(user, target)
 
     from ronova import ub
-    await ub.send_chat_action(XOX_DATA.data["chat_id"], ChatAction.PLAYING)
+    await ub.send_chat_action(XOX_DATA.chat_id, ChatAction.PLAYING)
 
     await c.edit_inline_text(
         inline_message_id=cq.inline_message_id,
