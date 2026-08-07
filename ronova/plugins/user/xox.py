@@ -3,6 +3,7 @@ from pyrogram.types import Message, ReplyParameters
 
 from config import PREFIXES, ADMIN_ID, BOT
 from ..decorators import get_string
+from ..shared import XOX_DATA
 
 
 @Client.on_message(filters.command("xox", prefixes=PREFIXES) & filters.user(ADMIN_ID))
@@ -28,3 +29,4 @@ async def xox(c: Client, m: Message):
         reply_parameters=ReplyParameters(message_id=m.reply_to_message.id)
     )
     await m.delete()
+    XOX_DATA.chat_id = m.chat.id
