@@ -6,6 +6,7 @@ from pyrogram.types import Message, ChatPermissions
 
 from config import PREFIXES, ADMIN_ID
 from .utils import RetriveData, format_duration
+from ...decorators import get_string
 
 
 COMMAND_BANS: list[str] = ["mute", "dmute", "smute"]
@@ -51,7 +52,16 @@ async def mute_user(
     & filters.user(ADMIN_ID)
     & filters.group
 )
-async def gc_mang(c: Client, m: Message):
+@get_string("mute")
+async def gc_mang_mute(c: Client, m: Message):
+    """
+    Mute a user
+    Usage: mute [user name/id] or reply [time/optional] [reason/optional]
+    types:
+    mute - mutes a user
+    smute - silently mutes a user
+    dmute - mutes user and deletes replied message
+    """
 
     parser = RetriveData(c, m)
     data = await parser.ban_data()
