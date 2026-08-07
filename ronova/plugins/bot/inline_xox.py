@@ -1,7 +1,7 @@
 import random
 
 from pyrogram import Client, filters
-from pyrogram.enums import ButtonStyle
+from pyrogram.enums import ButtonStyle, ChatAction
 from pyrogram.types import (
     InlineQuery, InlineKeyboardMarkup, InlineKeyboardButton,
     InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
@@ -183,6 +183,9 @@ async def mechanics(c: Client, cq: CallbackQuery):
     turn_name = user_name if next_turn == user else target_name
 
     keyboard = gen_keyboard(user, target)
+
+    from ronova import ub
+    await ub.send_chat_action(XOX_DATA.data["chat_id"], ChatAction.PLAYING)
 
     await c.edit_inline_text(
         inline_message_id=cq.inline_message_id,
