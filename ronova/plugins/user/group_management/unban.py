@@ -3,6 +3,7 @@ from pyrogram.types import Message
 
 from config import PREFIXES, ADMIN_ID
 from .utils import RetriveData
+from ...decorators import get_string
 
 COMMAND_UNBANS: list[str] = ["unban"]
 
@@ -11,7 +12,12 @@ COMMAND_UNBANS: list[str] = ["unban"]
     & filters.user(ADMIN_ID)
     & filters.group
 )
-async def gc_mang(c: Client, m: Message):
+@get_string("unban")
+async def gc_mang_unban(c: Client, m: Message):
+    """
+    To unban a user
+    Usage: unban [user name/id] or reply
+    """
 
     parser = RetriveData(c, m)
     data = await parser.unban_data()
