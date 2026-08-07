@@ -2,10 +2,16 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
 
 from config import PREFIXES, ADMIN_ID, BOT
+from ..decorators import get_string
 
 
 @Client.on_message(filters.command("xox", prefixes=PREFIXES) & filters.user(ADMIN_ID))
+@get_string("Tic:Tac:Toe")
 async def xox(c: Client, m: Message):
+    """
+    playing a TicTacToe game with someone
+    Usage: xox [reply to target]
+    """
 
     user = m.from_user.id
     target = m.reply_to_message.from_user.id
