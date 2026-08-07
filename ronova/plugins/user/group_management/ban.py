@@ -41,7 +41,7 @@ async def ban_user(
     & filters.group
 )
 @get_string("ban")
-async def gc_mang(c: Client, m: Message):
+async def gc_mang_ban(c: Client, m: Message):
     """
     Ban a specefic user
     Usage: ban [user name/id] or reply [time/optional] [reason/optional]
