@@ -1,3 +1,3 @@
-from . import ban, unban, utils
+from . import ban, unban, utils, kick, mute, unmute
 
-__all__:list[str] = ["ban" ,"unban", "utils"]
+__all__:list[str] = ["ban" ,"unban", "utils", 'kick', 'mute', 'unmute']
