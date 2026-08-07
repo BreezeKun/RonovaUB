@@ -1,3 +1,5 @@
+import random
+
 from pyrogram import Client, filters
 from pyrogram.enums import ButtonStyle
 from pyrogram.types import (
@@ -40,22 +42,27 @@ def check_winner(board=XOX_DATA.board):
     return None
 
 
-def gen_keyboard() -> list[list[InlineKeyboardButton]]:
+def gen_keyboard(user:int, target:int) -> list[list[InlineKeyboardButton]]:
+
+    
+
     keyboard = []
+    column = 0
 
     for i in XOX_DATA.board:
         temp_row = []
-
+        row = 0
         for j in i:
             if j == ' ':
-                temp_row.append(InlineKeyboardButton(" ", callback_data="empty"))
+                temp_row.append(InlineKeyboardButton(" ", callback_data=f"empty_{column}:{row}_{user}:{target}"))
             elif j == "x":
-                temp_row.append(InlineKeyboardButton("X", callback_data="x", style=ButtonStyle.DANGER))
+                temp_row.append(InlineKeyboardButton("X", callback_data=f"x_{column}:{row}_{user}:{target}", style=ButtonStyle.DANGER))
             elif j == "o":
-                temp_row.append(InlineKeyboardButton("O", callback_data="o", style=ButtonStyle.DANGER))
+                temp_row.append(InlineKeyboardButton("O", callback_data=f"o_{column}:{row}_{user}:{target}", style=ButtonStyle.DANGER))
+            row += 1
 
         keyboard.append(temp_row)
-
+        column += 1
     return keyboard
 
 
@@ -82,7 +89,7 @@ async def inline_xox(c: Client, q: InlineQuery):
     ], cache_time=0)
 
 
-@Client.on_callback_query(filters.regex("^accept_|refuse_"))
+@Client.on_callback_query(filters.regex("^(accept|refuse)_"))
 async def decision(c: Client, cq: CallbackQuery):
     data = cq.data.split("_")
     choice = data[0]
@@ -100,10 +107,32 @@ async def decision(c: Client, cq: CallbackQuery):
     else:
         gen_board()
         XOX_DATA.status = True
-        keyboard = gen_keyboard()
+        keyboard = gen_keyboard(user, target)
 
         await c.edit_inline_text(
             inline_message_id=cq.inline_message_id,
             text="hmm",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
+
+@Client.on_callback_query(filters.regex("^(empty|x|o)_"))
+async def mechanics(c:Client, cq:CallbackQuery):
+    data = cq.data.split("_")
+    choice = data[0]
+    row, column = map(int, data[1].split(":"))
+    user, target = map(int, data[2].split(":"))
+
+    if choice in ["x", "o"]:
+        return await cq.answer("Nope")
+    else:
+        XOX_DATA.board[row][column] = "o"
+
+    keyboard = gen_keyboard(user, target)
+    
+    await c.edit_inline_text(
+        inline_message_id=cq.inline_message_id,
+        text=random.randint(1,100),
+        reply_markup=InlineKeyboardMarkup(keyboard)
+        )
+    
+
