@@ -1,7 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.enums import ButtonStyle
 from pyrogram.types import (
-    InlineQuery, InlineKeyboardMarkup, InlineKeyboardButton, InlineQueryResultArticle, InputTextMessageContent
+    InlineQuery, InlineKeyboardMarkup, InlineKeyboardButton, InlineQueryResultArticle, InputTextMessageContent,
+    CallbackQuery
 )
 
 from ..shared import XOX_DATA
@@ -35,6 +36,21 @@ def check_winner(board = XOX_DATA.board):
 
     return None
 
+def gen_keyboard() -> list[list[InlineKeyboardButton]]:
+    temp_row = []
+    keyboard = []
+    for i in XOX_DATA.board:
+        for j in i:
+            if j == ' ':
+                temp_row.append(InlineKeyboardButton(" ", callback_data=""))
+            elif j == "x":
+                temp_row.append(InlineKeyboardButton("X", callback_data="", style=ButtonStyle.DANGER))
+            elif j == "o":
+                temp_row.append(InlineKeyboardButton("O", callback_data="", style=ButtonStyle.DANGER))
+        keyboard.append(temp_row)
+        temp_row = []
+    return keyboard
+
 @Client.on_inline_query(filters.regex("^xox_"))
 async def inline_xox(c:Client, q:InlineQuery):
     data = q.query.split("_")
@@ -57,3 +73,29 @@ async def inline_xox(c:Client, q:InlineQuery):
                 ),reply_markup=keyboard
                 )
         ], cache_time=0)
+
+@Client.on_callback_query(filters.regex("^accept_|refuse_"))
+async def decision(c:Client, cq:CallbackQuery):
+    data = cq.data.split("_")
+    choice = data[0]
+    user = data[1]
+    target = data[2]
+
+    if cq.from_user.id != target:
+        return await cq.answer("Nope", show_alert=True)
+
+    if choice == "refuse":
+        await c.edit_inline_text(
+            inline_message_id=cq.inline_message_id,
+            text="refused"
+        )
+    else:
+        XOX_DATA.status = True
+        gen_board()
+        keyboard = gen_keyboard()
+
+        await c.edit_inline_text(
+            inline_message_id=cq.inline_message_id,
+            text= "hmm",
+            reply_markup=InlineKeyboardMarkup(keyboard)
+        )
