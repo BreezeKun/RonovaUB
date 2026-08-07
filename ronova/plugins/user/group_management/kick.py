@@ -43,7 +43,7 @@ async def kick_user(
     & filters.group
 )
 @get_string("kick")
-async def gc_mang(c: Client, m: Message):
+async def gc_mang_kick(c: Client, m: Message):
     """
     Ban a specefic user
     Usage: kick [user name/id] or reply [reason/optional]
