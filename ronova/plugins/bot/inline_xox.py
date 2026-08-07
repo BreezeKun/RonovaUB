@@ -42,8 +42,7 @@ def check_winner(board):
     return None
 
 
-def gen_keyboard(user:int, target:int) -> list[list[InlineKeyboardButton]]:
-
+def gen_keyboard(user: int, target: int) -> list[list[InlineKeyboardButton]]:
     keyboard = []
     column = 0
 
@@ -52,15 +51,34 @@ def gen_keyboard(user:int, target:int) -> list[list[InlineKeyboardButton]]:
         row = 0
         for j in i:
             if j == ' ':
-                temp_row.append(InlineKeyboardButton(" ", callback_data=f"empty_{column}:{row}_{user}:{target}"))
+                temp_row.append(
+                    InlineKeyboardButton(
+                        " ",
+                        callback_data=f"empty_{column}:{row}_{user}:{target}",
+                        style=ButtonStyle.DEFAULT
+                    )
+                )
             elif j == "x":
-                temp_row.append(InlineKeyboardButton("X", callback_data=f"x_{column}:{row}_{user}:{target}", style=ButtonStyle.DANGER))
+                temp_row.append(
+                    InlineKeyboardButton(
+                        "X",
+                        callback_data=f"x_{column}:{row}_{user}:{target}",
+                        style=ButtonStyle.DANGER
+                    )
+                )
             elif j == "o":
-                temp_row.append(InlineKeyboardButton("O", callback_data=f"o_{column}:{row}_{user}:{target}", style=ButtonStyle.DANGER))
+                temp_row.append(
+                    InlineKeyboardButton(
+                        "O",
+                        callback_data=f"o_{column}:{row}_{user}:{target}",
+                        style=ButtonStyle.SUCCESS
+                    )
+                )
             row += 1
 
         keyboard.append(temp_row)
         column += 1
+
     return keyboard
 
 
@@ -68,8 +86,8 @@ def gen_keyboard(user:int, target:int) -> list[list[InlineKeyboardButton]]:
 async def inline_xox(c: Client, q: InlineQuery):
     data = q.query.split("_")
 
-    user = data[1]
-    target = data[2]
+    user = int(data[1])
+    target = int(data[2])
 
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton("accept", callback_data=f"accept_{user}_{target}", style=ButtonStyle.SUCCESS),
@@ -80,14 +98,14 @@ async def inline_xox(c: Client, q: InlineQuery):
         InlineQueryResultArticle(
             title="xox game",
             input_message_content=InputTextMessageContent(
-                message_text="test"
+                message_text="Game request"
             ),
             reply_markup=keyboard
         )
     ], cache_time=0)
 
 
-@Client.on_callback_query(filters.regex("^(accept|refuse)_"))
+@Client.on_callback_query(filters.regex("^(accept|refuse)"))
 async def decision(c: Client, cq: CallbackQuery):
     data = cq.data.split("_")
     choice = data[0]
@@ -95,31 +113,39 @@ async def decision(c: Client, cq: CallbackQuery):
     target = int(data[2])
 
     if cq.from_user.id != target:
-        return await cq.answer("Nope", show_alert=True)
+        return await cq.answer("Not allowed", show_alert=True)
 
     if choice == "refuse":
         await c.edit_inline_text(
             inline_message_id=cq.inline_message_id,
-            text="refused"
+            text="Game request declined."
         )
     else:
         gen_board()
         XOX_DATA.status = True
         XOX_DATA.data = {
-            "turn" : int(random.choice([user, target])),
-            user:"x",
-            target:"o"
+            "turn": int(random.choice([user, target])),
+            user: "x",
+            target: "o"
         }
+
+        user_name = (await c.get_users(user)).first_name
+        target_name = (await c.get_users(target)).first_name
+
+        current_turn = XOX_DATA.data["turn"]
+        turn_name = user_name if current_turn == user else target_name
+
         keyboard = gen_keyboard(user, target)
 
         await c.edit_inline_text(
             inline_message_id=cq.inline_message_id,
-            text="hmm",
+            text=f"Game started\n\nX: {user_name}\nO: {target_name}\n\nTurn: {turn_name}",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
 
-@Client.on_callback_query(filters.regex("^(empty|x|o)_"))
-async def mechanics(c:Client, cq:CallbackQuery):
+
+@Client.on_callback_query(filters.regex("^(empty|x|o)"))
+async def mechanics(c: Client, cq: CallbackQuery):
     data = cq.data.split("_")
     choice = data[0]
     row, column = map(int, data[1].split(":"))
@@ -128,26 +154,38 @@ async def mechanics(c:Client, cq:CallbackQuery):
     current_turn = XOX_DATA.data["turn"]
 
     if choice in ["x", "o"] or cq.from_user.id != current_turn:
-        return await cq.answer("Nope")
-    else:
-        XOX_DATA.board[row][column] = XOX_DATA.data[current_turn]
-        XOX_DATA.data["turn"] = user if current_turn != user else target
+        return await cq.answer("Not your turn", show_alert=True)
 
+    XOX_DATA.board[row][column] = XOX_DATA.data[current_turn]
+    XOX_DATA.data["turn"] = user if current_turn != user else target
+
+    user_name = (await c.get_users(user)).first_name
+    target_name = (await c.get_users(target)).first_name
 
     winner = check_winner(XOX_DATA.board)
+
     if winner:
+        XOX_DATA.status = False
+        winner_name = user_name if winner == "x" else target_name
+        return await c.edit_inline_text(
+            inline_message_id=cq.inline_message_id,
+            text=f"Winner: {winner_name} ({winner.upper()})"
+        )
+
+    if all(cell != " " for row in XOX_DATA.board for cell in row):
         XOX_DATA.status = False
         return await c.edit_inline_text(
             inline_message_id=cq.inline_message_id,
-            text= f"winner: {winner}"
+            text="Game ended in a draw"
         )
+
+    next_turn = XOX_DATA.data["turn"]
+    turn_name = user_name if next_turn == user else target_name
 
     keyboard = gen_keyboard(user, target)
-    
+
     await c.edit_inline_text(
         inline_message_id=cq.inline_message_id,
-        text=random.randint(1,100),
+        text=f"X: {user_name}\nO: {target_name}\n\nTurn: {turn_name}",
         reply_markup=InlineKeyboardMarkup(keyboard)
-        )
-    
-
+    )
