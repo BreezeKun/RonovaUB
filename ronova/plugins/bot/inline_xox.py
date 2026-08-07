@@ -25,7 +25,7 @@ def gen_board():
                 break
 
 
-def check_winner(board=XOX_DATA.board):
+def check_winner(board):
     for row in board:
         if row[0] == row[1] == row[2] != ' ':
             return row[0]
@@ -43,8 +43,6 @@ def check_winner(board=XOX_DATA.board):
 
 
 def gen_keyboard(user:int, target:int) -> list[list[InlineKeyboardButton]]:
-
-    
 
     keyboard = []
     column = 0
@@ -127,7 +125,15 @@ async def mechanics(c:Client, cq:CallbackQuery):
     else:
         XOX_DATA.board[row][column] = "o"
 
-    keyboard = gen_keyboard(user, target)
+
+    winner = check_winner(XOX_DATA.board)
+    if winner:
+        return await c.edit_inline_text(
+            inline_message_id=cq.inline_message_id,
+            text= "you won"
+        )
+
+    keyboard = gen_keyboard(user, target, c, cq)
     
     await c.edit_inline_text(
         inline_message_id=cq.inline_message_id,
