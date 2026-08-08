@@ -21,7 +21,6 @@ async def xox(c: Client, m: Message):
     if user == target:
         return await m.reply_text("You can't challenge yourself.")
 
-
     results = await c.get_inline_bot_results(bot=BOT, query=f"xox_{user}_{target}")
     await c.send_inline_bot_result(
         chat_id=m.chat.id,
