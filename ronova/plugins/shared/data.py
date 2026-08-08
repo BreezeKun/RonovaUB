@@ -42,12 +42,18 @@ class HelpStorage:
 
 HELP_STORAGE = HelpStorage()
 
-@dataclass
 class XoxData:
-    data:dict = field(default_factory=dict)
-    board:list[list[str]] = field(default_factory=list)
-    status:bool = False
-    chat_id: None | int = None
+    players = {}
 
-XOX_DATA = XoxData()
-    
+    def __init__(self):
+        self.data = {}
+        self.board = []
+        self.status = False
+
+    @classmethod
+    def add_game(cls, game_id, game):
+        cls.players[game_id] = game
+
+    @classmethod
+    def rem_game(cls, game_id):
+        cls.players.pop(game_id)
