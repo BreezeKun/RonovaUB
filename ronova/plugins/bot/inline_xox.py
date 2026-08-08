@@ -4,10 +4,12 @@ from pyrogram import Client, filters
 from pyrogram.enums import ButtonStyle, ChatAction
 from pyrogram.types import (
     InlineQuery, InlineKeyboardMarkup, InlineKeyboardButton,
-    InlineQueryResultArticle, InputTextMessageContent, CallbackQuery
+    InlineQueryResultArticle, InputTextMessageContent, CallbackQuery,
+    Message
 )
 
 from ..shared import XOX_DATA
+from ..filters import starts
 
 
 def gen_board():
@@ -80,6 +82,27 @@ def gen_keyboard(user: int, target: int) -> list[list[InlineKeyboardButton]]:
         column += 1
 
     return keyboard
+
+@Client.on_guest_message(starts("xox"))
+async def guest_xox(c:Client, m:Message):
+    user = m.from_user.id
+    target = m.reply_to_message.from_user.id
+
+    keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton("accept", callback_data=f"accept_{user}_{target}", style=ButtonStyle.SUCCESS),
+            InlineKeyboardButton("refuse", callback_data=f"refuse_{user}_{target}", style=ButtonStyle.DANGER)
+        ]])
+    
+    await c.answer_guest_query(
+             guest_query_id=m.guest_query_id, 
+             result=InlineQueryResultArticle( 
+                 title="📋 Logs", 
+                 input_message_content=InputTextMessageContent(
+                                 message_text="Game request"
+                             ),
+                     reply_markup=keyboard )
+                       )
+    
 
 
 @Client.on_inline_query(filters.regex("^xox_"))
@@ -183,9 +206,6 @@ async def mechanics(c: Client, cq: CallbackQuery):
     turn_name = user_name if next_turn == user else target_name
 
     keyboard = gen_keyboard(user, target)
-
-    from ronova import ub
-    await ub.send_chat_action(XOX_DATA.chat_id, ChatAction.PLAYING)
 
     await c.edit_inline_text(
         inline_message_id=cq.inline_message_id,
