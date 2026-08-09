@@ -30,6 +30,14 @@ class QuoteState:
 QUOTE_STATE =  QuoteState()
 
 @dataclass
+class HisState:
+    status: bool = False
+    user_chat_id:int | None = None
+    user_message_id:int | None = None
+
+HIS_STATE =  HisState()
+
+@dataclass
 class PremiumState:
     status: bool = False
     text: str | None = None
