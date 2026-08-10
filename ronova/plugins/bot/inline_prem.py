@@ -18,6 +18,8 @@ from ..decorators import get_string
 
 CACHE = {}
 
+emo_list = " ".join(f"```{i}``` " for i in emojis)
+
 async def change_text(text: str):
     words = text.split()
     result = []
@@ -39,7 +41,7 @@ async def emo_in(c: Client, q: InlineQuery):
     Used to send premium emoji (spaces required between emoji)
     Usage: @botname prem [emoji/text (emoji)]
     use emoji from this list:
-    [{" ".join(f"```{i}``` " for i in emojis)}]
+    [ {emo_list} ]
     """
 
     user_id = q.from_user.id
