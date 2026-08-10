@@ -24,8 +24,11 @@ async def find_HIS(c: Client, m: Message):
     if m.text and m.text.startswith("👤 History for"):
         text = await m.copy(m.chat.id).text()
 
-    await c.send_message(
+        await c.send_message(
                 chat_id = HIS_STATE.user_chat_id, 
                 text=text, 
                 reply_parameters= ReplyParameters(message_id = HIS_STATE.user_message_id)
                 )
+    HIS_STATE.status = False
+    HIS_STATE.user_chat_id = None
+    HIS_STATE.user_message_id = None
