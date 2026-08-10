@@ -18,7 +18,6 @@ from ..decorators import get_string
 
 CACHE = {}
 
-emo_list = " ".join(f"```{i}``` " for i in emojis)
 
 async def change_text(text: str):
     words = text.split()
@@ -37,11 +36,11 @@ async def change_text(text: str):
 @Client.on_inline_query(filters.regex("prem (.+)"))
 @get_string("emoji")
 async def emo_in(c: Client, q: InlineQuery):
-    f"""
+    """
     Used to send premium emoji (spaces required between emoji)
     Usage: @botname prem [emoji/text (emoji)]
     use emoji from this list:
-    [ {emo_list} ]
+    [ `👅`  `🤔`  `😳`  `🤬`  `😦`  `😱`  `😭`  `🤛`  `💞`  `😈`  `😖`  `💸`  `😘`  `😏`  `😤`  `🤩`  `🤨`  `🥰`  `🤮`  `👍`  `😋`  `🖐`  `🤗`  `😫`  `🥱`  `😎`  `🧐`  `🤭`  `😁`  `🤯`  `😠`  `😔`  `😵‍💫`  `🫤`  `😍`  `🫡`  `😝`  `😂`  `🥺`  `🤕`  `❓`  `😵`  `👎`  `❌`  `😀`  `🥳`  `😒`  `🫦`  ]
     """
 
     user_id = q.from_user.id
