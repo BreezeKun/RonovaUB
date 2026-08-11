@@ -1,13 +1,11 @@
 git+https://github.com/KurimuzonAkuma/kurigram.git
 tgcrypto
 uvloop
-
 aiohttp
 python-dotenv
-
 openai
 google-genai
-
 git+https://github.com/BreezeKun/richparser.git
-
 psycopg2-binary
+fastfetch-bin
+Pillow
