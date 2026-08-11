@@ -8,8 +8,11 @@ from pyrogram.types import Message
 from config import ADMIN_ID, PREFIXES
 
 
-@Client.on_message(filters.command("fetch", prefixes=PREFIXES), filters.user(ADMIN_ID))
-async def fetch(_, message: Message):
+@Client.on_message(
+    filters.command("fetch", prefixes=PREFIXES) & filters.user(ADMIN_ID)
+)
+async def fetch(client: Client, message: Message):
+
     proc = subprocess.Popen(
         "fastfetch",
         shell=True,
@@ -47,7 +50,12 @@ async def fetch(_, message: Message):
         + padding * 2
     )
 
-    image = Image.new("RGBA", (width, height), (30, 30, 30, 255))
+    image = Image.new(
+        "RGBA",
+        (width, height),
+        (30, 30, 30, 255)
+    )
+
     draw = ImageDraw.Draw(image)
 
     y = padding
@@ -74,4 +82,5 @@ async def fetch(_, message: Message):
     try:
         await message.reply_photo(path)
     finally:
-        os.remove(path)
+        if os.path.exists(path):
+            os.remove(path)
