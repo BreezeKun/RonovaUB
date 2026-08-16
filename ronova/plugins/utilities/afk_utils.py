@@ -85,9 +85,9 @@ async def send(c, m, text: str):
                 repl = await m.reply_document(AFK_DATA.file_id, caption=text)
             elif t == "sticker":
                 sticker = await m.reply_sticker(AFK_DATA.file_id)
+                repl = await m.reply_text(text)
                 await asyncio.sleep(5)
                 await sticker.delete()
-                repl = await m.reply_text(text)
 
         else:
             repl = await m.reply_text(text)
