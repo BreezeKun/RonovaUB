@@ -22,10 +22,10 @@ def close_db():
 async def startup():
     zn = pytz.timezone("Asia/Kolkata")
     time = datetime.now(zn)
-    await bot.send_message(1003792991167,f"started {time}")
+    await bot.send_message(-1003792991167,f"started {time}")
 
 async def on_stop():
-    await bot.send_message(1003792991167,"stopped")
+    await bot.send_message(-1003792991167,"stopped")
 
 uvloop.install()
 async def main():
