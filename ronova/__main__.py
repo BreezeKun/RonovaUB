@@ -1,5 +1,7 @@
 import asyncio
 import json
+import pytz
+from datetime import datetime
 
 from pyrogram import idle
 
@@ -17,11 +19,21 @@ def close_db():
     if db and db.conn:
         db.close()
 
+async def startup():
+    zn = pytz.timezone("Asia/Kolkata")
+    time = datetime.now(zn)
+    await bot.send_message(-1003792991167,f"started {time}")
+
+async def on_stop():
+    await bot.send_message(-1003792991167,"stopped")
+
 uvloop.install()
 async def main():
     try:
         await bot.start()
         await ub.start()
+        
+        await startup()
 
         from .plugins.database import sudo_methods
         sudo_methods.build_cache()
@@ -33,6 +45,7 @@ async def main():
         await idle()
 
     finally:
+        await on_stop()
         try:
             if ub.is_connected:
                 await ub.stop()

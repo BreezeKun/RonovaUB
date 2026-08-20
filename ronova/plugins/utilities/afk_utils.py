@@ -66,7 +66,7 @@ def extract_media(message:Message):
 
 async def send(c, m, text: str):
     repl = None
-
+    sticker = None
     try:
         if AFK_DATA.file_id and AFK_DATA.file_type:
             t = AFK_DATA.file_type
@@ -85,8 +85,6 @@ async def send(c, m, text: str):
                 repl = await m.reply_document(AFK_DATA.file_id, caption=text)
             elif t == "sticker":
                 sticker = await m.reply_sticker(AFK_DATA.file_id)
-                await asyncio.sleep(5)
-                await sticker.delete()
                 repl = await m.reply_text(text)
 
         else:
@@ -95,6 +93,8 @@ async def send(c, m, text: str):
         
         if repl:
             await repl.delete()
+        if sticker:
+            await sticker.delete()
 
     except Exception as e:
         print(e)
