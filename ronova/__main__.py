@@ -19,11 +19,15 @@ def close_db():
         db.close()
 
 async def startup():
+
     zn = pytz.timezone("Asia/Kolkata")
     time = datetime.now(zn)
+
     await bot.start()
     await ub.start()
-    await bot.send_message(-1003792991167,f"started {time}")
+
+    await bot.send_message(-1003792991167,f"bot has been started - {time}")
+
     from .plugins.database import sudo_methods
     sudo_methods.build_cache()
     
@@ -35,7 +39,7 @@ async def startup():
     
 
 async def on_stop():
-    await bot.send_message(-1003792991167,"stopped")
+    await bot.send_message(-1003792991167,"Bot has been stopped")
     try:
         if ub.is_connected:
             await ub.stop()
