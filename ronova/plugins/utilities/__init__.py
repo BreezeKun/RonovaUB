@@ -8,11 +8,12 @@ from .search_word import word_search
 from .http_session import session
 from .afk_utils import refresh_data, format_time, extract_media, send
 from .find_target import get_target_id
-
+from .get_music import MUSIC_PLAYER
 
 __all__ = ["paste",
            "eval_helper", "get_output",
            "AiSearch", "fetch_anime", "get_full_movie",
            "wiki_search","word_search", "session",
              "format_time", "extract_media", "send",
-           "GetServices", 'get_target_id', 'refresh_data']
+           "GetServices", 'get_target_id', 'refresh_data',
+           'MUSIC_PLAYER']
