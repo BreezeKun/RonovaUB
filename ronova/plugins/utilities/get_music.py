@@ -1,43 +1,83 @@
+# music.py
+
+from pathlib import Path
 from ytmusicapi import YTMusic
 import yt_dlp
 
 
+DOWNLOAD_DIR = Path("downloads")
+DOWNLOAD_DIR.mkdir(exist_ok=True)
+
+
 class GetMusic:
-    queue = []
-    status = False
+    def __init__(self):
+        self.queue = []
 
-    def get_from_yt(self):
-        if self.status:
-            yt = YTMusic()
+    def add_queue(self, music: str):
+        self.queue.append(music)
 
-            results = yt.search(self.queue[0], filter="songs")
+    def has_queue(self):
+        return bool(self.queue)
 
-            if not results:
-                return print("No data found")
+    def get_next(self):
+        if not self.queue:
+            return None
 
-            song = results[0]
+        query = self.queue.pop(0)
 
-            url = f"https://www.youtube.com/watch?v={song['videoId']}"
+        yt = YTMusic()
+        results = yt.search(query, filter="songs")
 
-            ydl_opts = {
-                "format": "ba[abr<=80]/ba",
-                "outtmpl": "%(title)s.%(ext)s",
-            }
+        if not results:
+            return None
 
-            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                ydl.download([url])
+        song = results[0]
 
-            self.queue.pop(0)
+        url = f"https://www.youtube.com/watch?v={song['videoId']}"
 
-            return song
+        ydl_opts = {
+            "format": "ba[abr<=80]/ba",
+            "outtmpl": str(DOWNLOAD_DIR / "%(id)s.%(ext)s"),
+            "noplaylist": True,
+        }
 
-    def add_queue(self, music:str):
-        if music not in self.queue:
-            self.queue.append(music)
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(url, download=True)
 
-    def play_music(self):
-        if not self.status:
-            self.status = True
-            return self.get_from_yt()
+        filename = ydl.prepare_filename(info)
+
+        return {
+            "title": info.get("title"),
+            "artist": ", ".join(
+                artist["name"]
+                for artist in song.get("artists", [])
+            ),
+            "video_id": song.get("videoId"),
+            "youtube_url": url,
+            "duration": info.get("duration"),
+            "duration_string": self.format_duration(
+                info.get("duration")
+            ),
+            "extension": info.get("ext"),
+            "format_id": info.get("format_id"),
+            "bitrate": info.get("abr"),
+            "filesize": info.get("filesize"),
+            "filesize_approx": info.get("filesize_approx"),
+            "filename": filename,
+        }
+
+    @staticmethod
+    def format_duration(seconds):
+        if seconds is None:
+            return None
+
+        minutes, seconds = divmod(int(seconds), 60)
+        hours, minutes = divmod(minutes, 60)
+
+        if hours:
+            return f"{hours}:{minutes:02}:{seconds:02}"
+
+        return f"{minutes}:{seconds:02}"
+
 
 MUSIC_PLAYER = GetMusic()
