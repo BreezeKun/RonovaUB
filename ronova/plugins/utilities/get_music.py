@@ -1,5 +1,3 @@
-# music.py
-
 from pathlib import Path
 from ytmusicapi import YTMusic
 import yt_dlp

@@ -73,25 +73,23 @@ async def emo_in(c: Client, q: InlineQuery):
 @Client.on_chosen_inline_result()
 async def on_chosen(c: Client, r: ChosenInlineResult):
 
-    if not r.inline_message_id:
-        print("No inline_message_id")
-        return
+    if r.query.startswith("prem"):
 
-    await asyncio.sleep(0.5)
+        await asyncio.sleep(0.5)
 
-    text = CACHE.get(r.result_id)
+        text = CACHE.get(r.result_id)
 
-    if not text:
-        print("Cache miss")
-        return
+        if not text:
+            print("Cache miss")
+            return
 
-    try:
-        await c.edit_inline_text(
-            inline_message_id=r.inline_message_id,
-            text=text,
-            reply_markup=None
-        )
-        del CACHE[r.result_id]
+        try:
+            await c.edit_inline_text(
+                inline_message_id=r.inline_message_id,
+                text=text,
+                reply_markup=None
+            )
+            del CACHE[r.result_id]
 
-    except Exception as e:
-        print("Edit error", e)
+        except Exception as e:
+            print("Edit error", e)
