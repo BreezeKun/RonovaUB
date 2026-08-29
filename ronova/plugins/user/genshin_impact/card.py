@@ -113,3 +113,42 @@ async def myc_command(client: Client, message: Message):
             f"Failed to generate the card.\n\n"
             f"`{type(e).__name__}: {e}`"
         )
+
+@Client.on_message(
+    filters.command("girefresh", prefixes=PREFIXES)
+    & filters.user(ADMIN_ID)
+)
+async def girefresh_command(client: Client, message: Message):
+
+    if len(message.command) < 2:
+        await message.reply_text(
+            "Usage:\n"
+            "/girefresh <character>\n\n"
+            "Example:\n"
+            "/girefresh odette"
+        )
+        return
+
+    name = " ".join(message.command[1:]).strip().lower()
+
+    deleted = False
+
+    for extension in (".jpg", ".png"):
+        file_path = os.path.join(
+            DOWNLOAD_DIR,
+            f"{name}{extension}"
+        )
+
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+            deleted = True
+
+    if deleted:
+        await message.reply_text(
+            f"**{name.title()}** cache completely erased.\n\n"
+            f"Use `/myc {name}` to generate a fresh card."
+        )
+    else:
+        await message.reply_text(
+            f"No cached data found for **{name.title()}**."
+        )

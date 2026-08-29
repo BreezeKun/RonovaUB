@@ -12,3 +12,4 @@ Pillow
 pytz
 git+https://github.com/BreezeKun/enkard.git
 ytmusicapi
+yt_dlp
