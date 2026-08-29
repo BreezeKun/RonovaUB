@@ -11,3 +11,4 @@ fastfetch-bin
 Pillow
 pytz
 git+https://github.com/BreezeKun/enkard.git
+ytmusicapi

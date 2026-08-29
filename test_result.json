@@ -1,0 +1,3211 @@
+{
+    "Skirk": {
+        "name": "Skirk",
+        "level": 90,
+        "max_level": 90,
+        "ascension": 6,
+        "friendship_level": 10,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_SkirkNew.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_SkirkNew_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_SkirkNew.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_SkirkNew.png"
+        },
+        "element": "Ice",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_SkirkNew.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_SkirkNew_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "85.5%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "222.9%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "109.7%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "63",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "18,501",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "2,001",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "843",
+                "is_percentage": false
+            },
+            "Cryo DMG Bonus": {
+                "value": "61.6%",
+                "is_percentage": true
+            }
+        },
+        "artifact": [
+            {
+                "name": "Finale of the Deep Galleries",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15040_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "10.9%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "4.7%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "21.8%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "19",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    }
+                ]
+            },
+            {
+                "name": "Finale of the Deep Galleries",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15040_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "4.5%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "6.2%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "17.9%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "11.7%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    }
+                ]
+            },
+            {
+                "name": "Finale of the Deep Galleries",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15040_5.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "19",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "7.4%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "37",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "17.1%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    }
+                ]
+            },
+            {
+                "name": "Pale Flame",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15018_1.png",
+                "main_stat": {
+                    "name": "Cryo DMG Bonus",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "10.9%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "15.5%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "10.5%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    }
+                ]
+            },
+            {
+                "name": "Finale of the Deep Galleries",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15040_3.png",
+                "main_stat": {
+                    "name": "CRIT DMG",
+                    "value": "62.2%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "19",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "12.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "63",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "5.2%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Finale of the Deep Galleries": 4,
+            "Pale Flame": 1
+        },
+        "weapon": {
+            "name": "Exaiphanes Blade",
+            "level": 90,
+            "refinement": 3,
+            "image": "https://enka.network/ui/UI_EquipIcon_Sword_WeaponQuestSnezhnaya.png",
+            "rarity": 5,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "608"
+                },
+                "CRIT Rate": {
+                    "is_percentage": true,
+                    "formatted_value": "33.1%"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 1141,
+                "name": "Far to Fall",
+                "icon": "https://enka.network/ui/UI_Talent_S_SkirkNew_01.png",
+                "unlocked": true
+            },
+            {
+                "id": 1142,
+                "name": "Into the Abyss",
+                "icon": "https://enka.network/ui/UI_Talent_S_SkirkNew_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1143,
+                "name": "Serendipitous Sin",
+                "icon": "https://enka.network/ui/UI_Talent_U_SkirkNew_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1144,
+                "name": "Fractured Flow",
+                "icon": "https://enka.network/ui/UI_Talent_S_SkirkNew_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 1145,
+                "name": "End of Wishes",
+                "icon": "https://enka.network/ui/UI_Talent_U_SkirkNew_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1146,
+                "name": "To the Source",
+                "icon": "https://enka.network/ui/UI_Talent_S_SkirkNew_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 1,
+        "talents": [
+            {
+                "id": 11141,
+                "name": "Havoc: Sunder",
+                "level": 3,
+                "icon": "https://enka.network/ui/Skill_A_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11142,
+                "name": "Havoc: Warp",
+                "level": 10,
+                "icon": "https://enka.network/ui/Skill_S_SkirkNew_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11145,
+                "name": "Havoc: Ruin",
+                "level": 10,
+                "icon": "https://enka.network/ui/Skill_E_SkirkNew_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Mavuika": {
+        "name": "Mavuika",
+        "level": 80,
+        "max_level": 90,
+        "ascension": 5,
+        "friendship_level": 5,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Mavuika.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Mavuika_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Mavuika.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Mavuika.png"
+        },
+        "element": "Fire",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Mavuika.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Mavuika_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "48.2%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "192.3%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "100.0%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "82",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "16,918",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "1,419",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "1,036",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Obsidian Codex",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15038_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "13.2%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "9.7%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "10.9%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    }
+                ]
+            },
+            {
+                "name": "Obsidian Codex",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15038_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "5.4%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "14.6%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "58",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            },
+            {
+                "name": "Scroll of the Hero of Cinder City",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15037_5.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "7.8%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "14.0%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "39",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "23",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    }
+                ]
+            },
+            {
+                "name": "Obsidian Codex",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15038_1.png",
+                "main_stat": {
+                    "name": "Pyro DMG Bonus",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "3.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "44",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "13.1%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "24.9%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    }
+                ]
+            },
+            {
+                "name": "Obsidian Codex",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15038_3.png",
+                "main_stat": {
+                    "name": "CRIT DMG",
+                    "value": "62.2%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "10.5%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "14",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "12.4%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "418",
+                        "is_percentage": false,
+                        "name": "HP"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Obsidian Codex": 4,
+            "Scroll of the Hero of Cinder City": 1
+        },
+        "weapon": {
+            "name": "Tidal Shadow",
+            "level": 50,
+            "refinement": 1,
+            "image": "https://enka.network/ui/UI_EquipIcon_Claymore_Vorpal.png",
+            "rarity": 4,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "266"
+                },
+                "ATK": {
+                    "is_percentage": true,
+                    "formatted_value": "26.8%"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 1061,
+                "name": "The Night-Lord's Explication",
+                "icon": "https://enka.network/ui/UI_Talent_S_Mavuika_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1062,
+                "name": "The Ashen Price",
+                "icon": "https://enka.network/ui/UI_Talent_S_Mavuika_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1063,
+                "name": "The Burning Sun",
+                "icon": "https://enka.network/ui/UI_Talent_U_Mavuika_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1064,
+                "name": "The Leader's Resolve",
+                "icon": "https://enka.network/ui/UI_Talent_S_Mavuika_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 1065,
+                "name": "The Meaning of Truth",
+                "icon": "https://enka.network/ui/UI_Talent_U_Mavuika_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1066,
+                "name": "\"Humanity's Name\" Unfettered",
+                "icon": "https://enka.network/ui/UI_Talent_S_Mavuika_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 0,
+        "talents": [
+            {
+                "id": 11061,
+                "name": "Flames Weave Life",
+                "level": 3,
+                "icon": "https://enka.network/ui/Skill_A_04.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11062,
+                "name": "The Named Moment",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_S_Mavuika_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11065,
+                "name": "Hour of Burning Skies",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_E_Mavuika_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Linnea": {
+        "name": "Linnea",
+        "level": 80,
+        "max_level": 90,
+        "ascension": 5,
+        "friendship_level": 5,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Linnea.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Linnea_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Linnea.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Linnea.png"
+        },
+        "element": "Rock",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Linnea.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Linnea_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "75.1%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "99.7%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "114.9%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "80",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "14,731",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "829",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "2,373",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Aubade of Morningstar and Moon",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15043_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "56",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "7.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "6.2%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "37",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    }
+                ]
+            },
+            {
+                "name": "Aubade of Morningstar and Moon",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15043_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "56",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "9.7%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "14.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "7.4%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            },
+            {
+                "name": "Scroll of the Hero of Cinder City",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15037_5.png",
+                "main_stat": {
+                    "name": "DEF",
+                    "value": "58.3%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "19",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "13.2%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "19",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "11.7%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    }
+                ]
+            },
+            {
+                "name": "Aubade of Morningstar and Moon",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15043_1.png",
+                "main_stat": {
+                    "name": "DEF",
+                    "value": "58.3%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "14.0%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "23",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "53",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "5.2%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    }
+                ]
+            },
+            {
+                "name": "Aubade of Morningstar and Moon",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15043_3.png",
+                "main_stat": {
+                    "name": "DEF",
+                    "value": "58.3%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "17.1%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "39",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "29",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Aubade of Morningstar and Moon": 4,
+            "Scroll of the Hero of Cinder City": 1
+        },
+        "weapon": {
+            "name": "Slingshot",
+            "level": 60,
+            "refinement": 5,
+            "image": "https://enka.network/ui/UI_EquipIcon_Bow_Sling.png",
+            "rarity": 3,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "234"
+                },
+                "CRIT Rate": {
+                    "is_percentage": true,
+                    "formatted_value": "23.0%"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 1301,
+                "name": "Provisional Classification",
+                "icon": "https://enka.network/ui/UI_Talent_S_Linnea_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1302,
+                "name": "Tidings of Joy and Sorrow",
+                "icon": "https://enka.network/ui/UI_Talent_S_Linnea_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1303,
+                "name": "Eventful Log Page",
+                "icon": "https://enka.network/ui/UI_Talent_U_Linnea_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1304,
+                "name": "Expert Instinct",
+                "icon": "https://enka.network/ui/UI_Talent_S_Linnea_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 1305,
+                "name": "Fairyland's Farewell Gift",
+                "icon": "https://enka.network/ui/UI_Talent_U_Linnea_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1306,
+                "name": "Golden Beagle's Dream",
+                "icon": "https://enka.network/ui/UI_Talent_S_Linnea_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 0,
+        "talents": [
+            {
+                "id": 11301,
+                "name": "Capture Protocol",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_02.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11302,
+                "name": "Countermeasure: Lumi's Battle Cry!",
+                "level": 6,
+                "icon": "https://enka.network/ui/Skill_S_Linnea_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11305,
+                "name": "Memo: Survival Guide in Extreme Conditions",
+                "level": 3,
+                "icon": "https://enka.network/ui/Skill_E_Linnea_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Escoffier": {
+        "name": "Escoffier",
+        "level": 70,
+        "max_level": 90,
+        "ascension": 4,
+        "friendship_level": 10,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Escoffier.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Escoffier_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Escoffier.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Escoffier.png"
+        },
+        "element": "Ice",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Escoffier.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Escoffier_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "54.6%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "173.6%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "145.1%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "58",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "15,678",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "1,485",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "719",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Golden Troupe",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15032_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "12.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "19",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "16",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "13.2%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    }
+                ]
+            },
+            {
+                "name": "Golden Troupe",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15032_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "4.5%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "10.5%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "62",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "7.8%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    }
+                ]
+            },
+            {
+                "name": "Golden Troupe",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15032_5.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "23",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "19.4%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "7.0%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "42",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    }
+                ]
+            },
+            {
+                "name": "Wanderer's Troupe",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15003_1.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "269",
+                        "is_percentage": false,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "3.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "21.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "20.7%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    }
+                ]
+            },
+            {
+                "name": "Golden Troupe",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15032_3.png",
+                "main_stat": {
+                    "name": "CRIT DMG",
+                    "value": "62.2%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "13.4%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "7.4%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "4.1%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "13.1%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Golden Troupe": 4,
+            "Wanderer's Troupe": 1
+        },
+        "weapon": {
+            "name": "Favonius Lance",
+            "level": 50,
+            "refinement": 5,
+            "image": "https://enka.network/ui/UI_EquipIcon_Pole_Zephyrus.png",
+            "rarity": 4,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "293"
+                },
+                "Energy Recharge": {
+                    "is_percentage": true,
+                    "formatted_value": "19.9%"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 1121,
+                "name": "Pre-Dinner Dance for Your Taste Buds",
+                "icon": "https://enka.network/ui/UI_Talent_S_Escoffier_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1122,
+                "name": "Fresh, Fragrant Stew Is an Art",
+                "icon": "https://enka.network/ui/UI_Talent_S_Escoffier_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1123,
+                "name": "The Bakery Magic of Caramel Browning",
+                "icon": "https://enka.network/ui/UI_Talent_U_Escoffier_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1124,
+                "name": "Secret Rosemary Recipe",
+                "icon": "https://enka.network/ui/UI_Talent_S_Escoffier_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 1125,
+                "name": "Symphony of a Thousand Sauces",
+                "icon": "https://enka.network/ui/UI_Talent_U_Escoffier_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1126,
+                "name": "Tea Parties Bursting With Color",
+                "icon": "https://enka.network/ui/UI_Talent_S_Escoffier_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 0,
+        "talents": [
+            {
+                "id": 11121,
+                "name": "Kitchen Skills",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_03.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11122,
+                "name": "Low-Temperature Cooking",
+                "level": 4,
+                "icon": "https://enka.network/ui/Skill_S_Escoffier_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11125,
+                "name": "Scoring Cuts",
+                "level": 2,
+                "icon": "https://enka.network/ui/Skill_E_Escoffier_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Nicole": {
+        "name": "Nicole",
+        "level": 50,
+        "max_level": 90,
+        "ascension": 3,
+        "friendship_level": 3,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Nicole.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Nicole_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Nicole.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Nicole.png"
+        },
+        "element": "Fire",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Nicole.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Nicole_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "23.7%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "75.6%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "139.4%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "32",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "13,494",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "1,181",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "369",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Celestial Gift",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15045_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "16",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "20.4%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "9.1%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "4.1%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    }
+                ]
+            },
+            {
+                "name": "Celestial Gift",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15045_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "9.7%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "14.6%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "11.7%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    }
+                ]
+            },
+            {
+                "name": "Celestial Gift",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15045_5.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "12.2%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "7.3%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "16",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "807",
+                        "is_percentage": false,
+                        "name": "HP"
+                    }
+                ]
+            },
+            {
+                "name": "Obsidian Codex",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15038_1.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "10.4%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "19",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "8.9%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "14.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    }
+                ]
+            },
+            {
+                "name": "Celestial Gift",
+                "level": 0,
+                "rarity": 4,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15045_3.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "6.3%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "13",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Celestial Gift": 4,
+            "Obsidian Codex": 1
+        },
+        "weapon": {
+            "name": "Skyward Atlas",
+            "level": 20,
+            "refinement": 1,
+            "image": "https://enka.network/ui/UI_EquipIcon_Catalyst_Dvalin.png",
+            "rarity": 5,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "133"
+                },
+                "ATK": {
+                    "is_percentage": true,
+                    "formatted_value": "12.7%"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 1311,
+                "name": "\"Do Not Be Afraid, Child Who Is Loved\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Nicole_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1312,
+                "name": "\"I Will Guide You and Show You the Path You Should Tread\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Nicole_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1313,
+                "name": "\"A Lamp by Your Side, A Light to Shine the Way\"",
+                "icon": "https://enka.network/ui/UI_Talent_U_Nicole_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1314,
+                "name": "\"Whether Left or Right, No Matter Which Way You Turn\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Nicole_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 1315,
+                "name": "\"You Will Hear My Voice Beside You\"",
+                "icon": "https://enka.network/ui/UI_Talent_U_Nicole_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1316,
+                "name": "\"This Is the Path, Walk It Without Delay\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Nicole_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 0,
+        "talents": [
+            {
+                "id": 11311,
+                "name": "Allegoria",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_Catalyst_MD.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11312,
+                "name": "Revelation: Uncreated Light",
+                "level": 2,
+                "icon": "https://enka.network/ui/Skill_S_Nicole_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11315,
+                "name": "Revelation: Ladder of Divine Ascent",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_E_Nicole_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Yumemizuki Mizuki": {
+        "name": "Yumemizuki Mizuki",
+        "level": 80,
+        "max_level": 90,
+        "ascension": 5,
+        "friendship_level": 2,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Mizuki.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Mizuki_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Mizuki.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Mizuki.png"
+        },
+        "element": "Wind",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Mizuki.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Mizuki_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "62.2%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "94.3%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "140.8%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "809",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "16,285",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "993",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "882",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Scarlet Proof",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15047_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "31",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "22.7%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "3.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "23",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    }
+                ]
+            },
+            {
+                "name": "Scarlet Proof",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15047_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "7.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "79",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "6.2%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "42",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    }
+                ]
+            },
+            {
+                "name": "Scarlet Proof",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15047_5.png",
+                "main_stat": {
+                    "name": "Elemental Mastery",
+                    "value": "187",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "7.0%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "23.3%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "21",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "269",
+                        "is_percentage": false,
+                        "name": "HP"
+                    }
+                ]
+            },
+            {
+                "name": "Scarlet Proof",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15047_1.png",
+                "main_stat": {
+                    "name": "Elemental Mastery",
+                    "value": "187",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "9.7%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "6.2%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "16.8%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "39",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    }
+                ]
+            },
+            {
+                "name": "Aubade of Morningstar and Moon",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15043_3.png",
+                "main_stat": {
+                    "name": "CRIT Rate",
+                    "value": "31.1%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "18.1%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "65",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "7.8%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "18",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Scarlet Proof": 4,
+            "Aubade of Morningstar and Moon": 1
+        },
+        "weapon": {
+            "name": "Sacrificial Fragments",
+            "level": 70,
+            "refinement": 1,
+            "image": "https://enka.network/ui/UI_EquipIcon_Catalyst_Fossil.png",
+            "rarity": 4,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "347"
+                },
+                "Elemental Mastery": {
+                    "is_percentage": false,
+                    "formatted_value": "182"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 1091,
+                "name": "In Mist-Like Waters",
+                "icon": "https://enka.network/ui/UI_Talent_S_Mizuki_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1092,
+                "name": "Your Echo I Meet in Dreams",
+                "icon": "https://enka.network/ui/UI_Talent_S_Mizuki_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1093,
+                "name": "Till Dawn's Moon Ends Night",
+                "icon": "https://enka.network/ui/UI_Talent_U_Mizuki_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1094,
+                "name": "Buds Warm Lucid Springs",
+                "icon": "https://enka.network/ui/UI_Talent_S_Mizuki_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 1095,
+                "name": "As Setting Moon Brings Year's End",
+                "icon": "https://enka.network/ui/UI_Talent_U_Mizuki_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1096,
+                "name": "The Heart Lingers Long",
+                "icon": "https://enka.network/ui/UI_Talent_S_Mizuki_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 0,
+        "talents": [
+            {
+                "id": 11091,
+                "name": "Pure Heart, Pure Dreams",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_Catalyst_MD.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11092,
+                "name": "Aisa Utamakura Pilgrimage",
+                "level": 2,
+                "icon": "https://enka.network/ui/Skill_S_Mizuki_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11095,
+                "name": "Anraku Secret Spring Therapy",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_E_Mizuki_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Tighnari": {
+        "name": "Tighnari",
+        "level": 20,
+        "max_level": 90,
+        "ascension": 1,
+        "friendship_level": 1,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Tighnari.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Tighnari_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Tighnari.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Tighnari.png"
+        },
+        "element": "Grass",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Tighnari.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Tighnari_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "5.0%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "50.0%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "100.0%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "0",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "2,915",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "95",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "169",
+                "is_percentage": false
+            }
+        },
+        "artifact": [],
+        "arti_count": {},
+        "weapon": {
+            "name": "Hunter's Bow",
+            "level": 1,
+            "refinement": 1,
+            "image": "https://enka.network/ui/UI_EquipIcon_Bow_Hunters.png",
+            "rarity": 1,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "23"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 691,
+                "name": "Beginnings Determined at the Roots",
+                "icon": "https://enka.network/ui/UI_Talent_S_Tighnari_01.png",
+                "unlocked": true
+            },
+            {
+                "id": 692,
+                "name": "Origins Known From the Stem",
+                "icon": "https://enka.network/ui/UI_Talent_S_Tighnari_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 693,
+                "name": "Fortunes Read Amongst the Branches",
+                "icon": "https://enka.network/ui/UI_Talent_U_Tighnari_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 694,
+                "name": "Withering Glimpsed in the Leaves",
+                "icon": "https://enka.network/ui/UI_Talent_S_Tighnari_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 695,
+                "name": "Comprehension Amidst the Flowers",
+                "icon": "https://enka.network/ui/UI_Talent_U_Tighnari_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 696,
+                "name": "Karma Adjudged From the Leaden Fruit",
+                "icon": "https://enka.network/ui/UI_Talent_S_Tighnari_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 1,
+        "talents": [
+            {
+                "id": 10691,
+                "name": "Khanda Barrier-Buster",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_02.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 10692,
+                "name": "Vijnana-Phala Mine",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_S_Tighnari_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 10695,
+                "name": "Fashioner's Tanglevine Shaft",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_E_Tighnari_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Traveler": {
+        "name": "Traveler",
+        "level": 80,
+        "max_level": 90,
+        "ascension": 5,
+        "friendship_level": 1,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_PlayerBoy.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_PlayerBoy.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png"
+        },
+        "element": "Ice",
+        "rarity": 5,
+        "namecard": {
+            "icon": null,
+            "full": null
+        },
+        "costume": {
+            "id": 200501,
+            "data": {
+                "Art": "/ui/UI_Costume_PlayerBoyCostumeCWXR.png",
+                "Icon": "/ui/UI_AvatarIcon_PlayerBoyCostumeCWXR.png",
+                "SideIcon": "/ui/UI_AvatarIcon_Side_PlayerBoyCostumeCWXR.png"
+            },
+            "icon": null
+        },
+        "stats": {
+            "CRIT Rate": {
+                "value": "32.2%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "118.4%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "122.7%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "187",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "19,026",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "1,205",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "741",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Tenacity of the Millelith",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15017_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "4.5%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "27",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "10.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "8.7%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    }
+                ]
+            },
+            {
+                "name": "Tenacity of the Millelith",
+                "level": 0,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15017_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "47",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "19",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "4.7%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "6.5%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "21",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    }
+                ]
+            },
+            {
+                "name": "Tenacity of the Millelith",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15017_5.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "209",
+                        "is_percentage": false,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "42",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "11.7%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "10.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            },
+            {
+                "name": "Tenacity of the Millelith",
+                "level": 0,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15017_1.png",
+                "main_stat": {
+                    "name": "DEF",
+                    "value": "8.7%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "16",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "6.2%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "23",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    }
+                ]
+            },
+            {
+                "name": "Heart of the Furnace",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15048_3.png",
+                "main_stat": {
+                    "name": "CRIT DMG",
+                    "value": "62.2%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "9.3%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "51",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "209",
+                        "is_percentage": false,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "7.0%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Tenacity of the Millelith": 4,
+            "Heart of the Furnace": 1
+        },
+        "weapon": {
+            "name": "Emberwell",
+            "level": 80,
+            "refinement": 1,
+            "image": "https://enka.network/ui/UI_EquipIcon_Sword_GlintstoneSword.png",
+            "rarity": 4,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "449"
+                },
+                "Elemental Mastery": {
+                    "is_percentage": false,
+                    "formatted_value": "151"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 81,
+                "name": "Somber Freeze",
+                "icon": "https://enka.network/ui/UI_Talent_S_PlayerIce_01.png",
+                "unlocked": true
+            },
+            {
+                "id": 82,
+                "name": "Frostfall Reverberation",
+                "icon": "https://enka.network/ui/UI_Talent_S_PlayerIce_02.png",
+                "unlocked": true
+            },
+            {
+                "id": 83,
+                "name": "Glacial Shard",
+                "icon": "https://enka.network/ui/UI_Talent_U_PlayerIce_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 84,
+                "name": "Enduring Ice",
+                "icon": "https://enka.network/ui/UI_Talent_S_PlayerIce_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 85,
+                "name": "Bittercold Fog",
+                "icon": "https://enka.network/ui/UI_Talent_U_PlayerIce_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 86,
+                "name": "Brumal Grimfrost",
+                "icon": "https://enka.network/ui/UI_Talent_S_PlayerIce_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 2,
+        "talents": [
+            {
+                "id": 10127,
+                "name": "Ice Fog Piercer",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_E_PlayerIce_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 10128,
+                "name": "Frostbound Javelin",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_S_PlayerIce_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 100544,
+                "name": "Foreign Frostglint",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Odette": {
+        "name": "Odette",
+        "level": 80,
+        "max_level": 90,
+        "ascension": 5,
+        "friendship_level": 2,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Odette.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Odette_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Odette.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Odette.png"
+        },
+        "element": "Ice",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Odette.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Odette_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "62.4%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "215.6%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "128.5%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "86",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "16,501",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "2,494",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "878",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Heart of the Furnace",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15048_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "40",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "28.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "3.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "16",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    }
+                ]
+            },
+            {
+                "name": "Heart of the Furnace",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15048_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "19.0%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "11.7%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "12.4%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "7.8%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            },
+            {
+                "name": "Heart of the Furnace",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15048_5.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "13.2%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "16.8%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "269",
+                        "is_percentage": false,
+                        "name": "HP"
+                    }
+                ]
+            },
+            {
+                "name": "Heart of the Furnace",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15048_1.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "8.9%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "23",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "21.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "5.1%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    }
+                ]
+            },
+            {
+                "name": "Long Night's Oath",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15039_3.png",
+                "main_stat": {
+                    "name": "CRIT DMG",
+                    "value": "62.2%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "23",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "9.7%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "10.5%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "33",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Heart of the Furnace": 4,
+            "Long Night's Oath": 1
+        },
+        "weapon": {
+            "name": "Azurelight",
+            "level": 90,
+            "refinement": 1,
+            "image": "https://enka.network/ui/UI_EquipIcon_Sword_OuterSword.png",
+            "rarity": 5,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "674"
+                },
+                "CRIT Rate": {
+                    "is_percentage": true,
+                    "formatted_value": "22.1%"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 1501,
+                "name": "\"On This Danceless Morn, She Gazes at Her Reflection\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Odette_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1502,
+                "name": "\"I Must See the Snow Swan's Unseen Dream for Myself, She Thought\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Odette_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1503,
+                "name": "\"I'll Chase the Shouting Wind Along, Climbing Alone As I Go\"",
+                "icon": "https://enka.network/ui/UI_Talent_U_Odette_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 1504,
+                "name": "\"Up, Up the Long, Delirious, Burning Blue\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Odette_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 1505,
+                "name": "\"Oh! I Have Slipped the Surly Bonds of Earth\"",
+                "icon": "https://enka.network/ui/UI_Talent_U_Odette_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 1506,
+                "name": "\"Put Out My Hand, and Touched the Face of the Divine\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Odette_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 0,
+        "talents": [
+            {
+                "id": 11501,
+                "name": "Snow Swan Variation",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11502,
+                "name": "Adagio: Phantom Night Dancers",
+                "level": 5,
+                "icon": "https://enka.network/ui/Skill_S_Odette_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 11505,
+                "name": "Presto: Bluebird Finale",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_E_Odette_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Sucrose": {
+        "name": "Sucrose",
+        "level": 70,
+        "max_level": 90,
+        "ascension": 4,
+        "friendship_level": 2,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Sucrose.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Sucrose_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Sucrose.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Sucrose.png"
+        },
+        "element": "Wind",
+        "rarity": 4,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Sucrose.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Sucrose_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "20.9%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "107.8%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "116.8%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "587",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "14,302",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "582",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "566",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Viridescent Venerer",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15002_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "35",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "6.6%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "10.5%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "19.4%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    }
+                ]
+            },
+            {
+                "name": "Viridescent Venerer",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15002_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "40",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "3.5%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "16.8%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "8.7%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    }
+                ]
+            },
+            {
+                "name": "Viridescent Venerer",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15002_5.png",
+                "main_stat": {
+                    "name": "Elemental Mastery",
+                    "value": "187",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "5.4%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "16.3%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "16",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "14.6%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    }
+                ]
+            },
+            {
+                "name": "Finale of the Deep Galleries",
+                "level": 16,
+                "rarity": 4,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15040_1.png",
+                "main_stat": {
+                    "name": "Elemental Mastery",
+                    "value": "139",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "3.7%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "14",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "5.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "669",
+                        "is_percentage": false,
+                        "name": "HP"
+                    }
+                ]
+            },
+            {
+                "name": "Viridescent Venerer",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15002_3.png",
+                "main_stat": {
+                    "name": "Elemental Mastery",
+                    "value": "187",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "23",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "28.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "4.7%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Viridescent Venerer": 4,
+            "Finale of the Deep Galleries": 1
+        },
+        "weapon": {
+            "name": "Thrilling Tales of Dragon Slayers",
+            "level": 1,
+            "refinement": 5,
+            "image": "https://enka.network/ui/UI_EquipIcon_Catalyst_Pulpfic.png",
+            "rarity": 3,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "39"
+                },
+                "HP": {
+                    "is_percentage": true,
+                    "formatted_value": "7.7%"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 431,
+                "name": "Clustered Vacuum Field",
+                "icon": "https://enka.network/ui/UI_Talent_S_Sucrose_01.png",
+                "unlocked": true
+            },
+            {
+                "id": 432,
+                "name": "Beth: Unbound Form",
+                "icon": "https://enka.network/ui/UI_Talent_S_Sucrose_02.png",
+                "unlocked": true
+            },
+            {
+                "id": 433,
+                "name": "Flawless Alchemistress",
+                "icon": "https://enka.network/ui/UI_Talent_U_Sucrose_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 434,
+                "name": "Alchemania",
+                "icon": "https://enka.network/ui/UI_Talent_S_Sucrose_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 435,
+                "name": "Caution: Standard Flask",
+                "icon": "https://enka.network/ui/UI_Talent_U_Sucrose_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 436,
+                "name": "Chaotic Entropy",
+                "icon": "https://enka.network/ui/UI_Talent_S_Sucrose_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 2,
+        "talents": [
+            {
+                "id": 10431,
+                "name": "Wind Spirit Creation",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_Catalyst_MD.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 10432,
+                "name": "Astable Anemohypostasis Creation - 6308",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_S_Sucrose_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 10435,
+                "name": "Forbidden Creation - Isomer 75 / Type II",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_E_Sucrose_01.png",
+                "is_upgraded": false
+            }
+        ]
+    },
+    "Arlecchino": {
+        "name": "Arlecchino",
+        "level": 40,
+        "max_level": 90,
+        "ascension": 1,
+        "friendship_level": 1,
+        "custom_image": null,
+        "ranking": null,
+        "icon": {
+            "is_costume": false,
+            "side": "https://enka.network/ui/UI_AvatarIcon_Side_Arlecchino.png",
+            "circle": "https://enka.network/ui/UI_AvatarIcon_Arlecchino_Circle.png",
+            "gacha": "https://enka.network/ui/UI_Gacha_AvatarImg_Arlecchino.png",
+            "front": "https://enka.network/ui/UI_AvatarIcon_Arlecchino.png"
+        },
+        "element": "Fire",
+        "rarity": 5,
+        "namecard": {
+            "icon": "https://enka.network/ui/UI_NameCardIcon_Arlecchino.png",
+            "full": "https://enka.network/ui/UI_NameCardPic_Arlecchino_P.png"
+        },
+        "costume": null,
+        "stats": {
+            "CRIT Rate": {
+                "value": "38.1%",
+                "is_percentage": true
+            },
+            "CRIT DMG": {
+                "value": "173.6%",
+                "is_percentage": true
+            },
+            "Energy Recharge": {
+                "value": "124.6%",
+                "is_percentage": true
+            },
+            "Elemental Mastery": {
+                "value": "119",
+                "is_percentage": false
+            },
+            "Max HP": {
+                "value": "11,609",
+                "is_percentage": false
+            },
+            "ATK": {
+                "value": "751",
+                "is_percentage": false
+            },
+            "DEF": {
+                "value": "358",
+                "is_percentage": false
+            }
+        },
+        "artifact": [
+            {
+                "name": "Heart of the Furnace",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_BRACER",
+                "image": "https://enka.network/ui/UI_RelicIcon_15048_4.png",
+                "main_stat": {
+                    "name": "HP",
+                    "value": "4780",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "9.9%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "11.7%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "68",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "7.0%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    }
+                ]
+            },
+            {
+                "name": "Finale of the Deep Galleries",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_NECKLACE",
+                "image": "https://enka.network/ui/UI_RelicIcon_15040_2.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "311",
+                    "is_percentage": false
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "34.2%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "5.8%",
+                        "is_percentage": true,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "5.3%",
+                        "is_percentage": true,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "3.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            },
+            {
+                "name": "Heart of the Furnace",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_SHOES",
+                "image": "https://enka.network/ui/UI_RelicIcon_15048_5.png",
+                "main_stat": {
+                    "name": "ATK",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "508",
+                        "is_percentage": false,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "10.1%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    },
+                    {
+                        "formatted_value": "13.0%",
+                        "is_percentage": true,
+                        "name": "Energy Recharge"
+                    },
+                    {
+                        "formatted_value": "16",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    }
+                ]
+            },
+            {
+                "name": "Viridescent Venerer",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_RING",
+                "image": "https://enka.network/ui/UI_RelicIcon_15002_1.png",
+                "main_stat": {
+                    "name": "Pyro DMG Bonus",
+                    "value": "46.6%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "35",
+                        "is_percentage": false,
+                        "name": "Elemental Mastery"
+                    },
+                    {
+                        "formatted_value": "32",
+                        "is_percentage": false,
+                        "name": "DEF"
+                    },
+                    {
+                        "formatted_value": "20.2%",
+                        "is_percentage": true,
+                        "name": "CRIT DMG"
+                    },
+                    {
+                        "formatted_value": "3.9%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            },
+            {
+                "name": "Golden Troupe",
+                "level": 20,
+                "rarity": 5,
+                "type": "EQUIP_DRESS",
+                "image": "https://enka.network/ui/UI_RelicIcon_15032_3.png",
+                "main_stat": {
+                    "name": "CRIT DMG",
+                    "value": "62.2%",
+                    "is_percentage": true
+                },
+                "sub_stats": [
+                    {
+                        "formatted_value": "777",
+                        "is_percentage": false,
+                        "name": "HP"
+                    },
+                    {
+                        "formatted_value": "14",
+                        "is_percentage": false,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "9.9%",
+                        "is_percentage": true,
+                        "name": "ATK"
+                    },
+                    {
+                        "formatted_value": "7.0%",
+                        "is_percentage": true,
+                        "name": "CRIT Rate"
+                    }
+                ]
+            }
+        ],
+        "arti_count": {
+            "Heart of the Furnace": 2,
+            "Finale of the Deep Galleries": 1,
+            "Viridescent Venerer": 1,
+            "Golden Troupe": 1
+        },
+        "weapon": {
+            "name": "White Tassel",
+            "level": 20,
+            "refinement": 1,
+            "image": "https://enka.network/ui/UI_EquipIcon_Pole_Ruby.png",
+            "rarity": 3,
+            "stats": {
+                "Base ATK": {
+                    "is_percentage": false,
+                    "formatted_value": "94"
+                },
+                "CRIT Rate": {
+                    "is_percentage": true,
+                    "formatted_value": "9.0%"
+                }
+            }
+        },
+        "constellations": [
+            {
+                "id": 961,
+                "name": "\"All Reprisals and Arrears, Mine to Bear...\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Arlecchino_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 962,
+                "name": "\"All Rewards and Retribution, Mine to Bestow...\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Arlecchino_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 963,
+                "name": "\"You Shall Become a New Member of Our Family...\"",
+                "icon": "https://enka.network/ui/UI_Talent_U_Arlecchino_01.png",
+                "unlocked": false
+            },
+            {
+                "id": 964,
+                "name": "\"You Shall Love and Protect Each Other Henceforth...\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Arlecchino_03.png",
+                "unlocked": false
+            },
+            {
+                "id": 965,
+                "name": "\"For Alone, We Are as Good as Dead...\"",
+                "icon": "https://enka.network/ui/UI_Talent_U_Arlecchino_02.png",
+                "unlocked": false
+            },
+            {
+                "id": 966,
+                "name": "\"From This Day On, We Shall Delight in New Life Together.\"",
+                "icon": "https://enka.network/ui/UI_Talent_S_Arlecchino_04.png",
+                "unlocked": false
+            }
+        ],
+        "constellations_unlocked": 0,
+        "talents": [
+            {
+                "id": 10961,
+                "name": "Invitation to a Beheading",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_A_03.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 10962,
+                "name": "All Is Ash",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_S_Arlecchino_01.png",
+                "is_upgraded": false
+            },
+            {
+                "id": 10965,
+                "name": "Balemoon Rising",
+                "level": 1,
+                "icon": "https://enka.network/ui/Skill_E_Arlecchino_01.png",
+                "is_upgraded": false
+            }
+        ]
+    }
+}
