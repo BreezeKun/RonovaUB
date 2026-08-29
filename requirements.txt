@@ -13,4 +13,4 @@ pytz
 git+https://github.com/BreezeKun/enkard.git
 ytmusicapi
 yt_dlp
-pytgcalls
+py-tgcalls==2.3.3
