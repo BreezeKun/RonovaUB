@@ -42,7 +42,7 @@ async def generate_character_card(name: str):
             "Mavuika": "https://files.catbox.moe/fojcvc.jpg",
             "Escoffier": "https://files.catbox.moe/i29ary.jpg",
         },
-        akasha=True
+        akasha=False
     ).generate()
 
     # Save response_data to JSON
