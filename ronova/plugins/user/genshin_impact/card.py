@@ -166,7 +166,7 @@ async def myc_command(client: Client, message: Message):
             rank = ranking.get("rank%")
 
             if rank is not None:
-                caption += f"\nTop: {rank}"
+                caption += f"\nTop: {rank}%"
 
         await message.reply_photo(
             photo=file_path,
@@ -208,7 +208,7 @@ async def myc_command(client: Client, message: Message):
             rank = ranking.get("rank%")
 
             if rank is not None:
-                caption += f"\nTop: {rank}"
+                caption += f"\nTop: {rank}%"
 
         await status.delete()
 
