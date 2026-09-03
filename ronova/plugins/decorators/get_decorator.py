@@ -4,7 +4,7 @@ from ..shared import HELP_STORAGE
 def get_string(command:str):
     def decorator(func):
         if command in HELP_STORAGE.data:
-            HELP_STORAGE.data[command] += f"\n{func.__doc__}"
+            HELP_STORAGE.data[command] += f"{func.__doc__}"
         else:
             HELP_STORAGE.data.update({command:func.__doc__})
         @wraps(func)
