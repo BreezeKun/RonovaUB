@@ -41,12 +41,7 @@ async def inline_whis(c: Client, q: InlineQuery):
 
 
 @Client.on_callback_query(filters.regex(r"^whisper_(\d+)$"))
-@get_string("whisper")
 async def reveal_whisper(c: Client, cb: CallbackQuery):
-    """
-    another way (bot must be admin in group)
-    /whisper @targetUsername [message] -> u need to reply to that user with this
-    """
     target_id = int(cb.matches[0].group(1))
 
     if cb.from_user.id != target_id:
@@ -65,7 +60,11 @@ async def reveal_whisper(c: Client, cb: CallbackQuery):
     )
 
 @Client.on_message(filters.command("whisper") & filters.ephemeral)
+@get_string("whisper")
 async def send_whisper(c: Client, m: Message):
+  """another way (bot must be admin in group)
+  /whisper @targetUsername [message] -> u need to reply to that user with this
+  """
     if len(m.command) < 3:
         return await m.reply("Usage: /whisper @username message")
 
