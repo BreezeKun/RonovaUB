@@ -62,9 +62,9 @@ async def reveal_whisper(c: Client, cb: CallbackQuery):
 @Client.on_message(filters.command("whisper") & filters.ephemeral)
 @get_string("whisper")
 async def send_whisper(c: Client, m: Message):
-  """another way (bot must be admin in group)
-  /whisper @targetUsername [message] -> u need to reply to that user with this
-  """
+    """another way (bot must be admin in group)
+    /whisper @targetUsername [message] -> u need to reply to that user with this
+    """
     if len(m.command) < 3:
         return await m.reply("Usage: /whisper @username message")
 
