@@ -17,6 +17,7 @@ TMDB_KEY:str = os.getenv('tmdb_key','')
 GEMINI_KEY:str = os.getenv('gemini_key','')
 GROQ_KEY:str = os.getenv('groq_key','')
 POSTGRE_KEY:str = os.getenv('postgre_con_str','')
+GI_UID:int = int((os.getenv('gi_uid','0')))
 
 
 
