@@ -98,7 +98,7 @@ async def generate_card(name: str, data: dict):
     banner.save(
         file_path,
         "JPEG",
-        quality=70,
+        quality=55,
         optimize=True,
     )
 
@@ -117,7 +117,6 @@ async def show(c: Client, m: Message):
             query=" ".join(m.command[1:]).strip(),
             data=data,
         )
-        print(name)
 
         if not name:
             return
