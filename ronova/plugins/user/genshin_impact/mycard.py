@@ -106,10 +106,10 @@ async def generate_card(name: str, data: dict):
 
 
 @Client.on_message(
-    filters.command("show", prefixes=PREFIXES)
+    filters.command("myc", prefixes=PREFIXES)
     & filters.user(ADMIN_ID)
 )
-async def show(c: Client, m: Message):
+async def mychar(c: Client, m: Message):
     data = await fetch_data()
 
     if len(m.command) > 1:
