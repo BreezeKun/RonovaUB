@@ -71,14 +71,15 @@ async def generate_character_card(name: str):
         DOWNLOAD_DIR,
         f"{actual_name.lower()}.png",
     )
-
-    banner = await generationOne(
-        character_data,
-        adapt=False,
-        lvl="Level",
-        uid=str(UID),
-        hide_uid=False,
-    )
+    if character_data.get("custom_image"):
+        banner = await generationOne(
+            character_data,
+            adapt=True,
+        )
+    else:
+        banner = await generationOne(
+                character_data,
+            )
 
     banner.save(file_path)
 
