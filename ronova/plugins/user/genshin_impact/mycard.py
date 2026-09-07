@@ -3,13 +3,13 @@ import json
 from typing import Optional
 
 from pyrogram import Client, filters
-from pyrogram.types import Message
+from pyrogram.types import Message, ReplyParameters
 
 from enkard.enka import GenshinClient, gi
 from enkard.enkacard.encbanner import CreateBanner
 from enkard.enkacard.utils.create_banner_one import generationOne
 
-from config import ADMIN_ID, PREFIXES, GI_UID
+from config import ADMIN_ID, PREFIXES, GI_UID, BOT
 
 
 DOWNLOAD_DIR = "gidownloads"
@@ -176,3 +176,11 @@ async def mychar(c: Client, m: Message):
                     "Failed to generate the card.\n\n"
                     f"`{type(e).__name__}: {e}`"
                 )
+    else:
+        results = await c.get_inline_bot_results(bot=BOT, query = "mycard")
+        await c.send_inline_bot_result(
+                chat_id=m.chat.id,
+                query_id=results.query_id,
+                result_id=results.results[0].id,
+                reply_parameters=ReplyParameters(message_id=m.id)
+            )
