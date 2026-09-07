@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import ADMIN_ID, PREFIXES
-from . import pre_matching, fetch_data
+from ...utilities import pre_matching, fetch_data
 
 
 DOWNLOAD_DIR = "gidownloads"
