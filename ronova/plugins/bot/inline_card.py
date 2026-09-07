@@ -1,58 +1,83 @@
 import os
 
 from pyrogram import Client, filters
-from pyrogram.types import (InputRichMessage, InlineQuery,
-                            InlineQueryResultArticle, InputRichMessageContent,
-                            CallbackQuery, InputMediaPhoto,
-                            InlineKeyboardButton, InlineKeyboardMarkup)
+from pyrogram.types import (
+    InputRichMessage,
+    InlineQuery,
+    InlineQueryResultArticle,
+    InputRichMessageContent,
+    CallbackQuery,
+    InputMediaPhoto,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+)
 
 from ..utilities import fetch_data, generate_card
 from config import ADMIN_ID
 
+
 DOWNLOAD_DIR = "gidownloads"
 
-async def build_buttons(data:dict, user_id:int):
+
+async def build_buttons(data: dict, user_id: int):
     column = ""
     row = """<tg-button-row align="center">"""
     num = 0
+
     for name in data:
-        if num > 2:
+        if num >= 3:
             row += """</tg-button-row>"""
             column += row
             row = """<tg-button-row align="center">"""
             num = 0
-        row += f"""<tg-button type="callback_data" style="primary" data="mycard_{name}_{user_id}">{name}</tg-button>"""
+
+        row += (
+            f"""<tg-button type="callback_data" """
+            f"""style="primary" """
+            f"""data="mycard_{name}_{user_id}">{name}</tg-button>"""
+        )
+
         num += 1
-    if not column.endswith("""</tg-button-row>"""):
-        column += """</tg-button-row>"""
+
+    if num:
+        row += """</tg-button-row>"""
+        column += row
 
     return column
-        
 
 
 @Client.on_inline_query(filters.regex("mycard") & filters.user(ADMIN_ID))
-async def inline_card(c:Client, q:InlineQuery):
+async def inline_card(c: Client, q: InlineQuery):
     user_id = q.from_user.id
+
     data = await fetch_data()
-    button = await build_buttons(data,user_id)
+
+    if not data:
+        return
+
+    button = await build_buttons(data, user_id)
+
     await q.answer(
         [
             InlineQueryResultArticle(
-                title = "builds",
+                title="builds",
                 input_message_content=InputRichMessageContent(
                     InputRichMessage(
-                        html = button
+                        html=button
                     )
                 )
             )
         ]
-    ) 
+    )
+
 
 @Client.on_callback_query(filters.regex(r"^mycard_"))
 async def mycard_callback(c: Client, q: CallbackQuery):
     _, name, user_id = q.data.split("_", 2)
 
-    if q.from_user.id != int(user_id):
+    user_id = int(user_id)
+
+    if q.from_user.id != user_id:
         return await q.answer(
             "Nope",
             show_alert=True,
@@ -60,9 +85,7 @@ async def mycard_callback(c: Client, q: CallbackQuery):
 
     await q.answer()
 
-    await q.edit_message_text(
-        "Please wait..."
-    )
+    await q.edit_message_text("Please wait...")
 
     data = await fetch_data()
 
@@ -120,21 +143,36 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             f"Failed to generate the card: {type(e).__name__}: {e}"
         )
 
+
 @Client.on_callback_query(filters.regex(r"^mycardback_"))
 async def mycard_back(c: Client, q: CallbackQuery):
     _, user_id = q.data.split("_", 1)
 
-    if q.from_user.id != int(user_id):
+    user_id = int(user_id)
+
+    if q.from_user.id != user_id:
         return await q.answer(
             "Nope",
             show_alert=True,
         )
-    button = build_buttons(fetch_data(), user_id)
-    await q.edit_message_text(
-        rich_message=InputRichMessageContent(
-            InputRichMessage(
-                html= button
-            )
+
+    await q.answer()
+
+    data = await fetch_data()
+
+    if not data:
+        return await q.edit_message_text(
+            "Failed to fetch showcase data."
         )
+
+    button = await build_buttons(
+        data,
+        user_id,
     )
 
+    await c.edit_inline_text(
+        inline_message_id=q.inline_message_id,
+        rich_message=InputRichMessage(
+            html=button
+        ),
+    )
