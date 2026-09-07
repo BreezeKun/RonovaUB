@@ -10,6 +10,7 @@ from .afk_utils import refresh_data, format_time, extract_media, send
 from .find_target import get_target_id
 from .get_music import MUSIC_PLAYER
 from .voice import VOICE_PLAYER
+from .gi_utility import pre_matching, fetch_data, generate_card
 
 __all__ = ["paste",
            "eval_helper", "get_output",
@@ -17,4 +18,5 @@ __all__ = ["paste",
            "wiki_search","word_search", "session",
              "format_time", "extract_media", "send",
            "GetServices", 'get_target_id', 'refresh_data',
-           'MUSIC_PLAYER', 'VOICE_PLAYER']
+           'MUSIC_PLAYER', 'VOICE_PLAYER',
+           'pre_matching', 'fetch_data', 'generate_card']
