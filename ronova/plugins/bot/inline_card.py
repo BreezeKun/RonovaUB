@@ -58,14 +58,17 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             show_alert=True,
         )
 
-    await q.answer("Please wait...")
+    await q.answer()
+
+    await q.edit_message_text(
+        "Please wait..."
+    )
 
     data = await fetch_data()
 
     if not data:
-        return await q.answer(
-            "Failed to fetch showcase data.",
-            show_alert=True,
+        return await q.edit_message_text(
+            "Failed to fetch showcase data."
         )
 
     file_path = os.path.join(
@@ -91,9 +94,8 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             )
 
             if file_path is None:
-                return await q.answer(
-                    f"Character {name} was not found in the showcase.",
-                    show_alert=True,
+                return await q.edit_message_text(
+                    f"Character {name} was not found in the showcase."
                 )
 
         await q.edit_message_media(
@@ -114,8 +116,25 @@ async def mycard_callback(c: Client, q: CallbackQuery):
         )
 
     except Exception as e:
-        await q.answer(
-            f"Failed to generate the card: {type(e).__name__}: {e}",
+        await q.edit_message_text(
+            f"Failed to generate the card: {type(e).__name__}: {e}"
+        )
+
+@Client.on_callback_query(filters.regex(r"^mycardback_"))
+async def mycard_back(c: Client, q: CallbackQuery):
+    _, user_id = q.data.split("_", 1)
+
+    if q.from_user.id != int(user_id):
+        return await q.answer(
+            "Nope",
             show_alert=True,
         )
+    button = build_buttons(fetch_data(), user_id)
+    await q.edit_message_text(
+        rich_message=InputRichMessageContent(
+            InputRichMessage(
+                html= button
+            )
+        )
+    )
 
