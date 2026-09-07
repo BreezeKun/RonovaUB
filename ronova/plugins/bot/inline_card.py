@@ -1,11 +1,15 @@
+import os
+
 from pyrogram import Client, filters
 from pyrogram.types import (InputRichMessage, InlineQuery,
                             InlineQueryResultArticle, InputRichMessageContent,
-                            CallbackQuery)
+                            CallbackQuery, InputMediaPhoto,
+                            InlineKeyboardButton, InlineKeyboardMarkup)
 
-from ..utilities import fetch_data
-
+from ..utilities import fetch_data, generate_card
 from config import ADMIN_ID
+
+DOWNLOAD_DIR = "gidownloads"
 
 async def build_buttons(data:dict, user_id:int):
     column = ""
@@ -45,8 +49,73 @@ async def inline_card(c:Client, q:InlineQuery):
     ) 
 
 @Client.on_callback_query(filters.regex(r"^mycard_"))
-async def delete_eval(c: Client, q: CallbackQuery):
-    command, name, user_id = map(str, q.data.split("_"))
+async def mycard_callback(c: Client, q: CallbackQuery):
+    _, name, user_id = q.data.split("_", 2)
+
     if q.from_user.id != int(user_id):
-        return await q.answer("Nope", show_alert=True)
-    
+        return await q.answer(
+            "Nope",
+            show_alert=True,
+        )
+
+    await q.answer("Please wait...")
+
+    data = await fetch_data()
+
+    if not data:
+        return await q.answer(
+            "Failed to fetch showcase data.",
+            show_alert=True,
+        )
+
+    file_path = os.path.join(
+        DOWNLOAD_DIR,
+        f"{name}.jpg",
+    )
+
+    caption = name
+
+    ranking = data.get(name, {}).get("ranking")
+
+    if ranking:
+        rank = ranking.get("rank%")
+
+        if rank is not None:
+            caption += f"\nTop: {rank}%"
+
+    try:
+        if not os.path.exists(file_path):
+            file_path = await generate_card(
+                name=name,
+                data=data,
+            )
+
+            if file_path is None:
+                return await q.answer(
+                    f"Character {name} was not found in the showcase.",
+                    show_alert=True,
+                )
+
+        await q.edit_message_media(
+            media=InputMediaPhoto(
+                media=file_path,
+                caption=caption,
+            ),
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "Back",
+                            callback_data=f"mycardback_{user_id}",
+                        )
+                    ]
+                ]
+            ),
+        )
+
+    except Exception as e:
+        await q.answer(
+            f"Failed to generate the card: {type(e).__name__}: {e}",
+            show_alert=True,
+        )
+
