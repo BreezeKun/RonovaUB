@@ -116,7 +116,7 @@ async def mycard_callback(c: Client, q: CallbackQuery):
         rank = ranking.get("rank%")
 
         if rank is not None:
-            caption += f"\nTop: {rank}%"
+            caption += f"<br>Top: {rank}%"
 
     try:
         if not os.path.exists(file_path):
