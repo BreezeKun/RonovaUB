@@ -16,8 +16,14 @@ async def checkHealth(request):
 
 async def startServer() -> None:
     app = Application()
+
     app.router.add_get("/", checkHealth)
     app.router.add_get("/healthz", checkHealth)
+
+    app.router.add_static(
+        "/images/",
+        "gidownloads/"
+    )
 
     runner = AppRunner(app, access_log=None)
     await runner.setup()
