@@ -7,6 +7,7 @@ from config import ADMIN_ID, PREFIXES, BOT
 from ...utilities import fetch_data, pre_matching, generate_card
 
 DOWNLOAD_DIR = "gidownloads"
+IMAGE_BASE_URL = "https://ronovaub.onrender.com/images/"
 
 @Client.on_message(
     filters.command("myc", prefixes=PREFIXES)
@@ -69,8 +70,13 @@ async def mychar(c: Client, m: Message):
                     if rank is not None:
                         caption += f"\nTop: {rank}%"
 
+                image_url = (
+                    f"{IMAGE_BASE_URL}"
+                    f"{os.path.basename(file_path)}"
+                    )
+
                 await m.reply_photo(
-                    photo=file_path,
+                    photo=image_url,
                     caption=caption,
                 )
 
