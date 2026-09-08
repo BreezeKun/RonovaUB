@@ -140,7 +140,7 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             f'<tg-button-row align="center">'
             f'<tg-button '
             f'type="callback_data" '
-            f'style="primary" '
+            f'style="danger" '
             f'data="mycardback_{user_id}">'
             f"Back"
             f"</tg-button>"
