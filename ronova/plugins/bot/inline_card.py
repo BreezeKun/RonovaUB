@@ -7,9 +7,6 @@ from pyrogram.types import (
     InlineQueryResultArticle,
     InputRichMessageContent,
     CallbackQuery,
-    InputMediaPhoto,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
 )
 
 from ..utilities import fetch_data, generate_card
@@ -17,36 +14,45 @@ from config import ADMIN_ID
 
 
 DOWNLOAD_DIR = "gidownloads"
+CHAT_ID = -1003792991167
+
+IMAGE_BASE_URL = "https://ronovaub.onrender.com/images/"
 
 
 async def build_buttons(data: dict, user_id: int):
     column = ""
-    row = """<tg-button-row align="center">"""
+    row = '<tg-button-row align="center">'
     num = 0
 
     for name in data:
         if num >= 3:
-            row += """</tg-button-row>"""
+            row += "</tg-button-row>"
             column += row
-            row = """<tg-button-row align="center">"""
+
+            row = '<tg-button-row align="center">'
             num = 0
 
         row += (
-            f"""<tg-button type="callback_data" """
-            f"""style="primary" """
-            f"""data="mycard_{name}_{user_id}">{name}</tg-button>"""
+            '<tg-button '
+            'type="callback_data" '
+            'style="primary" '
+            f'data="mycard_{name}_{user_id}">'
+            f"{name}"
+            "</tg-button>"
         )
 
         num += 1
 
     if num:
-        row += """</tg-button-row>"""
+        row += "</tg-button-row>"
         column += row
 
     return column
 
 
-@Client.on_inline_query(filters.regex("mycard") & filters.user(ADMIN_ID))
+@Client.on_inline_query(
+    filters.regex("mycard") & filters.user(ADMIN_ID)
+)
 async def inline_card(c: Client, q: InlineQuery):
     user_id = q.from_user.id
 
@@ -55,17 +61,20 @@ async def inline_card(c: Client, q: InlineQuery):
     if not data:
         return
 
-    button = await build_buttons(data, user_id)
+    buttons = await build_buttons(
+        data,
+        user_id,
+    )
 
     await q.answer(
         [
             InlineQueryResultArticle(
-                title="builds",
+                title="Builds",
                 input_message_content=InputRichMessageContent(
                     InputRichMessage(
-                        html=button
+                        html=buttons
                     )
-                )
+                ),
             )
         ]
     )
@@ -121,26 +130,36 @@ async def mycard_callback(c: Client, q: CallbackQuery):
                     f"Character {name} was not found in the showcase."
                 )
 
-        await q.edit_message_media(
-            media=InputMediaPhoto(
-                media=file_path,
-                caption=caption,
-            ),
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            "Back",
-                            callback_data=f"mycardback_{user_id}",
-                        )
-                    ]
-                ]
-            ),
+        image_url = (
+            f"{IMAGE_BASE_URL}"
+            f"{os.path.basename(file_path)}"
+        )
+
+        html = (
+            f'<img src="{image_url}" />'
+            f'<tg-button-row align="center">'
+            f'<tg-button '
+            f'type="callback_data" '
+            f'style="primary" '
+            f'data="mycardback_{user_id}">'
+            f"Back"
+            f"</tg-button>"
+            f"</tg-button-row>"
+        )
+
+        print(image_url)
+
+        await q.edit_message_text(
+            rich_message=InputRichMessage(
+                html=html
+            )
         )
 
     except Exception as e:
+        print(e)
+
         await q.edit_message_text(
-            f"Failed to generate the card: {type(e).__name__}: {e}"
+            "Failed to generate the card."
         )
 
 
@@ -165,7 +184,7 @@ async def mycard_back(c: Client, q: CallbackQuery):
             "Failed to fetch showcase data."
         )
 
-    button = await build_buttons(
+    buttons = await build_buttons(
         data,
         user_id,
     )
@@ -173,6 +192,6 @@ async def mycard_back(c: Client, q: CallbackQuery):
     await c.edit_inline_text(
         inline_message_id=q.inline_message_id,
         rich_message=InputRichMessage(
-            html=button
+            html=buttons
         ),
     )
