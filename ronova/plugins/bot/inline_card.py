@@ -134,9 +134,9 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             f"{IMAGE_BASE_URL}"
             f"{os.path.basename(file_path)}"
         )
-
         html = (
             f'<img src="{image_url}" />'
+            f'<b>{caption}</b>'
             f'<tg-button-row align="center">'
             f'<tg-button '
             f'type="callback_data" '
@@ -147,7 +147,6 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             f"</tg-button-row>"
         )
 
-        print(image_url)
 
         await q.edit_message_text(
             rich_message=InputRichMessage(
