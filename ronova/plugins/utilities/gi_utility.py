@@ -96,7 +96,7 @@ async def generate_card(name: str, data: dict):
     banner.save(
         file_path,
         "JPEG",
-        quality=55,
+        quality=80,
         optimize=True,
     )
 
