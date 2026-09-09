@@ -27,7 +27,7 @@ async def build_buttons(data: dict, user_id: int):
     ln = max(map(len, data))
 
     for name in data:
-        if num >= 3:
+        if num >= 2:
             row += "</tg-button-row>"
             column += row
 
