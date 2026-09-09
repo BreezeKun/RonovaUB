@@ -46,6 +46,7 @@ async def build_buttons(data: dict, user_id: int):
     if num:
         row += "</tg-button-row>"
         column += row
+    column += """<tg-button-row align="center"><tg-button type="callback_data" style="danger" data="mycardbref_{user_id}"><b>ㅤㅤㅤㅤㅤㅤㅤㅤRefreshㅤㅤㅤㅤㅤㅤㅤㅤ</b>"</tg-button></tg-button-row>"""
 
     return column
 
@@ -194,3 +195,17 @@ async def mycard_back(c: Client, q: CallbackQuery):
             html=buttons
         ),
     )
+
+@Client.on_callback_query(filters.regex(r"^mycardback_"))
+async def mycard_back(c: Client, q: CallbackQuery):
+    _, user_id = q.data.split("_", 1)
+
+    user_id = int(user_id)
+
+    if q.from_user.id != user_id:
+        return await q.answer(
+            "Nope",
+            show_alert=True,
+        )
+    os.remove("gidownloads/")
+    await q.edit_message_text("data refreshed")
