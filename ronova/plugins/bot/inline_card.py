@@ -46,7 +46,7 @@ async def build_buttons(data: dict, user_id: int):
     if num:
         row += "</tg-button-row>"
         column += row
-    column += """<tg-button-row align="center"><tg-button type="callback_data" style="danger" data="mycardbref_{user_id}_None"><b>ㅤㅤㅤㅤㅤㅤㅤㅤRefreshㅤㅤㅤㅤㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
+    column += """<tg-button-row align="center"><tg-button type="callback_data" style="danger" data="mycardref_{user_id}_None"><b>ㅤㅤㅤㅤㅤㅤㅤㅤRefreshㅤㅤㅤㅤㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
 
     return column
 
@@ -145,7 +145,7 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             f'data="mycardback_{user_id}">'
             f"<b>ㅤㅤㅤㅤBackㅤㅤㅤㅤ</b>"
             f"</tg-button>"
-            f"""><tg-button type="callback_data" style="danger" data="mycardbref_{user_id}_{name}"><b>ㅤㅤㅤㅤRefreshㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
+            f"""><tg-button type="callback_data" style="danger" data="mycardref_{user_id}_{name}"><b>ㅤㅤㅤㅤRefreshㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
         )
 
 
