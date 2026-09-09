@@ -46,7 +46,7 @@ async def build_buttons(data: dict, user_id: int):
     if num:
         row += "</tg-button-row>"
         column += row
-    column += """<tg-button-row align="center"><tg-button type="callback_data" style="danger" data="mycardbref_{user_id}"><b>ㅤㅤㅤㅤㅤㅤㅤㅤRefreshㅤㅤㅤㅤㅤㅤㅤㅤ</b>"</tg-button></tg-button-row>"""
+    column += """<tg-button-row align="center"><tg-button type="callback_data" style="danger" data="mycardbref_{user_id}_None"><b>ㅤㅤㅤㅤㅤㅤㅤㅤRefreshㅤㅤㅤㅤㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
 
     return column
 
@@ -143,9 +143,10 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             f'type="callback_data" '
             f'style="danger" '
             f'data="mycardback_{user_id}">'
-            f"<b>ㅤㅤㅤㅤㅤㅤㅤㅤBackㅤㅤㅤㅤㅤㅤㅤㅤ</b>"
+            f"<b>ㅤㅤㅤㅤBackㅤㅤㅤㅤ</b>"
             f"</tg-button>"
             f"</tg-button-row>"
+            f"""<tg-button-row align="center"><tg-button type="callback_data" style="danger" data="mycardbref_{user_id}_{name}"><b>ㅤㅤㅤㅤRefreshㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
         )
 
 
@@ -195,10 +196,10 @@ async def mycard_back(c: Client, q: CallbackQuery):
             html=buttons
         ),
     )
-
-@Client.on_callback_query(filters.regex(r"^mycardback_"))
+RESPONSE_FILE = os.path.join(DOWNLOAD_DIR, "response_data.json")
+@Client.on_callback_query(filters.regex(r"^mycardref_"))
 async def mycard_back(c: Client, q: CallbackQuery):
-    _, user_id = q.data.split("_", 1)
+    _, user_id, char = q.data.split("_", 1)
 
     user_id = int(user_id)
 
@@ -207,5 +208,18 @@ async def mycard_back(c: Client, q: CallbackQuery):
             "Nope",
             show_alert=True,
         )
-    os.remove("gidownloads/")
+    if char == "None":
+        os.remove(DOWNLOAD_DIR)
+    else:
+        for extension in (".jpg", ".jpeg", ".png"):
+                file_path = os.path.join(
+                    DOWNLOAD_DIR,
+                    f"{char}{extension}",
+                )
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+        
+        if os.path.isfile(RESPONSE_FILE):
+            os.remove(RESPONSE_FILE)
+
     await q.edit_message_text("data refreshed")
