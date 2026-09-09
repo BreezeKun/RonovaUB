@@ -24,7 +24,7 @@ async def build_buttons(data: dict, user_id: int):
     row = '<tg-button-row align="center">'
     num = 0
 
-    ln = max(map(len, data))
+    ln = max(map(lambda x: len(x.split()[0]), data))
 
     for name in data:
         if num >= 2:
@@ -34,14 +34,15 @@ async def build_buttons(data: dict, user_id: int):
             row = '<tg-button-row align="center">'
             num = 0
 
-        pad = (ln - len(name)) // 2
+        word = name.split()[0]
+        pad = (ln - len(word)) // 2
 
         row += (
             '<tg-button '
             'type="callback_data" '
             'style="primary" '
             f'data="mycard_{name}_{user_id}">'
-            f"{"ㅤ" * pad + name + "ㅤ" * pad}"
+            f"{"ㅤ" * pad + word + "ㅤ" * pad}"
             "</tg-button>"
         )
 
