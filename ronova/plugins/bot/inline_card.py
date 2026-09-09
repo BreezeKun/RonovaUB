@@ -46,7 +46,7 @@ async def build_buttons(data: dict, user_id: int):
     if num:
         row += "</tg-button-row>"
         column += row
-    column += """<tg-button-row align="center"><tg-button type="callback_data" style="danger" data="mycardref_{user_id}_None"><b>ㅤㅤㅤㅤㅤㅤㅤㅤRefreshㅤㅤㅤㅤㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
+    column += f"""<tg-button-row align="center"><tg-button type="callback_data" style="danger" data="mycardref_{user_id}_None"><b>ㅤㅤㅤㅤㅤㅤㅤㅤRefreshㅤㅤㅤㅤㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
 
     return column
 
@@ -196,9 +196,11 @@ async def mycard_back(c: Client, q: CallbackQuery):
         ),
     )
 RESPONSE_FILE = os.path.join(DOWNLOAD_DIR, "response_data.json")
+
+
 @Client.on_callback_query(filters.regex(r"^mycardref_"))
 async def mycard_back(c: Client, q: CallbackQuery):
-    _, user_id, char = q.data.split("_", 1)
+    _, user_id, char = q.data.split("_", 2)
 
     user_id = int(user_id)
 
@@ -207,18 +209,27 @@ async def mycard_back(c: Client, q: CallbackQuery):
             "Nope",
             show_alert=True,
         )
+
     if char == "None":
-        os.remove(DOWNLOAD_DIR)
+        if os.path.isdir(DOWNLOAD_DIR):
+            for filename in os.listdir(DOWNLOAD_DIR):
+                file_path = os.path.join(DOWNLOAD_DIR, filename)
+
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+
     else:
         for extension in (".jpg", ".jpeg", ".png"):
-                file_path = os.path.join(
-                    DOWNLOAD_DIR,
-                    f"{char}{extension}",
-                )
-        if os.path.isfile(file_path):
-            os.remove(file_path)
-        
+            file_path = os.path.join(
+                DOWNLOAD_DIR,
+                f"{char}{extension}",
+            )
+
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+
         if os.path.isfile(RESPONSE_FILE):
             os.remove(RESPONSE_FILE)
 
-    await q.edit_message_text("data refreshed")
+    await q.answer("Data refreshed")
+    await q.edit_message_text("Data refreshed")
