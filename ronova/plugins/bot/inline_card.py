@@ -19,7 +19,7 @@ CHAT_ID = -1003792991167
 IMAGE_BASE_URL = "https://ronovaub.onrender.com/images/"
 
 
-async def build_buttons(data: dict, user_id: int):
+async def build_buttons(data: dict, user_id: int) -> str:
     column = ""
     row = '<tg-button-row align="center">'
     num = 0
@@ -144,13 +144,8 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             f'<img src="{image_url}" />'
             f'<b>{caption}</b>'
             f'<tg-button-row align="center">'
-            f'<tg-button '
-            f'type="callback_data" '
-            f'style="danger" '
-            f'data="mycardback_{user_id}">'
-            f"<b>ㅤㅤㅤㅤBackㅤㅤㅤㅤ</b>"
-            f"</tg-button>"
-            f"""><tg-button type="callback_data" style="danger" data="mycardref_{user_id}_{name}"><b>ㅤㅤㅤㅤRefreshㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
+            f'<tg-button type="callback_data" style="danger" data="mycardback_{user_id}"><b>ㅤㅤㅤㅤBackㅤㅤㅤㅤ</b></tg-button>'
+            f"""<tg-button type="callback_data" style="danger" data="mycardref_{user_id}_{name}"><b>ㅤㅤㅤㅤRefreshㅤㅤㅤㅤ</b></tg-button></tg-button-row>"""
         )
 
 
@@ -171,7 +166,7 @@ async def mycard_callback(c: Client, q: CallbackQuery):
 @Client.on_callback_query(filters.regex(r"^mycardback_"))
 async def mycard_back(c: Client, q: CallbackQuery):
     _, user_id = q.data.split("_", 1)
-
+    print("received")
     user_id = int(user_id)
 
     if q.from_user.id != user_id:
@@ -179,8 +174,6 @@ async def mycard_back(c: Client, q: CallbackQuery):
             "Nope",
             show_alert=True,
         )
-
-    await q.answer()
 
     data = await fetch_data()
 
@@ -203,7 +196,7 @@ RESPONSE_FILE = os.path.join(DOWNLOAD_DIR, "response_data.json")
 
 
 @Client.on_callback_query(filters.regex(r"^mycardref_"))
-async def mycard_back(c: Client, q: CallbackQuery):
+async def mycard_ref(c: Client, q: CallbackQuery):
     _, user_id, char = q.data.split("_", 2)
 
     user_id = int(user_id)
