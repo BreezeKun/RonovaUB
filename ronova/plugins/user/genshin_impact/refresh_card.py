@@ -5,6 +5,7 @@ from pyrogram.types import Message
 
 from config import ADMIN_ID, PREFIXES
 from ...utilities import pre_matching, fetch_data
+from ...decorators import get_decorator
 
 
 DOWNLOAD_DIR = "gidownloads"
@@ -16,8 +17,12 @@ os.makedirs(DOWNLOAD_DIR, exist_ok=True)
     filters.command("girefresh", prefixes=PREFIXES)
     & filters.user(ADMIN_ID)
 )
+@get_decorator("girefresh")
 async def girefresh_command(client: Client, message: Message):
-
+    """usage:
+    .girefresh [character name]
+    refreshes build card
+    """
     if len(message.command) < 2:
         return
     
