@@ -6,7 +6,6 @@ import uvloop
 
 uvloop.install()
 
-# Python 3.14 compatibility for Pyrogram
 try:
     asyncio.get_event_loop()
 except RuntimeError:
