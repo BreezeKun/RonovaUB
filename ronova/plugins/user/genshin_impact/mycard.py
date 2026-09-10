@@ -5,7 +5,7 @@ from pyrogram.types import Message, ReplyParameters
 
 from config import ADMIN_ID, PREFIXES, BOT
 from ...utilities import fetch_data, pre_matching, generate_card
-from ...decorators import get_decorator
+from ...decorators import get_string
 
 DOWNLOAD_DIR = "gidownloads"
 IMAGE_BASE_URL = "https://ronovaub.onrender.com/images/"
@@ -14,7 +14,7 @@ IMAGE_BASE_URL = "https://ronovaub.onrender.com/images/"
     filters.command("myc", prefixes=PREFIXES)
     & filters.user(ADMIN_ID)
 )
-@get_decorator("myc")
+@get_string("myc")
 async def mychar(c: Client, m: Message):
     """Useage:
     .myc [character name] or only .myc
