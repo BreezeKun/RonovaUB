@@ -194,12 +194,11 @@ async def mycard_back(c: Client, q: CallbackQuery):
         user_id,
     )
 
-    await c.edit_inline_text(
-        inline_message_id=q.inline_message_id,
-        rich_message=InputRichMessage(
-            html=buttons
-        ),
-    )
+    await q.edit_message_text(
+            rich_message=InputRichMessage(
+                html=buttons
+            )
+        )
 RESPONSE_FILE = os.path.join(DOWNLOAD_DIR, "response_data.json")
 
 
