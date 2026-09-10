@@ -5,6 +5,7 @@ from pyrogram.types import Message, ReplyParameters
 
 from config import ADMIN_ID, PREFIXES, BOT
 from ...utilities import fetch_data, pre_matching, generate_card
+from ...decorators import get_decorator
 
 DOWNLOAD_DIR = "gidownloads"
 IMAGE_BASE_URL = "https://ronovaub.onrender.com/images/"
@@ -13,7 +14,12 @@ IMAGE_BASE_URL = "https://ronovaub.onrender.com/images/"
     filters.command("myc", prefixes=PREFIXES)
     & filters.user(ADMIN_ID)
 )
+@get_decorator("myc")
 async def mychar(c: Client, m: Message):
+    """Useage:
+    .myc [character name] or only .myc
+    to generate build card for genshin characters
+    """
     data = await fetch_data()
 
     if len(m.command) > 1:
