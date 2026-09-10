@@ -1,3 +1,3 @@
-from .mycard import fetch_data, pre_matching
+from . import mycard, refresh_card
 
-__all__ = ["fetch_data", "pre_matching"]
+__all__:list['str'] = ['mycard', 'refresh_card']
