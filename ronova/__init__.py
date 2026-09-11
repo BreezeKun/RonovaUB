@@ -13,7 +13,11 @@ except RuntimeError:
 
 
 from pyrogram import Client
-from config import API_HASH, API_ID, SESSION_STRING, BOT_TOKEN
+from config import (
+    API_HASH_C1, API_ID_C1, SESSION_STRING_C1,
+    API_HASH_C2, API_ID_C2, SESSION_STRING_C2,
+    BOT_TOKEN
+    )
 
 
 FORMAT = "[UB]:%(message)s"
@@ -30,16 +34,23 @@ logging.basicConfig(
 
 ub = Client(
     "ub",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    session_string=SESSION_STRING,
+    api_id=API_ID_C1,
+    api_hash=API_HASH_C1,
+    session_string=SESSION_STRING_C1,
     plugins=dict(root="ronova.plugins.user")
+)
+
+ub_helper = Client(
+    "ub_helper",
+    api_id=API_ID_C2,
+    api_hash=API_HASH_C2,
+    session_string=SESSION_STRING_C2,
 )
 
 bot = Client(
     "app",
-    api_id=API_ID,
-    api_hash=API_HASH,
+    api_id=API_ID_C1,
+    api_hash=API_HASH_C1,
     bot_token=BOT_TOKEN,
     plugins=dict(root="ronova.plugins.bot")
 )
