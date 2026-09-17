@@ -10,7 +10,7 @@ from config import ADMIN_ID
 from ..utilities import eval_helper
 from ..decorators import get_string
 
-@Client.on_inline_query(filters.regex("(@\\w+) (.+)") & filters.user(ADMIN_ID))
+@Client.on_inline_query(filters.regex("(@\\w+) (.+)"))
 @get_string("whisper")
 async def inline_whis(c: Client, q: InlineQuery):
     """
