@@ -107,6 +107,24 @@ async def guest_xox(c: Client, m: Message):
         )
     )
 
+@Client.on_message(filters.command("xox"))
+async def xox_game(c:Client, m:Message):
+    if len(m.command) > 1:
+                return
+    
+    user = m.from_user.id
+    target = m.reply_to_message.from_user.id
+
+    keyboard = InlineKeyboardMarkup([[
+            InlineKeyboardButton("accept", callback_data=f"accept_{user}_{target}", style=ButtonStyle.SUCCESS),
+            InlineKeyboardButton("refuse", callback_data=f"refuse_{user}_{target}", style=ButtonStyle.DANGER)
+        ]])
+    
+    await m.reply(
+        text= "Game request",
+        reply_markup=keyboard
+        )
+
 
 @Client.on_inline_query(filters.regex("^xox_"))
 async def inline_xox(c: Client, q: InlineQuery):
