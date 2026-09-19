@@ -90,7 +90,7 @@ async def start_message(c: Client, m: Message):
 
     await c.send_rich_message(
         chat_id=chat_id,
-        rich_message=InputRichMessage(rich_text),
+        rich_message=InputRichMessage(html= rich_text),
         reply_parameters=ReplyParameters(message_id=m.id),
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("Repo", url="https://github.com/BreezeKun/RonovaUB", style=ButtonStyle.PRIMARY)]
@@ -106,7 +106,7 @@ async def start_inline(c: Client, q: InlineQuery):
         InlineQueryResultArticle(
             title="start rich",
             input_message_content=InputRichMessageContent(
-                InputRichMessage(rich_text)
+                InputRichMessage(html= rich_text)
             ),
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("Repo", url="https://github.com/BreezeKun/RonovaUB", style=ButtonStyle.PRIMARY)]
@@ -128,7 +128,7 @@ async def start_guest(c: Client, m: Message):
         result=InlineQueryResultArticle(
             title="start rich",
             input_message_content=InputRichMessageContent(
-                InputRichMessage(rich_text)
+                InputRichMessage(html= rich_text)
             ),
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("Repo", url="https://github.com/BreezeKun/RonovaUB", style=ButtonStyle.PRIMARY)]
