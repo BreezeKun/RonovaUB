@@ -187,8 +187,7 @@ async def decision(c: Client, cq: CallbackQuery):
 
         keyboard = gen_keyboard(game_data, user, target, game_id)
 
-        await c.edit_inline_text(
-            inline_message_id=cq.inline_message_id,
+        await cq.edit_message_text(
             text=f"Game started\n\nX: {user_name}\nO: {target_name}\n\nTurn: {turn_name}",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
@@ -222,16 +221,14 @@ async def mechanics(c: Client, cq: CallbackQuery):
         game_data.status = False
         winner_name = user_name if winner == "x" else target_name
         XoxData.rem_game(game_id)
-        return await c.edit_inline_text(
-            inline_message_id=cq.inline_message_id,
+        return await cq.edit_message_text(
             text=f"Winner: {winner_name} ({winner.upper()})"
         )
 
     if all(cell != " " for row in game_data.board for cell in row):
         game_data.status = False
         XoxData.rem_game(game_id)
-        return await c.edit_inline_text(
-            inline_message_id=cq.inline_message_id,
+        return await cq.edit_message_text(
             text="Game ended in a draw"
         )
 
@@ -240,8 +237,7 @@ async def mechanics(c: Client, cq: CallbackQuery):
 
     keyboard = gen_keyboard(game_data, user, target, game_id)
 
-    await c.edit_inline_text(
-        inline_message_id=cq.inline_message_id,
+    await cq.edit_message_text(
         text=f"X: {user_name}\nO: {target_name}\n\nTurn: {turn_name}",
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
