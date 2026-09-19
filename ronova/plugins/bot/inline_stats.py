@@ -55,7 +55,7 @@ Bot is running smoothly with optimized performance.
         InlineQueryResultArticle(
             title="📊 Open Dashboard",
             input_message_content=InputRichMessageContent(
-                InputRichMessage(rich_text)
+                InputRichMessage(html= rich_text)
             )
         )
     ], cache_time=0)
