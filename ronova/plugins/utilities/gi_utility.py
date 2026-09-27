@@ -19,6 +19,7 @@ custom_image = {
     "Mavuika": "https://files.catbox.moe/fojcvc.jpg",
     "Escoffier": "https://files.catbox.moe/i29ary.jpg",
     "Arlecchino": "https://files.catbox.moe/vlid2p.jpg",
+    "Varesa":"https://files.catbox.moe/dhtksg.jpg",
 }
 
 
