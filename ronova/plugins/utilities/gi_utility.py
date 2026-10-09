@@ -1,5 +1,6 @@
 import os
 import json
+import uuid
 
 from enkard.enka import GenshinClient, gi
 from enkard.enkacard.encbanner import CreateBanner
@@ -77,9 +78,11 @@ async def generate_card(name: str, data: dict):
 
     character_data = data[name]
 
+    random_id = uuid.uuid4().hex[:8]
+
     file_path = os.path.join(
         DOWNLOAD_DIR,
-        f"{name}.jpg",
+        f"{name}_{random_id}.jpg",
     )
 
     if character_data.get("custom_image"):
