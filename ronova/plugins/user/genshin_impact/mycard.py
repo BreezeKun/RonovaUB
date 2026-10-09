@@ -1,4 +1,5 @@
 import os
+import glob
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
@@ -31,12 +32,16 @@ async def mychar(c: Client, m: Message):
         if not name:
             return
 
-        file_path = os.path.join(
-            DOWNLOAD_DIR,
-            f"{name}.jpg",
+        matches = glob.glob(
+            os.path.join(
+                DOWNLOAD_DIR,
+                f"{glob.escape(name)}_*.jpg",
+            )
         )
 
-        if os.path.exists(file_path) and data:
+        file_path = max(matches, key=os.path.getmtime) if matches else None
+
+        if file_path and data:
             caption = name
 
             ranking = data.get(name, {}).get("ranking")
