@@ -6,8 +6,6 @@ from enkard.enka import GenshinClient, gi
 from enkard.enkacard.encbanner import CreateBanner
 from enkard.enkacard.utils.create_banner_one import generationOne
 
-from config import GI_UID
-
 
 DOWNLOAD_DIR = "gidownloads"
 RESPONSE_FILE = os.path.join(DOWNLOAD_DIR, "response_data.json")
@@ -39,6 +37,7 @@ def pre_matching(query: str, data: dict):
 
 
 async def fetch_data():
+    from config import GI_UID
     if os.path.isfile(RESPONSE_FILE):
         try:
             with open(RESPONSE_FILE, "r", encoding="utf-8") as f:
