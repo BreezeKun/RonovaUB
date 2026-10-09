@@ -1,4 +1,5 @@
 import os
+import glob
 
 from pyrogram import Client, filters
 from pyrogram.types import (
@@ -109,10 +110,14 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             "Failed to fetch showcase data."
         )
 
-    file_path = os.path.join(
-        DOWNLOAD_DIR,
-        f"{name}.jpg",
+    matches = glob.glob(
+        os.path.join(
+            DOWNLOAD_DIR,
+            f"{glob.escape(name)}_*.jpg",
+        )
     )
+
+    file_path = max(matches, key=os.path.getmtime) if matches else None
 
     caption = name
 
@@ -125,7 +130,7 @@ async def mycard_callback(c: Client, q: CallbackQuery):
             caption += f"<br>Top: {rank}%"
 
     try:
-        if not os.path.exists(file_path):
+        if not file_path:
             file_path = await generate_card(
                 name=name,
                 data=data,
@@ -217,13 +222,14 @@ async def mycard_ref(c: Client, q: CallbackQuery):
 
     else:
         for extension in (".jpg", ".jpeg", ".png"):
-            file_path = os.path.join(
-                DOWNLOAD_DIR,
-                f"{char}{extension}",
-            )
-
-            if os.path.isfile(file_path):
-                os.remove(file_path)
+            for file_path in glob.glob(
+                os.path.join(
+                    DOWNLOAD_DIR,
+                    f"{glob.escape(char)}_*{extension}",
+                )
+            ):
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
 
         if os.path.isfile(RESPONSE_FILE):
             os.remove(RESPONSE_FILE)
