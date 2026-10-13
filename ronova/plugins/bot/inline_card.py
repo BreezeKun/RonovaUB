@@ -83,7 +83,7 @@ async def inline_card(c: Client, q: InlineQuery):
                     )
                 ),
             )
-        ]
+        ],cache_time=0
     )
 
 
