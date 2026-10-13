@@ -9,8 +9,9 @@ from pyrogram.types import (
     InlineKeyboardButton,
     CallbackQuery
 )
+from config import ADMIN_ID
 
-@Client.on_inline_query(filters.regex(r"^setuid_"))
+@Client.on_inline_query(filters.regex(r"^setuid_") & filters.user(ADMIN_ID))
 async def inline_setuid(c: Client, q: InlineQuery):
     data = q.query.split("_", 1)
     saved = ast.literal_eval(data[1])
@@ -39,7 +40,7 @@ async def inline_setuid(c: Client, q: InlineQuery):
     await q.answer([result], cache_time=0)
 
 
-@Client.on_callback_query(filters.regex(r"^switchuid_(\d+)$"))
+@Client.on_callback_query(filters.regex(r"^switchuid_(\d+)$") & filters.user(ADMIN_ID))
 async def switch_uid(c: Client, q: CallbackQuery):
     global current_uid
 
