@@ -6,6 +6,8 @@ from enkard.enka import GenshinClient, gi
 from enkard.enkacard.encbanner import CreateBanner
 from enkard.enkacard.utils.create_banner_one import generationOne
 
+from ..user.genshin_impact import set_uid
+
 
 DOWNLOAD_DIR = "gidownloads"
 RESPONSE_FILE = os.path.join(DOWNLOAD_DIR, "response_data.json")
@@ -48,7 +50,7 @@ async def fetch_data():
 
     try:
         async with GenshinClient(gi.Language.ENGLISH) as api:
-            response = await api.fetch_showcase(GI_UID)
+            response = await api.fetch_showcase(set_uid.current_uid)
             data = response.model_dump()
 
         response_data = CreateBanner(
