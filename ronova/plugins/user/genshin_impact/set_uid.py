@@ -1,11 +1,11 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
 
-from config import PREFIXES, BOT
+from config import PREFIXES, BOT, ADMIN_ID
 
 saved_uid = [1817389136, 1816134291]
 current_uid = 1817389136
-@Client.on_message(filters.command("setuid",prefixes=PREFIXES))
+@Client.on_message(filters.command("setuid",prefixes=PREFIXES) & filters.user(ADMIN_ID))
 async def setuid(c:Client, m:Message):
     global current_uid
     if len(m.command) > 1:
