@@ -1,4 +1,5 @@
 import ast
+import os
 
 from pyrogram import Client, filters
 from pyrogram.types import (
@@ -51,3 +52,4 @@ async def switch_uid(c: Client, q: CallbackQuery):
     await q.edit_message_text(
         f"Current UID: `{set_uid.current_uid}`"
     )
+    os.remove("gidownloads")
