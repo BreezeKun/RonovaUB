@@ -42,12 +42,12 @@ async def inline_setuid(c: Client, q: InlineQuery):
 
 @Client.on_callback_query(filters.regex(r"^switchuid_(\d+)$") & filters.user(ADMIN_ID))
 async def switch_uid(c: Client, q: CallbackQuery):
-    global current_uid
+    from ..user.genshin_impact import set_uid
 
     uid = int(q.matches[0].group(1))
-    current_uid = uid
+    set_uid.current_uid = uid
 
-    await q.answer(f"Current UID set to {current_uid}")
+    await q.answer(f"Current UID set to {set_uid.current_uid}")
     await q.edit_message_text(
-        f"Current UID: `{current_uid}`"
+        f"Current UID: `{set_uid.current_uid}`"
     )
