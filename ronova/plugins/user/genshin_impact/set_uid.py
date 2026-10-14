@@ -1,3 +1,5 @@
+import os
+
 from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
 
@@ -11,7 +13,8 @@ async def setuid(c: Client, m: Message):
 
     if len(m.command) > 1:
         current_uid = int(" ".join(m.command[1:]).strip())
-        return await m.reply(f"set current_uid to: {current_uid}")
+        os.remove("gidownloads")
+        return await m.reply(f"set current_uid to: {current_uid}") 
 
     else:
         other_ids = [uid for uid in saved_uid if uid != current_uid]
