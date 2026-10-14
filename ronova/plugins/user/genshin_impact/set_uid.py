@@ -14,7 +14,13 @@ async def setuid(c: Client, m: Message):
     if len(m.command) > 1:
         current_uid = int(" ".join(m.command[1:]).strip())
         saved_uid.append(current_uid)
-        os.remove("gidownloads")
+        DOWNLOAD_DIR = "gidownloads"
+        if os.path.isdir(DOWNLOAD_DIR):
+            for filename in os.listdir(DOWNLOAD_DIR):
+                file_path = os.path.join(DOWNLOAD_DIR, filename)
+            
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
         return await m.reply(f"set current_uid to: {current_uid}") 
 
     else:
