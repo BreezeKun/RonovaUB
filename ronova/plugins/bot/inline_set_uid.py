@@ -52,4 +52,10 @@ async def switch_uid(c: Client, q: CallbackQuery):
     await q.edit_message_text(
         f"Current UID: `{set_uid.current_uid}`"
     )
-    os.remove("gidownloads")
+    DOWNLOAD_DIR = "gidownloads"
+    if os.path.isdir(DOWNLOAD_DIR):
+        for filename in os.listdir(DOWNLOAD_DIR):
+            file_path = os.path.join(DOWNLOAD_DIR, filename)
+    
+            if os.path.isfile(file_path):
+                os.remove(file_path)
