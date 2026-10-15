@@ -108,4 +108,3 @@ Set the following environment variables in your `.env` file:
 
 ---
 
-fir it
