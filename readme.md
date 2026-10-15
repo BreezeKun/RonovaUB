@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Repo isnt maintained cause i am busy with life looking for prs </h1>h1
+<h1>Repo isnt maintained cause i am busy with life looking for prs </h1>
 ![Ronova UB Poster](https://i.ibb.co/RTzpvx9Z/x.jpg)
 
 # Ronova
