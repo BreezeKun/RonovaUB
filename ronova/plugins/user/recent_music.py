@@ -9,7 +9,6 @@ async def fetch_recent(m: Message):
     url = "https://www.last.fm/user/BreezeMeowMeow"
 
     response = curl_cffi.get(url, impersonate="chrome")
-    response.raise_for_status()
 
     with open("website.html.txt", "w", encoding="utf-8") as file:
         file.write(response.text)
@@ -17,10 +16,10 @@ async def fetch_recent(m: Message):
     with open("website.html.txt", "r", encoding="utf-8") as file:
         lines = file.readlines()
 
-    yt_url = re.findall(r'"([^"]*)"', lines[1758])[0]
-    name = re.findall(r'"([^"]*)"', lines[1760])[0]
-    artist = re.findall(r'"([^"]*)"', lines[1763])[0]
-    image = re.findall(r'"([^"]*)"', lines[1806])[0]
+    yt_url = re.search(r'data-youtube-url="([^"]*)"', lines[1758]).group(1)
+    name = re.search(r'data-track-name="([^"]*)"', lines[1760]).group(1)
+    artist = re.search(r'data-artist-name="([^"]*)"', lines[1763]).group(1)
+    image = re.search(r'src="([^"]*)"', lines[1806]).group(1)
 
     song_data = {
         "song": name,
@@ -31,9 +30,9 @@ async def fetch_recent(m: Message):
 
     caption = (
         "🎧 <b>Currently Playing</b>\n"
-        "━━━━━━━━━━━━━━━━━━\n\n"
+        "━━━━━━━━━━━━━━━━━━\n"
         f"🎵 <b>{song_data['song']}</b>\n"
-        f"🎤 {', '.join(song_data['artists'])}\n\n"
+        f"🎤 {', '.join(song_data['artists'])}\n"
         "━━━━━━━━━━━━━━━━━━\n"
     )
 
