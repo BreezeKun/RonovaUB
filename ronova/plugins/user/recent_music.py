@@ -22,11 +22,6 @@ async def fetch_recent(m: Message):
     artist = re.findall(r'"([^"]*)"', lines[1763])[0]
     image = re.findall(r'"([^"]*)"', lines[1806])[0]
 
-    print("URL:", yt_url)
-    print("Name:", name)
-    print("Artist:", artist)
-    print("Image:", image)
-
     song_data = {
         "song": name,
         "artists": [artist],
