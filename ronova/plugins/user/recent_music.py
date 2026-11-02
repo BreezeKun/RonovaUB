@@ -16,10 +16,10 @@ async def fetch_recent(m: Message):
     with open("website.html.txt", "r", encoding="utf-8") as file:
         lines = file.readlines()
 
-    yt_url = re.search(r'data-youtube-url="([^"]*)"', lines[1758]).group(1)
-    name = re.search(r'data-track-name="([^"]*)"', lines[1760]).group(1)
-    artist = re.search(r'data-artist-name="([^"]*)"', lines[1763]).group(1)
-    image = re.search(r'src="([^"]*)"', lines[1806]).group(1)
+    yt_url = re.search(r'data-youtube-url="([^"]*)"', lines[1767]).group(1)
+    name = re.search(r'data-track-name="([^"]*)"', lines[1769]).group(1)
+    artist = re.search(r'data-artist-name="([^"]*)"', lines[1772]).group(1)
+    image = re.search(r'src="([^"]*)"', lines[1815]).group(1)
 
     song_data = {
         "song": name,
