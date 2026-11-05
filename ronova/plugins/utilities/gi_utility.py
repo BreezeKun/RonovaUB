@@ -19,6 +19,7 @@ custom_image = {
     "Escoffier": "https://files.catbox.moe/i29ary.jpg",
     "Arlecchino": "https://files.catbox.moe/vlid2p.jpg",
     "Varesa":"https://files.catbox.moe/dhtksg.jpg",
+    "Furina":"https://iili.io/nQNfKnR.jpg",
 }
 
 
