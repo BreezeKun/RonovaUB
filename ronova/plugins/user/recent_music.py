@@ -1,62 +1,130 @@
-import re
+
+import curl_cffi
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-import curl_cffi
+
+from config import LAST_FM_API
+
+API_KEY = LAST_FM_API
+LASTFM_USER = "BreezeMeowMeow"
 
 
 async def fetch_recent(m: Message):
-    url = "https://www.last.fm/user/BreezeMeowMeow"
+    url = "https://ws.audioscrobbler.com/2.0/"
 
-    response = curl_cffi.get(url, impersonate="chrome")
-
-    with open("website.html.txt", "w", encoding="utf-8") as file:
-        file.write(response.text)
-
-    with open("website.html.txt", "r", encoding="utf-8") as file:
-        lines = file.readlines()
-
-    yt_url = re.search(r'data-youtube-url="([^"]*)"', lines[1767]).group(1)
-    name = re.search(r'data-track-name="([^"]*)"', lines[1769]).group(1)
-    artist = re.search(r'data-artist-name="([^"]*)"', lines[1772]).group(1)
-    image = re.search(r'src="([^"]*)"', lines[1815]).group(1)
-
-    song_data = {
-        "song": name,
-        "artists": [artist],
-        "album_cover": image,
-        "spotify_url": yt_url
+    params = {
+        "method": "user.getRecentTracks",
+        "user": LASTFM_USER,
+        "api_key": API_KEY,
+        "format": "json",
+        "limit": 1
     }
 
-    caption = (
-        "🎧 <b>Currently Playing</b>\n"
-        "━━━━━━━━━━━━━━━━━━\n"
-        f"🎵 <b>{song_data['song']}</b>\n"
-        f"🎤 {', '.join(song_data['artists'])}\n"
-        "━━━━━━━━━━━━━━━━━━\n"
-    )
+    try:
+        # Fetch Last.fm data
+        response = curl_cffi.get(
+            url,
+            params=params,
+            impersonate="chrome",
+            timeout=15
+        )
 
-    keyboard = InlineKeyboardMarkup([
-        [
-            InlineKeyboardButton(
-                "🎧 Listen",
-                url=song_data["spotify_url"]
+        response.raise_for_status()
+        data = response.json()
+
+        # Print raw JSON response
+        import json
+        print(json.dumps(data, indent=4, ensure_ascii=False))
+
+        # Check API errors
+        if "error" in data:
+            await m.reply_text(
+                f"Last.fm API Error: {data['message']}"
             )
-        ]
-    ])
+            return
 
-    if song_data["album_cover"]:
-        await m.reply_photo(
-            photo=song_data["album_cover"],
-            caption=caption,
-            reply_markup=keyboard
+        tracks = data["recenttracks"]["track"]
+
+        if not tracks:
+            await m.reply_text("No recent tracks found.")
+            return
+
+        # Get latest track
+        track = tracks[0]
+
+        name = track["name"]
+        artist = track["artist"]["#text"]
+        album = track.get("album", {}).get("#text", "Unknown Album")
+
+        # Get extralarge album artwork
+        images = track.get("image", [])
+
+        image = next(
+            (
+                img["#text"]
+                for img in images
+                if img["size"] == "extralarge" and img["#text"]
+            ),
+            None
         )
-    else:
+
+        # Check currently playing status
+        now_playing = (
+            track.get("@attr", {}).get("nowplaying") == "true"
+        )
+
+        status = (
+            "🎧 <b>Currently Playing</b>"
+            if now_playing
+            else "🎵 <b>Recently Played</b>"
+        )
+
+        # Track URL
+        track_url = track.get("url")
+
+        # Caption
+        caption = (
+            f"{status}\n"
+            "━━━━━━━━━━━━━━━━━━\n"
+            f"🎵 <b>{name}</b>\n"
+            f"🎤 {artist}\n"
+            f"💿 {album}\n"
+            "━━━━━━━━━━━━━━━━━━"
+        )
+
+        # Listen button
+        keyboard = None
+
+        if track_url:
+            keyboard = InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "🎧 Listen",
+                        url=track_url
+                    )
+                ]
+            ])
+
+        # Send album artwork
+        if image:
+            await m.reply_photo(
+                photo=image,
+                caption=caption,
+                reply_markup=keyboard
+            )
+        else:
+            await m.reply_text(
+                caption,
+                reply_markup=keyboard
+            )
+
+    except Exception as e:
+        print("Last.fm ERROR:", repr(e))
+
         await m.reply_text(
-            caption,
-            reply_markup=keyboard
+            f"❌ Error fetching Last.fm data:\n{e}"
         )
-
 
 
 @Client.on_message(filters.command("recent") & filters.me)
