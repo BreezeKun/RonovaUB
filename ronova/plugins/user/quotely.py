@@ -48,7 +48,7 @@ from config import PREFIXES, ADMIN_ID , TEST_SUDO
 #             await c.send_message(QUOTLY_BOT, " ".join(m.command[1:]))
 #             quote_state(status=True, user_chat_id = m.chat.id, user_message_id = m.id)
 #         else:
-#             await m.edit("usage: q <text> or q with replying to a message")
+#             await m.reply("usage: q <text> or q with replying to a message")
 
 
 import asyncio
@@ -189,7 +189,7 @@ async def _download_default_bg() -> bytes | None:
  
  
 async def _get_background(client: Client, reply: Message | None):
-    """Return (background image bytes or None, entity credited in the picture)."""
+    """Return (background image bytes or None, entity crreplyed in the picture)."""
     me = await client.get_me()
  
     if reply:
@@ -218,7 +218,7 @@ async def _get_background(client: Client, reply: Message | None):
  
  
 def _make_quote_pic(
-    bg: bytes | None, text: str, credit: str | None, black: bool, as_sticker: bool
+    bg: bytes | None, text: str, crreply: str | None, black: bool, as_sticker: bool
 ) -> io.BytesIO:
     img = Image.open(io.BytesIO(bg)) if bg else Image.new("RGB", (1024, 1024), (35, 35, 45))
     if black:
@@ -247,17 +247,17 @@ def _make_quote_pic(
         align="center",
     )
  
-    # "by <name>" credit, bottom right
-    if credit:
-        credit_text = "\n".join(
-            textwrap.wrap(f"by {credit}", get_warp_length(w / 2.5)) or [f"by {credit}"]
+    # "by <name>" crreply, bottom right
+    if crreply:
+        crreply_text = "\n".join(
+            textwrap.wrap(f"by {crreply}", get_warp_length(w / 2.5)) or [f"by {crreply}"]
         )
-        l, t, r, b = draw.multiline_textbbox((0, 0), credit_text, font=font, align="left")
+        l, t, r, b = draw.multiline_textbbox((0, 0), crreply_text, font=font, align="left")
         cw, ch = r - l, b - t
         x = min((w - nw + cw) / 1.6, w - nw // 2 - cw)
         y = h - nh - ch
         draw.multiline_text(
-            (x - l, y - t), credit_text, font=font, fill="#ffffff", align="left"
+            (x - l, y - t), crreply_text, font=font, fill="#ffffff", align="left"
         )
  
     out = io.BytesIO()
@@ -297,24 +297,24 @@ async def qpic_cmd(client: Client, message: Message):
     elif reply and (reply.text or reply.caption):
         text = reply.text or reply.caption
     else:
-        return await message.edit(
+        return await message.reply(
             "<b>Provide input along with cmd or reply to a text message.</b>"
         )
  
     text = EMOJI_RE.sub("", text).strip()
     if not text:
-        return await message.edit("<b>Nothing left to render after removing emojis.</b>")
+        return await message.reply("<b>Nothing left to render after removing emojis.</b>")
  
-    await message.edit("<b>Making quote pic...</b>")
+    await message.reply("<b>Making quote pic...</b>")
  
     try:
         bg, entity = await _get_background(client, reply)
         wrapped = "\n".join(textwrap.wrap(text, 25))
         wrapped = f"“{wrapped}”"
-        credit = _display_name(entity) or None
+        crreply = _display_name(entity) or None
  
         output = await asyncio.to_thread(
-            _make_quote_pic, bg, wrapped, credit, "b" in flags, "s" in flags
+            _make_quote_pic, bg, wrapped, crreply, "b" in flags, "s" in flags
         )
  
         reply_to = reply.id if reply else None
@@ -327,7 +327,7 @@ async def qpic_cmd(client: Client, message: Message):
                 message.chat.id, output, reply_to_message_id=reply_to
             )
     except Exception as e:
-        return await message.edit(format_exc(e))
+        return await message.reply(format_exc(e))
  
     await message.delete()
  
@@ -357,7 +357,7 @@ def _quote_user_from_chat(chat: types.Chat) -> QuoteUser:
  
  
 def _message_author(msg: Message) -> QuoteUser:
-    # forwarded messages: credit the original sender
+    # forwarded messages: crreply the original sender
     origin = getattr(msg, "forward_origin", None)
     if isinstance(origin, types.MessageOriginUser):
         return _quote_user_from_user(origin.sender_user)
@@ -577,9 +577,9 @@ async def stickerchat_cmd(client: Client, message: Message):
  
     if cmd in ("q", "rq", "frq"):
         if not reply:
-            return await message.edit("<b>I can't quote the message. Reply to a message</b>")
+            return await message.reply("<b>I can't quote the message. Reply to a message</b>")
         if reply.photo or reply.video_note or reply.animation:
-            return await message.edit("<b>Replied message is not supported now</b>")
+            return await message.reply("<b>Replied message is not supported now</b>")
  
     if cmd in ("q", "rq"):
         user = _message_author(reply)
@@ -598,10 +598,10 @@ async def stickerchat_cmd(client: Client, message: Message):
                 text = args[len(first) :].strip()
             except Exception:
                 if first.startswith("@"):
-                    return await message.edit("<b>User not found</b>")
+                    return await message.reply("<b>User not found</b>")
         if user is None:
             if not reply:
-                return await message.edit(
+                return await message.reply(
                     "<b>Reply to a message or give a @username / user id first</b>"
                 )
             user = _message_author(reply)
@@ -610,9 +610,9 @@ async def stickerchat_cmd(client: Client, message: Message):
  
     text = EMOJI_RE.sub("", text).strip()
     if not text:
-        return await message.edit("<b>I can't quote the message. No text is given</b>")
+        return await message.reply("<b>I can't quote the message. No text is given</b>")
  
-    await message.edit("<b>Making quote...</b>")
+    await message.reply("<b>Making quote...</b>")
  
     try:
         replied = None
@@ -636,7 +636,7 @@ async def stickerchat_cmd(client: Client, message: Message):
             reply_to_message_id=reply.id if reply else None,
         )
     except Exception as e:
-        return await message.edit(format_exc(e))
+        return await message.reply(format_exc(e))
  
     await message.delete()
  
@@ -674,14 +674,14 @@ async def qbot_cmd(client: Client, message: Message):
     elif reply:
         ids = [reply.id]
     else:
-        return await message.edit(
+        return await message.reply(
             "<b>Either reply to a message or give input to the command properly</b>"
         )
  
     if not ids and not text:
-        return await message.edit("<b>No messages to quote</b>")
+        return await message.reply("<b>No messages to quote</b>")
  
-    await message.edit("<b>Making a quote...</b>")
+    await message.reply("<b>Making a quote...</b>")
  
     try:
         if ids:
@@ -692,20 +692,20 @@ async def qbot_cmd(client: Client, message: Message):
             sent = await client.send_message(QUOTLY_BOT, text)
             last_id = sent.id
     except (errors.YouBlockedUser, errors.UserIsBlocked):
-        return await message.edit(f"<b>Please unblock @{QUOTLY_BOT} first</b>")
+        return await message.reply(f"<b>Please unblock @{QUOTLY_BOT} first</b>")
     except Exception as e:
-        return await message.edit(format_exc(e))
+        return await message.reply(format_exc(e))
  
     response = await _wait_for_bot_reply(client, QUOTLY_BOT, last_id)
     if response is None:
-        return await message.edit(f"<b>@{QUOTLY_BOT} didn't answer in time</b>")
+        return await message.reply(f"<b>@{QUOTLY_BOT} didn't answer in time</b>")
  
     try:
         await response.copy(
             message.chat.id, reply_to_message_id=reply.id if reply else None
         )
     except Exception as e:
-        return await message.edit(format_exc(e))
+        return await message.reply(format_exc(e))
  
     await message.delete()
  
