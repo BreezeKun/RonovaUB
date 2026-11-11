@@ -4,7 +4,7 @@ import glob
 from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
 
-from config import ADMIN_ID, PREFIXES, BOT
+from config import ADMIN_ID, PREFIXES, BOT, TEST_SUDO
 from ...utilities import fetch_data, pre_matching, generate_card
 from ...decorators import get_string
 
@@ -13,7 +13,7 @@ IMAGE_BASE_URL = "https://ronovaub.onrender.com/images/"
 
 @Client.on_message(
     filters.command("myc", prefixes=PREFIXES)
-    & filters.user(ADMIN_ID)
+    & filters.user(TEST_SUDO)
 )
 @get_string("myc")
 async def mychar(c: Client, m: Message):
