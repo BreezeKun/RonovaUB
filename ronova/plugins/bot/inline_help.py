@@ -9,7 +9,7 @@ from pyrogram.types import (
     CallbackQuery
 )
 from pyrogram.enums import ButtonStyle
-from config import ADMIN_ID
+from config import ADMIN_ID, TEST_SUDO
 from ..shared import HELP_STORAGE
 
 
@@ -61,7 +61,7 @@ def build_keyboard(data, page: int, user_id: int):
     return InlineKeyboardMarkup(current)
 
 
-@Client.on_inline_query(filters.regex("^help$") & filters.user(ADMIN_ID))
+@Client.on_inline_query(filters.regex("^help$") & filters.user(TEST_SUDO))
 async def inline_help(c: Client, q: InlineQuery):
     help_data = HELP_STORAGE.data
     user_id = q.from_user.id
