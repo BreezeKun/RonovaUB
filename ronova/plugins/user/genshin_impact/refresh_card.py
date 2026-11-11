@@ -3,7 +3,7 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import ADMIN_ID, PREFIXES
+from config import ADMIN_ID, PREFIXES, TEST_SUDO
 from ...utilities import pre_matching, fetch_data
 from ...decorators import get_string
 
@@ -15,7 +15,7 @@ os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 @Client.on_message(
     filters.command("girefresh", prefixes=PREFIXES)
-    & filters.user(ADMIN_ID)
+    & filters.user(TEST_SUDO)
 )
 @get_string("girefresh")
 async def girefresh_command(client: Client, message: Message):
