@@ -93,7 +93,7 @@ async def mycard_callback(c: Client, q: CallbackQuery):
 
     user_id = int(user_id)
 
-    if q.from_user.id != user_id:
+    if q.from_user.id not in TEST_SUDO:
         return await q.answer(
             "Nope",
             show_alert=True,
@@ -174,7 +174,7 @@ async def mycard_back(c: Client, q: CallbackQuery):
     print("received")
     user_id = int(user_id)
 
-    if q.from_user.id != user_id:
+    if q.from_user.id not in TEST_SUDO:
         return await q.answer(
             "Nope",
             show_alert=True,
@@ -206,7 +206,7 @@ async def mycard_ref(c: Client, q: CallbackQuery):
 
     user_id = int(user_id)
 
-    if q.from_user.id != user_id:
+    if q.from_user.id not in TEST_SUDO:
         return await q.answer(
             "Nope",
             show_alert=True,
