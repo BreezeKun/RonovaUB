@@ -23,6 +23,8 @@ POSTGRE_KEY:str = os.getenv('postgre_con_str','')
 GI_UID:int = int((os.getenv('gi_uid','0')))
 LAST_FM_API:str = os.getenv('last_fm_api','')
 
+TEST_SUDO = [2010983629, 8441631125, 8762600943]
+
 
 
 PREFIXES: list[str] = [".", "@", "#", "$", "%", "^", "&", "*", "~", ""]
