@@ -1,7 +1,7 @@
 # from pyrogram import Client, filters
 # from pyrogram.types import Message, ReplyParameters
 
-# from config import PREFIXES, ADMIN_ID
+from config import PREFIXES, ADMIN_ID , TEST_SUDO
 # from ..shared import QUOTE_STATE
 # from ..decorators import get_string
 
@@ -274,7 +274,7 @@ def _make_quote_pic(
 # ------------------------------------------------------------------- qpic
  
  
-@Client.on_message(filters.command("qpic", prefix) & filters.me)
+@Client.on_message(filters.command("qpic", prefix) & filters.user(TEST_SUDO))
 @get_string("quote")
 async def qpic_cmd(client: Client, message: Message):
     """
@@ -570,7 +570,7 @@ def _render_quote_sticker(
     return out
  
  
-@Client.on_message(filters.command(["q", "rq", "fq", "frq"], prefix) & filters.me)
+@Client.on_message(filters.command(["q", "rq", "fq", "frq"], prefix) & filters.user(TEST_SUDO))
 async def stickerchat_cmd(client: Client, message: Message):
     cmd = message.command[0].lower()
     reply = message.reply_to_message
