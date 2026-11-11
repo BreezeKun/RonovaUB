@@ -2,6 +2,7 @@
 # from pyrogram.types import Message, ReplyParameters
 
 from config import PREFIXES, ADMIN_ID , TEST_SUDO
+import unicodedata as un
 # from ..shared import QUOTE_STATE
 # from ..decorators import get_string
 
@@ -114,7 +115,6 @@ EMOJI_RE = re.compile(
     flags=re.UNICODE,
 )
 FLAG_RE = re.compile(r"(?<!\S)-([bs])(?!\S)")
- 
  
 # ----------------------------------------------------------------- helpers
  
@@ -290,6 +290,8 @@ async def qpic_cmd(client: Client, message: Message):
     qbot [reply] [count 1-15] / [text]": f"Make a quote sticker using @{QUOTLY_BOT}
     """
     reply = message.reply_to_message
+    reply_to = reply.id if reply else None
+    ph = await client.send_message(message.chat.id, "Please wait", reply_to_message_id=reply_to)
     flags, input_str = _parse_flags(_get_args(message))
  
     if input_str:
@@ -297,15 +299,15 @@ async def qpic_cmd(client: Client, message: Message):
     elif reply and (reply.text or reply.caption):
         text = reply.text or reply.caption
     else:
-        return await message.reply(
+        return await ph.edit(
             "<b>Provide input along with cmd or reply to a text message.</b>"
         )
  
     text = EMOJI_RE.sub("", text).strip()
     if not text:
-        return await message.reply("<b>Nothing left to render after removing emojis.</b>")
+        return await ph.edit("<b>Nothing left to render after removing emojis.</b>")
  
-    await message.reply("<b>Making quote pic...</b>")
+    await ph.edit("<b>Making quote pic...</b>")
  
     try:
         bg, entity = await _get_background(client, reply)
@@ -316,8 +318,6 @@ async def qpic_cmd(client: Client, message: Message):
         output = await asyncio.to_thread(
             _make_quote_pic, bg, wrapped, crreply, "b" in flags, "s" in flags
         )
- 
-        reply_to = reply.id if reply else None
         if "s" in flags:
             await client.send_sticker(
                 message.chat.id, output, reply_to_message_id=reply_to
@@ -327,9 +327,9 @@ async def qpic_cmd(client: Client, message: Message):
                 message.chat.id, output, reply_to_message_id=reply_to
             )
     except Exception as e:
-        return await message.reply(format_exc(e))
+        return await ph.edit(format_exc(e))
  
-    await message.delete()
+    await ph.delete()
  
  
 # ------------------------------------------------- q / rq / fq / frq
@@ -574,12 +574,15 @@ def _render_quote_sticker(
 async def stickerchat_cmd(client: Client, message: Message):
     cmd = message.command[0].lower()
     reply = message.reply_to_message
+
+    reply_to = reply.id if reply else None
+    ph = await client.send_message(message.chat.id, "Please wait", reply_to_message_id=reply_to)
  
     if cmd in ("q", "rq", "frq"):
         if not reply:
-            return await message.reply("<b>I can't quote the message. Reply to a message</b>")
+            return await ph.edit("<b>I can't quote the message. Reply to a message</b>")
         if reply.photo or reply.video_note or reply.animation:
-            return await message.reply("<b>Replied message is not supported now</b>")
+            return await ph.edit("<b>Replied message is not supported now</b>")
  
     if cmd in ("q", "rq"):
         user = _message_author(reply)
@@ -598,10 +601,10 @@ async def stickerchat_cmd(client: Client, message: Message):
                 text = args[len(first) :].strip()
             except Exception:
                 if first.startswith("@"):
-                    return await message.reply("<b>User not found</b>")
+                    return await ph.edit("<b>User not found</b>")
         if user is None:
             if not reply:
-                return await message.reply(
+                return await ph.edit(
                     "<b>Reply to a message or give a @username / user id first</b>"
                 )
             user = _message_author(reply)
@@ -610,9 +613,9 @@ async def stickerchat_cmd(client: Client, message: Message):
  
     text = EMOJI_RE.sub("", text).strip()
     if not text:
-        return await message.reply("<b>I can't quote the message. No text is given</b>")
+        return await ph.edit("<b>I can't quote the message. No text is given</b>")
  
-    await message.reply("<b>Making quote...</b>")
+    await ph.edit("<b>Making quote...</b>")
  
     try:
         replied = None
@@ -636,9 +639,9 @@ async def stickerchat_cmd(client: Client, message: Message):
             reply_to_message_id=reply.id if reply else None,
         )
     except Exception as e:
-        return await message.reply(format_exc(e))
+        return await ph.edit(format_exc(e))
  
-    await message.delete()
+    await ph.delete()
  
  
 # ------------------------------------------------------------------- qbot
@@ -656,6 +659,8 @@ async def _wait_for_bot_reply(client: Client, bot: str, after_id: int, timeout: 
 @Client.on_message(filters.command("qbot", prefix) & filters.me)
 async def qbot_cmd(client: Client, message: Message):
     reply = message.reply_to_message
+    reply_to = reply.id if reply else None
+    ph = await client.send_message(message.chat.id, "Please wait", reply_to_message_id=reply_to)
     input_str = _get_args(message)
  
     ids: list[int] = []
@@ -674,14 +679,14 @@ async def qbot_cmd(client: Client, message: Message):
     elif reply:
         ids = [reply.id]
     else:
-        return await message.reply(
+        return await ph.edit(
             "<b>Either reply to a message or give input to the command properly</b>"
         )
  
     if not ids and not text:
-        return await message.reply("<b>No messages to quote</b>")
+        return await ph.edit("<b>No messages to quote</b>")
  
-    await message.reply("<b>Making a quote...</b>")
+    await ph.edit("<b>Making a quote...</b>")
  
     try:
         if ids:
@@ -692,22 +697,22 @@ async def qbot_cmd(client: Client, message: Message):
             sent = await client.send_message(QUOTLY_BOT, text)
             last_id = sent.id
     except (errors.YouBlockedUser, errors.UserIsBlocked):
-        return await message.reply(f"<b>Please unblock @{QUOTLY_BOT} first</b>")
+        return await ph.edit(f"<b>Please unblock @{QUOTLY_BOT} first</b>")
     except Exception as e:
-        return await message.reply(format_exc(e))
+        return await ph.edit(format_exc(e))
  
     response = await _wait_for_bot_reply(client, QUOTLY_BOT, last_id)
     if response is None:
-        return await message.reply(f"<b>@{QUOTLY_BOT} didn't answer in time</b>")
+        return await ph.edit(f"<b>@{QUOTLY_BOT} didn't answer in time</b>")
  
     try:
         await response.copy(
             message.chat.id, reply_to_message_id=reply.id if reply else None
         )
     except Exception as e:
-        return await message.reply(format_exc(e))
+        return await ph.edit(format_exc(e))
  
-    await message.delete()
+    await ph.delete()
  
  
 modules_help["qpic"] = {
