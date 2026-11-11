@@ -1,10 +1,10 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyParameters
 
-from config import PREFIXES, ADMIN_ID, BOT
+from config import PREFIXES, ADMIN_ID, BOT, TEST_SUDO
 
 
-@Client.on_message(filters.command("help", prefixes=PREFIXES) & filters.user(ADMIN_ID), group= 2)
+@Client.on_message(filters.command("help", prefixes=PREFIXES) & filters.user(TEST_SUDO), group= 2)
 async def googleit(c: Client, m: Message):
 
     results = await c.get_inline_bot_results(bot=BOT, query="help")
