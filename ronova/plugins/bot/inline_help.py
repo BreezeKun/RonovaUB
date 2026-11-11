@@ -83,7 +83,7 @@ async def help_page_handler(c: Client, q: CallbackQuery):
     data = q.data.split("_")
     page = int(data[1])
     owner_id = int(data[2])
-    if q.from_user.id != owner_id:
+    if q.from_user.id not in TEST_SUDO:
         return await q.answer("Access denied", show_alert=True)
     help_data = HELP_STORAGE.data
     create_data = CreateGrid()
@@ -103,7 +103,7 @@ async def help_handler(c: Client, q: CallbackQuery):
     query = data[1]
     owner_id = int(data[2])
     page = int(data[3])
-    if q.from_user.id != owner_id:
+    if q.from_user.id not in TEST_SUDO:
         return await q.answer("Access denied", show_alert=True)
     help_data = HELP_STORAGE.data
     back_keyboard = InlineKeyboardMarkup([[
