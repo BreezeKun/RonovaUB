@@ -11,7 +11,7 @@ from pyrogram.types import (
 )
 
 from ..utilities import fetch_data, generate_card
-from config import ADMIN_ID
+from config import TEST_SUDO
 
 
 DOWNLOAD_DIR = "gidownloads"
@@ -58,7 +58,7 @@ async def build_buttons(data: dict, user_id: int) -> str:
 
 
 @Client.on_inline_query(
-    filters.regex("mycard") & filters.user(ADMIN_ID)
+    filters.regex("mycard") & filters.user(TEST_SUDO)
 )
 async def inline_card(c: Client, q: InlineQuery):
     user_id = q.from_user.id
